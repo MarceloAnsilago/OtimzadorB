@@ -396,6 +396,14 @@ body {
     letter-spacing: 0.08em;
 }
 
+.optimizer-table .result-row {
+    cursor: pointer;
+}
+
+.optimizer-table .result-row:hover {
+    background: rgba(30, 210, 155, 0.06);
+}
+
 .empty-state {
     padding: 2rem !important;
     color: var(--text-soft) !important;

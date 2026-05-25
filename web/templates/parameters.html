@@ -124,7 +124,7 @@
                         <div class="cycle-toolbar">
                             <div class="cycle-field">
                                 <label class="form-label" for="cycle">Ciclo</label>
-                                <input id="cycle" class="form-control panel-input cycle-input" value="5">
+                                <input id="cycle" type="number" min="1" class="form-control panel-input cycle-input" value="{{ optimizer_state.cycle }}">
                             </div>
                         </div>
 
@@ -136,42 +136,62 @@
 
                         <div class="panel-head compact-head">
                             <span class="panel-label">Filtro</span>
-                            <h2>Primeira aba</h2>
+                            <h2>Otimizacao progressiva</h2>
                         </div>
 
                         <div class="row g-3 align-items-end">
-                            <div class="col-md-5 col-xl-4">
-                                <label class="form-label">Tamanho maximo do range do candle</label>
-                                <input class="form-control panel-input" value="" placeholder="Ex: 12">
+                            <div class="col-md-3 col-xl-3">
+                                <label class="form-label" for="rangeMaxValue">Tamanho maximo do range do candle</label>
+                                <input id="rangeMaxValue" type="number" step="1" class="form-control panel-input" value="{{ optimizer_state.range_max_value }}">
                             </div>
-                            <div class="col-md-5 col-xl-4">
-                                <label class="form-label">Pavio a pavio</label>
-                                <input class="form-control panel-input" value="" placeholder="Ex: habilitado">
+                            <div class="col-md-3 col-xl-2">
+                                <label class="form-label" for="rangeMaxStart">Inicio</label>
+                                <input id="rangeMaxStart" type="number" step="1" class="form-control panel-input" value="{{ optimizer_state.range_max_start }}">
                             </div>
-                            <div class="col-md-2 col-xl-2">
-                                <button type="button" class="btn btn-download w-100">Testar</button>
+                            <div class="col-md-3 col-xl-2">
+                                <label class="form-label" for="rangeMaxStep">Passo</label>
+                                <input id="rangeMaxStep" type="number" step="1" class="form-control panel-input" value="{{ optimizer_state.range_max_step }}">
+                            </div>
+                            <div class="col-md-3 col-xl-2">
+                                <label class="form-label" for="rangeMaxEnd">Fim</label>
+                                <input id="rangeMaxEnd" type="number" step="1" class="form-control panel-input" value="{{ optimizer_state.range_max_end }}">
+                            </div>
+                            <div class="col-md-4 col-xl-2">
+                                <label class="form-label" for="wickToWick">Pavio a pavio</label>
+                                <select id="wickToWick" class="form-select panel-input">
+                                    <option value="false"{% if not optimizer_state.wick_to_wick %} selected{% endif %}>Desligado</option>
+                                    <option value="true"{% if optimizer_state.wick_to_wick %} selected{% endif %}>Ligado</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4 col-xl-1">
+                                <button id="runOptimizerButton" type="button" class="btn btn-download w-100">Testar</button>
                             </div>
                         </div>
+
+                        <div id="optimizerFeedback" class="feedback mt-3" role="status" aria-live="polite"></div>
 
                         <div class="results-grid-wrap mt-4">
                             <div class="results-grid-head">
                                 <span>Resultados</span>
-                                <span>Grid preparado para retorno futuro</span>
+                                <span id="optimizerMeta">Clique em uma linha para promover o melhor parametro.</span>
                             </div>
                             <div class="table-responsive">
-                                <table class="table preview-table align-middle mb-0">
+                                <table class="table preview-table align-middle mb-0 optimizer-table">
                                     <thead>
                                         <tr>
-                                            <th>Ativo</th>
-                                            <th>Timeframe</th>
-                                            <th>Range max</th>
-                                            <th>Pavio a pavio</th>
-                                            <th>Status</th>
+                                            <th>Param</th>
+                                            <th>G0</th>
+                                            <th>G1</th>
+                                            <th>G2</th>
+                                            <th>G3</th>
+                                            <th>Loss</th>
+                                            <th>Ops</th>
+                                            <th>Score</th>
                                         </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody id="optimizerResultsBody">
                                         <tr>
-                                            <td colspan="5" class="empty-state">Nenhum resultado retornado ainda.</td>
+                                            <td colspan="8" class="empty-state">Nenhum resultado retornado ainda.</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -182,5 +202,6 @@
             </div>
         </section>
     </main>
+    <script src="{{ url_for('static', filename='js/parameters.js') }}"></script>
 </body>
 </html>

@@ -3,8 +3,11 @@ from __future__ import annotations
 from flask import Blueprint, jsonify, render_template, request
 
 from core.iq import iq_client
+from core.optimizer_engine import OptimizationRequest, OptimizerEngine, ParameterDefinition
+from core.parameter_store import parameter_store
 
 market_bp = Blueprint("market", __name__)
+optimizer_engine = OptimizerEngine()
 
 
 @market_bp.get("/dashboard")
@@ -20,6 +23,7 @@ def parameters_page():
         return render_template("login.html")
 
     last_download = iq_client.get_last_download()
+    optimizer_state = parameter_store.get_optimizer_state()
     parameters = {
         "asset": last_download.get("asset", ""),
         "count": last_download.get("count", 1000),
@@ -30,7 +34,12 @@ def parameters_page():
         "started_at": last_download.get("started_at", ""),
         "ended_at": last_download.get("ended_at", ""),
     }
-    return render_template("parameters.html", active_page="parameters", parameters=parameters)
+    return render_template(
+        "parameters.html",
+        active_page="parameters",
+        parameters=parameters,
+        optimizer_state=optimizer_state,
+    )
 
 
 @market_bp.get("/api/market/assets")
@@ -68,3 +77,71 @@ def market_download():
         return jsonify({"ok": False, "message": str(exc)}), 400
 
     return jsonify({"ok": True, "message": "Dados baixados com sucesso.", "data": result})
+
+
+@market_bp.post("/api/optimizer/test")
+def optimizer_test():
+    if not iq_client.is_connected():
+        return jsonify({"ok": False, "message": "Sessao IQ Option desconectada."}), 401
+
+    last_download = iq_client.get_last_download()
+    dataset_path = last_download.get("file_path", "")
+    if not dataset_path:
+        return jsonify({"ok": False, "message": "Nenhum dataset foi baixado ainda."}), 400
+
+    payload = request.get_json(silent=True) or {}
+    cycle = int(payload.get("cycle", 5))
+    range_max_value = float(payload.get("range_max_value", 35))
+    range_max_start = float(payload.get("range_max_start", 0))
+    range_max_step = float(payload.get("range_max_step", 5))
+    range_max_end = float(payload.get("range_max_end", 60))
+    wick_to_wick = bool(payload.get("wick_to_wick", False))
+
+    if cycle < 1:
+        return jsonify({"ok": False, "message": "Ciclo deve ser maior que zero."}), 400
+    if range_max_step <= 0:
+        return jsonify({"ok": False, "message": "Passo deve ser maior que zero."}), 400
+    if range_max_end < range_max_start:
+        return jsonify({"ok": False, "message": "Fim deve ser maior ou igual ao inicio."}), 400
+
+    parameter_store.save_optimizer_state(
+        {
+            "cycle": cycle,
+            "range_max_value": range_max_value,
+            "range_max_start": range_max_start,
+            "range_max_step": range_max_step,
+            "range_max_end": range_max_end,
+            "wick_to_wick": wick_to_wick,
+        }
+    )
+
+    request_model = OptimizationRequest(
+        dataset_path=dataset_path,
+        cycle=cycle,
+        parameter=ParameterDefinition(
+            key="range_max",
+            label="Tamanho maximo do range do candle",
+            value_type="int",
+        ),
+        start=range_max_start,
+        step=range_max_step,
+        end=range_max_end,
+        fixed_filters={"wick_to_wick": wick_to_wick},
+    )
+
+    try:
+        result = optimizer_engine.run(request_model)
+    except Exception as exc:
+        return jsonify({"ok": False, "message": str(exc)}), 400
+
+    return jsonify({"ok": True, "message": "Otimizacao concluida.", "data": result})
+
+
+@market_bp.post("/api/optimizer/promote")
+def optimizer_promote():
+    payload = request.get_json(silent=True) or {}
+    selected_value = float(payload.get("param", 0))
+    state = parameter_store.get_optimizer_state()
+    state["range_max_value"] = selected_value
+    parameter_store.save_optimizer_state(state)
+    return jsonify({"ok": True, "message": "Parametro promovido com sucesso.", "state": state})

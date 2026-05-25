@@ -9,4 +9,7 @@ Base = declarative_base()
 
 
 def init_database() -> None:
+    # Import ORM models before create_all so metadata is registered.
+    from core import parameter_store  # noqa: F401
+
     Base.metadata.create_all(bind=engine)
