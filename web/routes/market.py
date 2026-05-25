@@ -11,7 +11,26 @@ market_bp = Blueprint("market", __name__)
 def dashboard_page():
     if not iq_client.is_connected():
         return render_template("login.html")
-    return render_template("dashboard.html")
+    return render_template("dashboard.html", active_page="dashboard")
+
+
+@market_bp.get("/parameters")
+def parameters_page():
+    if not iq_client.is_connected():
+        return render_template("login.html")
+
+    last_download = iq_client.get_last_download()
+    parameters = {
+        "asset": last_download.get("asset", ""),
+        "count": last_download.get("count", 1000),
+        "interval_seconds": last_download.get("interval_seconds", 60),
+        "category": last_download.get("category", ""),
+        "rows": last_download.get("rows", 0),
+        "file_path": last_download.get("file_path", ""),
+        "started_at": last_download.get("started_at", ""),
+        "ended_at": last_download.get("ended_at", ""),
+    }
+    return render_template("parameters.html", active_page="parameters", parameters=parameters)
 
 
 @market_bp.get("/api/market/assets")

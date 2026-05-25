@@ -28,6 +28,11 @@ body {
     overflow: hidden;
 }
 
+.dashboard-container {
+    padding-left: 0.45rem;
+    padding-right: 0.75rem;
+}
+
 .dashboard-backdrop {
     position: absolute;
     inset: 0;
@@ -42,11 +47,14 @@ body {
     display: grid;
     grid-template-columns: 290px minmax(0, 1fr);
     gap: 1.5rem;
-    max-width: 1520px;
+    width: 100%;
+    max-width: none;
+    align-items: start;
 }
 
 .dashboard-frame {
     min-width: 0;
+    padding-right: 0.35rem;
 }
 
 .topbar,
@@ -60,9 +68,10 @@ body {
 
 .sidebar {
     position: sticky;
-    top: 1.5rem;
+    top: 0.75rem;
     align-self: start;
     padding: 1.5rem;
+    min-height: calc(100vh - 1.5rem);
 }
 
 .brand-badge {
@@ -88,6 +97,26 @@ body {
     line-height: 1.7;
 }
 
+.platform-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-top: 1rem;
+    padding: 0.7rem 0.95rem;
+    border: 1px solid var(--panel-border);
+    border-radius: 14px;
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text-main);
+    text-decoration: none;
+}
+
+.platform-link:hover,
+.platform-link:focus {
+    color: #ffffff;
+    border-color: rgba(30, 210, 155, 0.35);
+    background: rgba(30, 210, 155, 0.08);
+}
+
 .sidebar-nav {
     display: grid;
     gap: 0.8rem;
@@ -105,6 +134,7 @@ body {
     background: rgba(255, 255, 255, 0.03);
     color: var(--text-main);
     text-align: left;
+    text-decoration: none;
 }
 
 .nav-item.is-active {
@@ -317,6 +347,11 @@ body {
 }
 
 @media (max-width: 991.98px) {
+    .dashboard-container {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+
     .dashboard-layout {
         grid-template-columns: 1fr;
     }

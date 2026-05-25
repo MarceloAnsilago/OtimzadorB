@@ -27,6 +27,7 @@ class IQOptionClient:
         self._last_email: str | None = None
         self._asset_catalog: dict[str, dict[str, Any]] = {}
         self._asset_catalog_loaded_at: float = 0.0
+        self._last_download: dict[str, Any] = {}
 
     def connect(self, email: str, password: str) -> IQConnectionResult:
         if not email or not password:
@@ -149,7 +150,7 @@ class IQOptionClient:
         file_path = output_dir / f"{safe_asset}_{interval_seconds}s_{count}_{generated_at}.csv"
         dataframe.to_csv(file_path, index=False)
 
-        return {
+        result = {
             "asset": resolved_symbol,
             "category": asset_info["category"],
             "interval_seconds": interval_seconds,
@@ -160,6 +161,12 @@ class IQOptionClient:
             "started_at": normalized_rows[0]["timestamp_utc"],
             "ended_at": normalized_rows[-1]["timestamp_utc"],
         }
+        self._last_download = result
+        return result
+
+    def get_last_download(self) -> dict[str, Any]:
+        with self._lock:
+            return dict(self._last_download)
 
     def _download_candles_batched(self, asset: str, interval_seconds: int, count: int) -> list[dict[str, Any]]:
         if self._api is None:

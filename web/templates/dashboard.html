@@ -14,8 +14,8 @@
 <body>
     <main class="dashboard-shell">
         <div class="dashboard-backdrop"></div>
-        <section class="container-fluid position-relative py-4 py-lg-5">
-            <div class="dashboard-layout mx-auto">
+        <section class="container-fluid dashboard-container position-relative py-3 py-lg-4">
+            <div class="dashboard-layout">
                 <aside class="sidebar panel">
                     <div class="sidebar-brand">
                         <span class="brand-badge">
@@ -24,13 +24,26 @@
                         </span>
                         <h2>Data Desk</h2>
                         <p>Fluxo inicial para coleta historica com sessao IQ ativa e persistencia local.</p>
+                        <a
+                            href="https://iqoption.com/traderoom"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="platform-link"
+                        >
+                            <i class="bi bi-box-arrow-up-right"></i>
+                            Abrir plataforma
+                        </a>
                     </div>
 
                     <nav class="sidebar-nav">
-                        <button type="button" class="nav-item is-active">
+                        <a href="/dashboard" class="nav-item{% if active_page == 'dashboard' %} is-active{% endif %}">
                             <i class="bi bi-cloud-download"></i>
                             Download historico
-                        </button>
+                        </a>
+                        <a href="/parameters" class="nav-item{% if active_page == 'parameters' %} is-active{% endif %}">
+                            <i class="bi bi-sliders"></i>
+                            Parametros
+                        </a>
                         <button type="button" class="nav-item" disabled>
                             <i class="bi bi-bar-chart-line"></i>
                             Analytics
