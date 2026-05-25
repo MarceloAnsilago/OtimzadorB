@@ -121,13 +121,54 @@
                     </section>
 
                     <section class="panel table-panel mt-4">
-                        <div class="panel-head">
-                            <span class="panel-label">Observacoes</span>
-                            <h2>Uso desta pagina</h2>
+                        <div class="tab-strip">
+                            <button type="button" class="tab-chip is-active">Filtro</button>
+                            <button type="button" class="tab-chip" disabled>Janela</button>
+                            <button type="button" class="tab-chip" disabled>Validacao</button>
                         </div>
-                        <div class="field-hint">
-                            A base começa por ativo, quantidade de candles, timeframe, categoria e referencia do arquivo salvo.
-                            Isso prepara o terreno para filtros, janelas de treino, validacao, ativos-alvo e parametros de estrategia nas proximas etapas.
+
+                        <div class="panel-head compact-head">
+                            <span class="panel-label">Filtro</span>
+                            <h2>Primeira aba</h2>
+                        </div>
+
+                        <div class="row g-3 align-items-end">
+                            <div class="col-md-5 col-xl-4">
+                                <label class="form-label">Tamanho maximo do range do candle</label>
+                                <input class="form-control panel-input" value="" placeholder="Ex: 12">
+                            </div>
+                            <div class="col-md-5 col-xl-4">
+                                <label class="form-label">Pavio a pavio</label>
+                                <input class="form-control panel-input" value="" placeholder="Ex: habilitado">
+                            </div>
+                            <div class="col-md-2 col-xl-2">
+                                <button type="button" class="btn btn-download w-100">Testar</button>
+                            </div>
+                        </div>
+
+                        <div class="results-grid-wrap mt-4">
+                            <div class="results-grid-head">
+                                <span>Resultados</span>
+                                <span>Grid preparado para retorno futuro</span>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table preview-table align-middle mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Ativo</th>
+                                            <th>Timeframe</th>
+                                            <th>Range max</th>
+                                            <th>Pavio a pavio</th>
+                                            <th>Status</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td colspan="5" class="empty-state">Nenhum resultado retornado ainda.</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </section>
                 </div>
