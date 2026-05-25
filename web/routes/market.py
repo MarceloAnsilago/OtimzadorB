@@ -19,7 +19,8 @@ def market_assets():
     if not iq_client.is_connected():
         return jsonify({"ok": False, "message": "Sessao IQ Option desconectada."}), 401
 
-    assets = iq_client.list_open_assets()
+    limit = request.args.get("limit", default=120, type=int)
+    assets = iq_client.list_open_assets(limit=limit)
     return jsonify({"ok": True, "assets": assets})
 
 
@@ -39,8 +40,8 @@ def market_download():
     if interval_seconds not in {60, 300, 900, 1800, 3600, 86400}:
         return jsonify({"ok": False, "message": "Timeframe nao suportado nesta fase."}), 400
 
-    if count < 10 or count > 1000:
-        return jsonify({"ok": False, "message": "Quantidade deve ficar entre 10 e 1000 candles."}), 400
+    if count < 10 or count > 5000:
+        return jsonify({"ok": False, "message": "Quantidade deve ficar entre 10 e 5000 candles."}), 400
 
     try:
         result = iq_client.download_candles(asset, interval_seconds, count)

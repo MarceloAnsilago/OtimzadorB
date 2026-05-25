@@ -21,7 +21,17 @@ def login_submit():
     password = payload.get("password", "") or settings.iq_option_password
 
     logger.info("Login submitted | email={} | password_length={}", email, len(password))
-    result = iq_client.connect(email, password)
+    try:
+        result = iq_client.connect(email, password)
+    except Exception:
+        logger.exception("Unhandled exception during login flow")
+        return jsonify(
+            {
+                "ok": False,
+                "message": "Falha interna ao concluir a conexao com a IQ Option.",
+                "data": {},
+            }
+        ), 500
 
     status_code = 200 if result.ok else 401
     return jsonify({"ok": result.ok, "message": result.message, "data": result.payload}), status_code

@@ -7,11 +7,14 @@ const sessionPill = document.getElementById("sessionPill");
 const sessionPillText = sessionPill.querySelector(".session-pill-text");
 const assetSuggestions = document.getElementById("assetSuggestions");
 const previewBody = document.getElementById("previewBody");
+const quickAssets = document.getElementById("quickAssets");
 
 const filePathValue = document.getElementById("filePathValue");
 const rowsValue = document.getElementById("rowsValue");
 const startValue = document.getElementById("startValue");
 const endValue = document.getElementById("endValue");
+
+let knownAssets = [];
 
 function setLoading(isLoading) {
     downloadButton.disabled = isLoading;
@@ -72,6 +75,18 @@ function fillSummary(data) {
     renderPreview(data.preview || []);
 }
 
+function renderQuickAssets(assets) {
+    if (!assets.length) {
+        quickAssets.innerHTML = `<span class="quick-assets-empty">Nenhum ativo carregado.</span>`;
+        return;
+    }
+
+    quickAssets.innerHTML = assets
+        .slice(0, 18)
+        .map((asset) => `<button type="button" class="quick-asset" data-symbol="${asset.symbol}">${asset.symbol}</button>`)
+        .join("");
+}
+
 async function refreshSessionStatus() {
     const response = await fetch("/api/session");
     if (!response.ok) {
@@ -88,19 +103,37 @@ async function refreshSessionStatus() {
 
 async function loadAssets() {
     try {
-        const response = await fetch("/api/market/assets");
+        const response = await fetch("/api/market/assets?limit=160");
         if (!response.ok) {
             return;
         }
 
         const payload = await response.json();
-        assetSuggestions.innerHTML = payload.assets
-            .map((asset) => `<option value="${asset.symbol}">${asset.symbol} · ${asset.category}</option>`)
+        knownAssets = payload.assets || [];
+        assetSuggestions.innerHTML = knownAssets
+            .map((asset) => `<option value="${asset.symbol}">${asset.symbol} - ${asset.category}</option>`)
             .join("");
+        renderQuickAssets(knownAssets);
     } catch (error) {
         console.error(error);
+        renderQuickAssets([]);
     }
 }
+
+quickAssets.addEventListener("click", (event) => {
+    const target = event.target;
+    if (!(target instanceof HTMLElement)) {
+        return;
+    }
+
+    const symbol = target.dataset.symbol;
+    if (!symbol) {
+        return;
+    }
+
+    downloadForm.asset.value = symbol;
+    setFeedback(`Ativo selecionado: ${symbol}`, "");
+});
 
 downloadForm.addEventListener("submit", async (event) => {
     event.preventDefault();
@@ -112,6 +145,19 @@ downloadForm.addEventListener("submit", async (event) => {
     if (!asset) {
         setFeedback("Informe o ativo para baixar os candles.", "is-error");
         return;
+    }
+
+    if (!Number.isInteger(count) || count < 10 || count > 5000) {
+        setFeedback("Quantidade deve ficar entre 10 e 5000 candles.", "is-error");
+        return;
+    }
+
+    if (knownAssets.length) {
+        const exists = knownAssets.some((item) => item.symbol === asset);
+        if (!exists) {
+            setFeedback("Ativo nao encontrado no catalogo aberto da IQ Option. Escolha um ativo sugerido.", "is-error");
+            return;
+        }
     }
 
     try {
@@ -129,6 +175,7 @@ downloadForm.addEventListener("submit", async (event) => {
 
         if (response.ok) {
             fillSummary(payload.data || {});
+            downloadForm.asset.value = payload.data?.asset || asset;
         }
     } catch (error) {
         console.error(error);

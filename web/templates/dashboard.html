@@ -15,119 +15,155 @@
     <main class="dashboard-shell">
         <div class="dashboard-backdrop"></div>
         <section class="container-fluid position-relative py-4 py-lg-5">
-            <div class="dashboard-frame mx-auto">
-                <header class="topbar">
-                    <div>
-                        <span class="section-kicker">Market Data</span>
-                        <h1>Central de download historico</h1>
-                        <p class="section-copy">
-                            Baixe candles historicos da IQ Option, visualize uma amostra e persista em CSV local para as proximas etapas.
-                        </p>
+            <div class="dashboard-layout mx-auto">
+                <aside class="sidebar panel">
+                    <div class="sidebar-brand">
+                        <span class="brand-badge">
+                            <i class="bi bi-graph-up-arrow"></i>
+                            BinRobo
+                        </span>
+                        <h2>Data Desk</h2>
+                        <p>Fluxo inicial para coleta historica com sessao IQ ativa e persistencia local.</p>
                     </div>
-                    <div class="session-pill" id="sessionPill">
-                        <span class="status-dot"></span>
-                        <span class="session-pill-text">Verificando sessao...</span>
-                    </div>
-                </header>
 
-                <section class="content-grid">
-                    <article class="panel control-panel">
+                    <nav class="sidebar-nav">
+                        <button type="button" class="nav-item is-active">
+                            <i class="bi bi-cloud-download"></i>
+                            Download historico
+                        </button>
+                        <button type="button" class="nav-item" disabled>
+                            <i class="bi bi-bar-chart-line"></i>
+                            Analytics
+                        </button>
+                        <button type="button" class="nav-item" disabled>
+                            <i class="bi bi-diagram-3"></i>
+                            Estrategias
+                        </button>
+                    </nav>
+
+                    <section class="sidebar-section">
+                        <span class="panel-label">Ativos rapidos</span>
+                        <div id="quickAssets" class="quick-assets">
+                            <span class="quick-assets-empty">Carregando ativos...</span>
+                        </div>
+                    </section>
+                </aside>
+
+                <div class="dashboard-frame">
+                    <header class="topbar">
+                        <div>
+                            <span class="section-kicker">Market Data</span>
+                            <h1>Central de download historico</h1>
+                            <p class="section-copy">
+                                Baixe candles historicos da IQ Option, visualize uma amostra e persista em CSV local para as proximas etapas.
+                            </p>
+                        </div>
+                        <div class="session-pill" id="sessionPill">
+                            <span class="status-dot"></span>
+                            <span class="session-pill-text">Verificando sessao...</span>
+                        </div>
+                    </header>
+
+                    <section class="content-grid">
+                        <article class="panel control-panel">
+                            <div class="panel-head">
+                                <span class="panel-label">Downloader</span>
+                                <h2>Parametros do lote</h2>
+                            </div>
+
+                            <form id="downloadForm" class="download-form" novalidate>
+                                <div class="row g-3">
+                                    <div class="col-12">
+                                        <label for="asset" class="form-label">Ativo</label>
+                                        <input id="asset" name="asset" list="assetSuggestions" class="form-control panel-input" placeholder="Ex: EURUSD, EURUSD-OTC, BTCUSD" required>
+                                        <datalist id="assetSuggestions"></datalist>
+                                        <div class="field-hint">Use um ativo listado na sidebar ou um ativo sugerido no catalogo.</div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="interval" class="form-label">Timeframe</label>
+                                        <select id="interval" name="interval" class="form-select panel-input">
+                                            <option value="60">1 minuto</option>
+                                            <option value="300">5 minutos</option>
+                                            <option value="900">15 minutos</option>
+                                            <option value="1800">30 minutos</option>
+                                            <option value="3600">1 hora</option>
+                                            <option value="86400">1 dia</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <label for="count" class="form-label">Quantidade</label>
+                                        <input id="count" name="count" type="number" min="10" max="5000" step="10" value="1000" class="form-control panel-input">
+                                    </div>
+                                </div>
+
+                                <button id="downloadButton" type="submit" class="btn btn-download mt-4 w-100">
+                                    <span class="button-text">Baixar dados</span>
+                                    <span class="button-loader d-none">
+                                        <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
+                                        Processando
+                                    </span>
+                                </button>
+
+                                <div id="downloadFeedback" class="feedback mt-3" role="status" aria-live="polite"></div>
+                            </form>
+                        </article>
+
+                        <article class="panel summary-panel">
+                            <div class="panel-head">
+                                <span class="panel-label">Resumo</span>
+                                <h2>Lote atual</h2>
+                            </div>
+
+                            <div class="metric-grid">
+                                <div class="metric-card">
+                                    <span class="metric-label">Arquivo</span>
+                                    <strong id="filePathValue">Aguardando download</strong>
+                                </div>
+                                <div class="metric-card">
+                                    <span class="metric-label">Registros</span>
+                                    <strong id="rowsValue">0</strong>
+                                </div>
+                                <div class="metric-card">
+                                    <span class="metric-label">Inicio</span>
+                                    <strong id="startValue">-</strong>
+                                </div>
+                                <div class="metric-card">
+                                    <span class="metric-label">Fim</span>
+                                    <strong id="endValue">-</strong>
+                                </div>
+                            </div>
+                        </article>
+                    </section>
+
+                    <section class="panel table-panel mt-4">
                         <div class="panel-head">
-                            <span class="panel-label">Downloader</span>
-                            <h2>Parametros do lote</h2>
+                            <span class="panel-label">Preview</span>
+                            <h2>Ultimos candles baixados</h2>
                         </div>
 
-                        <form id="downloadForm" class="download-form" novalidate>
-                            <div class="row g-3">
-                                <div class="col-12">
-                                    <label for="asset" class="form-label">Ativo</label>
-                                    <input id="asset" name="asset" list="assetSuggestions" class="form-control panel-input" placeholder="Ex: EURUSD, EURUSD-OTC, BTCUSD" required>
-                                    <datalist id="assetSuggestions"></datalist>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label for="interval" class="form-label">Timeframe</label>
-                                    <select id="interval" name="interval" class="form-select panel-input">
-                                        <option value="60">1 minuto</option>
-                                        <option value="300">5 minutos</option>
-                                        <option value="900">15 minutos</option>
-                                        <option value="1800">30 minutos</option>
-                                        <option value="3600">1 hora</option>
-                                        <option value="86400">1 dia</option>
-                                    </select>
-                                </div>
-
-                                <div class="col-md-6">
-                                    <label for="count" class="form-label">Quantidade</label>
-                                    <input id="count" name="count" type="number" min="10" max="1000" step="10" value="200" class="form-control panel-input">
-                                </div>
-                            </div>
-
-                            <button id="downloadButton" type="submit" class="btn btn-download mt-4 w-100">
-                                <span class="button-text">Baixar dados</span>
-                                <span class="button-loader d-none">
-                                    <span class="spinner-border spinner-border-sm" aria-hidden="true"></span>
-                                    Processando
-                                </span>
-                            </button>
-
-                            <div id="downloadFeedback" class="feedback mt-3" role="status" aria-live="polite"></div>
-                        </form>
-                    </article>
-
-                    <article class="panel summary-panel">
-                        <div class="panel-head">
-                            <span class="panel-label">Resumo</span>
-                            <h2>Lote atual</h2>
+                        <div class="table-responsive">
+                            <table class="table preview-table align-middle mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Timestamp UTC</th>
+                                        <th>Open</th>
+                                        <th>Close</th>
+                                        <th>Min</th>
+                                        <th>Max</th>
+                                        <th>Volume</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="previewBody">
+                                    <tr>
+                                        <td colspan="6" class="empty-state">Nenhum dado baixado ainda.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-
-                        <div class="metric-grid">
-                            <div class="metric-card">
-                                <span class="metric-label">Arquivo</span>
-                                <strong id="filePathValue">Aguardando download</strong>
-                            </div>
-                            <div class="metric-card">
-                                <span class="metric-label">Registros</span>
-                                <strong id="rowsValue">0</strong>
-                            </div>
-                            <div class="metric-card">
-                                <span class="metric-label">Inicio</span>
-                                <strong id="startValue">-</strong>
-                            </div>
-                            <div class="metric-card">
-                                <span class="metric-label">Fim</span>
-                                <strong id="endValue">-</strong>
-                            </div>
-                        </div>
-                    </article>
-                </section>
-
-                <section class="panel table-panel mt-4">
-                    <div class="panel-head">
-                        <span class="panel-label">Preview</span>
-                        <h2>Ultimos candles baixados</h2>
-                    </div>
-
-                    <div class="table-responsive">
-                        <table class="table preview-table align-middle mb-0">
-                            <thead>
-                                <tr>
-                                    <th>Timestamp UTC</th>
-                                    <th>Open</th>
-                                    <th>Close</th>
-                                    <th>Min</th>
-                                    <th>Max</th>
-                                    <th>Volume</th>
-                                </tr>
-                            </thead>
-                            <tbody id="previewBody">
-                                <tr>
-                                    <td colspan="6" class="empty-state">Nenhum dado baixado ainda.</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
+                    </section>
+                </div>
             </div>
         </section>
     </main>
