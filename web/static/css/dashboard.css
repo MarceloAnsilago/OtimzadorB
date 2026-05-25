@@ -332,6 +332,20 @@ body {
     margin-bottom: 0.9rem;
 }
 
+.cycle-toolbar {
+    display: flex;
+    justify-content: flex-start;
+    margin-bottom: 0.9rem;
+}
+
+.cycle-field {
+    width: 160px;
+}
+
+.cycle-input {
+    text-align: center;
+}
+
 .tab-chip {
     min-height: 34px;
     padding: 0.45rem 0.8rem;
