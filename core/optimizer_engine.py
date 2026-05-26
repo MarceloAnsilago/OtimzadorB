@@ -110,6 +110,8 @@ class OptimizerEngine:
                     "g3": stats.g3,
                     "loss": stats.loss,
                     "ops": stats.ops,
+                    "win_pct": stats.win_pct,
+                    "loss_pct": stats.loss_pct,
                     "score": stats.score,
                     "ruin_pct": stats.ruin_pct,
                     "final_capital": stats.final_capital,

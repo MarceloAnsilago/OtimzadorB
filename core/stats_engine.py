@@ -15,6 +15,8 @@ class OptimizationStats:
     g3: int
     loss: int
     ops: int
+    win_pct: float
+    loss_pct: float
     score: float
     ruin_pct: float
     final_capital: float
@@ -118,6 +120,9 @@ def build_stats(
     g3 = counters.get("WIN_G3", 0)
     loss = counters.get("LOSS", 0)
     ops = g0 + g1 + g2 + g3 + loss
+    wins = g0 + g1 + g2 + g3
+    win_pct = (wins / ops) * 100.0 if ops else 0.0
+    loss_pct = (loss / ops) * 100.0 if ops else 0.0
     score = (g0 * 1.0) + (g1 * 0.82) + (g2 * 0.64) + (g3 * 0.46) - (loss * 1.0)
     equity_curve, _, final_capital, max_drawdown_pct = _run_bankroll_path(martingale_results, bankroll_config)
     ruin_pct = _estimate_ruin_probability(
@@ -134,6 +139,8 @@ def build_stats(
         g3=g3,
         loss=loss,
         ops=ops,
+        win_pct=round(win_pct, 2),
+        loss_pct=round(loss_pct, 2),
         score=round(score, 4),
         ruin_pct=round(ruin_pct, 2),
         final_capital=round(final_capital, 4),

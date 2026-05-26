@@ -53,7 +53,7 @@ function renderEmptyGrid(message) {
     optimizerRows = [];
     optimizerResultsBody.innerHTML = `
         <tr>
-            <td colspan="9" class="empty-state">${message}</td>
+            <td colspan="11" class="empty-state">${message}</td>
         </tr>
     `;
     clearPerformanceChart();
@@ -90,6 +90,8 @@ function renderRows(rows) {
             <td>${row.g3}</td>
             <td>${row.loss}</td>
             <td>${row.ops}</td>
+            <td>${row.win_pct}%</td>
+            <td>${row.loss_pct}%</td>
             <td>${row.score}</td>
             <td>${row.ruin_pct}%</td>
         </tr>
@@ -185,6 +187,8 @@ function renderPerformance(row) {
     if (performanceSummary) {
         performanceSummary.textContent = [
             `Param ${row.param}`,
+            `acerto ${Number(row.win_pct).toFixed(2)}%`,
+            `loss ${Number(row.loss_pct).toFixed(2)}%`,
             `capital final ${Number(row.final_capital).toFixed(2)}`,
             `minimo ${Number(row.min_capital).toFixed(2)}`,
             `drawdown max ${Number(row.max_drawdown_pct).toFixed(2)}%`,
