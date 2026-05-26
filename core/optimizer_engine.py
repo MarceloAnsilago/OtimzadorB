@@ -112,6 +112,10 @@ class OptimizerEngine:
                     "ops": stats.ops,
                     "score": stats.score,
                     "ruin_pct": stats.ruin_pct,
+                    "final_capital": stats.final_capital,
+                    "min_capital": stats.min_capital,
+                    "max_drawdown_pct": stats.max_drawdown_pct,
+                    "equity_curve": stats.equity_curve,
                 }
             )
 

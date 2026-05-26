@@ -10,6 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" rel="stylesheet">
     <link href="{{ url_for('static', filename='css/dashboard.css') }}" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
 </head>
 <body>
     <main class="dashboard-shell">
@@ -192,7 +193,7 @@
                         <div class="results-grid-wrap mt-4">
                             <div class="results-grid-head">
                                 <span>Resultados</span>
-                                <span id="optimizerMeta">Clique em uma linha para promover o melhor parametro.</span>
+                                <span id="optimizerMeta">Clique em uma linha para ver o grafico e promover o parametro.</span>
                             </div>
                             <div class="table-responsive">
                                 <table class="table preview-table align-middle mb-0 optimizer-table">
@@ -217,6 +218,21 @@
                                 </table>
                             </div>
                         </div>
+
+                        <section class="performance-panel mt-4">
+                            <div class="performance-head">
+                                <div>
+                                    <span class="panel-label">Desempenho</span>
+                                    <h3>Curva da estrategia</h3>
+                                </div>
+                                <div id="performanceSummary" class="performance-summary">
+                                    Selecione uma configuracao na tabela para visualizar a curva de capital.
+                                </div>
+                            </div>
+                            <div class="performance-canvas-wrap">
+                                <canvas id="performanceChart" height="120"></canvas>
+                            </div>
+                        </section>
                     </section>
                 </div>
             </div>

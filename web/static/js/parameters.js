@@ -13,6 +13,19 @@ const runOptimizerButton = document.getElementById("runOptimizerButton");
 const optimizerFeedback = document.getElementById("optimizerFeedback");
 const optimizerMeta = document.getElementById("optimizerMeta");
 const optimizerResultsBody = document.getElementById("optimizerResultsBody");
+const performanceSummary = document.getElementById("performanceSummary");
+const performanceChartCanvas = document.getElementById("performanceChart");
+
+let optimizerRows = [];
+let performanceChart = null;
+
+const degreeHeaders = optimizerResultsBody?.closest("table")?.querySelectorAll("thead th");
+if (degreeHeaders && degreeHeaders.length >= 5) {
+    degreeHeaders[1].innerHTML = "1&deg;";
+    degreeHeaders[2].innerHTML = "2&deg;";
+    degreeHeaders[3].innerHTML = "3&deg;";
+    degreeHeaders[4].innerHTML = "4&deg;";
+}
 
 function setFeedback(message, type = "") {
     optimizerFeedback.textContent = message;
@@ -37,11 +50,13 @@ function syncStakeLabel() {
 }
 
 function renderEmptyGrid(message) {
+    optimizerRows = [];
     optimizerResultsBody.innerHTML = `
         <tr>
             <td colspan="9" class="empty-state">${message}</td>
         </tr>
     `;
+    clearPerformanceChart();
 }
 
 async function promoteParameter(paramValue) {
@@ -65,6 +80,7 @@ function renderRows(rows) {
         return;
     }
 
+    optimizerRows = rows;
     optimizerResultsBody.innerHTML = rows.map((row) => `
         <tr class="result-row" data-param="${row.param}">
             <td>${row.param}</td>
@@ -78,6 +94,103 @@ function renderRows(rows) {
             <td>${row.ruin_pct}%</td>
         </tr>
     `).join("");
+
+    renderPerformance(rows[0]);
+    setSelectedRow(rows[0].param);
+}
+
+function clearPerformanceChart() {
+    if (performanceChart) {
+        performanceChart.destroy();
+        performanceChart = null;
+    }
+    if (performanceSummary) {
+        performanceSummary.textContent = "Selecione uma configuracao na tabela para visualizar a curva de capital.";
+    }
+}
+
+function setSelectedRow(paramValue) {
+    for (const row of optimizerResultsBody.querySelectorAll(".result-row")) {
+        row.classList.toggle("is-selected", Number(row.dataset.param) === Number(paramValue));
+    }
+}
+
+function buildChartLabels(length) {
+    return Array.from({ length }, (_, index) => index);
+}
+
+function renderPerformance(row) {
+    if (!row || !performanceChartCanvas || typeof Chart === "undefined" || !Array.isArray(row.equity_curve)) {
+        clearPerformanceChart();
+        return;
+    }
+
+    if (performanceChart) {
+        performanceChart.destroy();
+    }
+
+    const labels = buildChartLabels(row.equity_curve.length);
+    performanceChart = new Chart(performanceChartCanvas, {
+        type: "line",
+        data: {
+            labels,
+            datasets: [
+                {
+                    label: `Capital | Param ${row.param}`,
+                    data: row.equity_curve,
+                    borderColor: "#1ed29b",
+                    backgroundColor: "rgba(30, 210, 155, 0.18)",
+                    fill: true,
+                    pointRadius: 0,
+                    borderWidth: 2,
+                    tension: 0.15,
+                },
+            ],
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            animation: false,
+            interaction: {
+                mode: "index",
+                intersect: false,
+            },
+            plugins: {
+                legend: {
+                    display: false,
+                },
+            },
+            scales: {
+                x: {
+                    ticks: {
+                        color: "#93a4bf",
+                        maxTicksLimit: 10,
+                    },
+                    grid: {
+                        color: "rgba(148, 163, 184, 0.08)",
+                    },
+                },
+                y: {
+                    ticks: {
+                        color: "#93a4bf",
+                    },
+                    grid: {
+                        color: "rgba(148, 163, 184, 0.08)",
+                    },
+                },
+            },
+        },
+    });
+
+    if (performanceSummary) {
+        performanceSummary.textContent = [
+            `Param ${row.param}`,
+            `capital final ${Number(row.final_capital).toFixed(2)}`,
+            `minimo ${Number(row.min_capital).toFixed(2)}`,
+            `drawdown max ${Number(row.max_drawdown_pct).toFixed(2)}%`,
+            `ruina ${Number(row.ruin_pct).toFixed(2)}%`,
+        ].join(" | ");
+    }
 }
 
 optimizerResultsBody.addEventListener("click", async (event) => {
@@ -90,6 +203,10 @@ optimizerResultsBody.addEventListener("click", async (event) => {
     if (!row) {
         return;
     }
+
+    const selectedRow = optimizerRows.find((item) => Number(item.param) === Number(row.dataset.param));
+    renderPerformance(selectedRow);
+    setSelectedRow(row.dataset.param);
 
     try {
         await promoteParameter(Number(row.dataset.param));
