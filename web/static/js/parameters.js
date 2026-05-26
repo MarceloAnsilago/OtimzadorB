@@ -1,4 +1,9 @@
 const cycleInput = document.getElementById("cycle");
+const initialCapitalInput = document.getElementById("initialCapital");
+const initialStakeLabel = document.getElementById("initialStakeLabel");
+const initialStakeInput = document.getElementById("initialStake");
+const payoutInput = document.getElementById("payout");
+const stakeModeSelect = document.getElementById("stakeMode");
 const rangeMaxValueInput = document.getElementById("rangeMaxValue");
 const rangeMaxStartInput = document.getElementById("rangeMaxStart");
 const rangeMaxStepInput = document.getElementById("rangeMaxStep");
@@ -22,10 +27,19 @@ function setLoading(isLoading) {
     runOptimizerButton.textContent = isLoading ? "Testando" : "Testar";
 }
 
+function syncStakeLabel() {
+    if (!initialStakeLabel) {
+        return;
+    }
+    initialStakeLabel.textContent = stakeModeSelect.value === "percentage"
+        ? "Aporte inicial (%)"
+        : "Aporte inicial";
+}
+
 function renderEmptyGrid(message) {
     optimizerResultsBody.innerHTML = `
         <tr>
-            <td colspan="8" class="empty-state">${message}</td>
+            <td colspan="9" class="empty-state">${message}</td>
         </tr>
     `;
 }
@@ -61,6 +75,7 @@ function renderRows(rows) {
             <td>${row.loss}</td>
             <td>${row.ops}</td>
             <td>${row.score}</td>
+            <td>${row.ruin_pct}%</td>
         </tr>
     `).join("");
 }
@@ -84,9 +99,16 @@ optimizerResultsBody.addEventListener("click", async (event) => {
     }
 });
 
+stakeModeSelect.addEventListener("change", syncStakeLabel);
+syncStakeLabel();
+
 runOptimizerButton.addEventListener("click", async () => {
     const payload = {
         cycle: Number(cycleInput.value),
+        initial_capital: Number(initialCapitalInput.value),
+        initial_stake: Number(initialStakeInput.value),
+        payout: Number(payoutInput.value),
+        stake_mode: stakeModeSelect.value,
         range_max_value: Number(rangeMaxValueInput.value),
         range_max_start: Number(rangeMaxStartInput.value),
         range_max_step: Number(rangeMaxStepInput.value),
@@ -96,6 +118,18 @@ runOptimizerButton.addEventListener("click", async () => {
 
     if (payload.range_max_step <= 0) {
         setFeedback("Passo deve ser maior que zero.", "is-error");
+        return;
+    }
+    if (payload.initial_capital <= 0) {
+        setFeedback("Capital inicial deve ser maior que zero.", "is-error");
+        return;
+    }
+    if (payload.initial_stake <= 0) {
+        setFeedback("Aporte inicial deve ser maior que zero.", "is-error");
+        return;
+    }
+    if (payload.payout < 0) {
+        setFeedback("Payout deve ser zero ou maior.", "is-error");
         return;
     }
 

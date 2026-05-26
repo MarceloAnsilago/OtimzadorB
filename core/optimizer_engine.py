@@ -11,7 +11,7 @@ from core.candle_filters import FilterContext
 from core.cycle_engine import get_cycle_window
 from core.martingale_evaluator import evaluate_martingale
 from core.signal_engine import build_signals
-from core.stats_engine import build_stats
+from core.stats_engine import BankrollConfig, build_stats
 
 
 @dataclass(slots=True)
@@ -25,6 +25,10 @@ class ParameterDefinition:
 class OptimizationRequest:
     dataset_path: str
     cycle: int
+    initial_capital: float
+    initial_stake: float
+    payout: float
+    stake_mode: str
     parameter: ParameterDefinition
     start: float
     step: float
@@ -77,14 +81,26 @@ class OptimizerEngine:
             signals = build_signals(dataframe, filter_context)
 
             counters = {"WIN_G0": 0, "WIN_G1": 0, "WIN_G2": 0, "WIN_G3": 0, "LOSS": 0}
+            martingale_results = []
             for signal in signals:
                 cycle_window = get_cycle_window(dataframe, signal.index, request.cycle)
                 if len(cycle_window.candles) < min(request.cycle, 4):
                     continue
                 result = evaluate_martingale(signal, cycle_window, max_gales=3)
                 counters[result.outcome] += 1
+                martingale_results.append(result)
 
-            stats = build_stats(float(parameter_value), counters)
+            stats = build_stats(
+                float(parameter_value),
+                counters,
+                martingale_results,
+                BankrollConfig(
+                    initial_capital=request.initial_capital,
+                    initial_stake=request.initial_stake,
+                    payout=request.payout,
+                    stake_mode=request.stake_mode,
+                ),
+            )
             result_rows.append(
                 {
                     "param": parameter_value,
@@ -95,6 +111,7 @@ class OptimizerEngine:
                     "loss": stats.loss,
                     "ops": stats.ops,
                     "score": stats.score,
+                    "ruin_pct": stats.ruin_pct,
                 }
             )
 

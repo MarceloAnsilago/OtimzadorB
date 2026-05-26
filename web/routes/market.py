@@ -91,6 +91,10 @@ def optimizer_test():
 
     payload = request.get_json(silent=True) or {}
     cycle = int(payload.get("cycle", 5))
+    initial_capital = float(payload.get("initial_capital", 100))
+    initial_stake = float(payload.get("initial_stake", 2))
+    payout = float(payload.get("payout", 80))
+    stake_mode = str(payload.get("stake_mode", "fixed")).strip().lower()
     range_max_value = float(payload.get("range_max_value", 35))
     range_max_start = float(payload.get("range_max_start", 0))
     range_max_step = float(payload.get("range_max_step", 5))
@@ -99,6 +103,14 @@ def optimizer_test():
 
     if cycle < 1:
         return jsonify({"ok": False, "message": "Ciclo deve ser maior que zero."}), 400
+    if initial_capital <= 0:
+        return jsonify({"ok": False, "message": "Capital inicial deve ser maior que zero."}), 400
+    if initial_stake <= 0:
+        return jsonify({"ok": False, "message": "Aporte inicial deve ser maior que zero."}), 400
+    if payout < 0:
+        return jsonify({"ok": False, "message": "Payout deve ser zero ou maior."}), 400
+    if stake_mode not in {"fixed", "percentage"}:
+        return jsonify({"ok": False, "message": "Modo do aporte invalido."}), 400
     if range_max_step <= 0:
         return jsonify({"ok": False, "message": "Passo deve ser maior que zero."}), 400
     if range_max_end < range_max_start:
@@ -107,6 +119,10 @@ def optimizer_test():
     parameter_store.save_optimizer_state(
         {
             "cycle": cycle,
+            "initial_capital": initial_capital,
+            "initial_stake": initial_stake,
+            "payout": payout,
+            "stake_mode": stake_mode,
             "range_max_value": range_max_value,
             "range_max_start": range_max_start,
             "range_max_step": range_max_step,
@@ -118,9 +134,13 @@ def optimizer_test():
     request_model = OptimizationRequest(
         dataset_path=dataset_path,
         cycle=cycle,
+        initial_capital=initial_capital,
+        initial_stake=initial_stake,
+        payout=payout,
+        stake_mode=stake_mode,
         parameter=ParameterDefinition(
             key="range_max",
-            label="Tamanho maximo do range do candle",
+            label="Tamanho maximo do range do candle (pontos)",
             value_type="int",
         ),
         start=range_max_start,

@@ -19,6 +19,21 @@ class ParameterConfig(Base):
 
 
 class ParameterStore:
+    @staticmethod
+    def _optimizer_defaults() -> dict[str, Any]:
+        return {
+            "cycle": 5,
+            "range_max_value": 35,
+            "range_max_start": 0,
+            "range_max_step": 5,
+            "range_max_end": 60,
+            "wick_to_wick": False,
+            "initial_capital": 100.0,
+            "initial_stake": 2.0,
+            "payout": 80.0,
+            "stake_mode": "fixed",
+        }
+
     def _ensure_schema(self) -> None:
         Base.metadata.create_all(bind=engine, tables=[ParameterConfig.__table__])
 
@@ -48,17 +63,11 @@ class ParameterStore:
             session.commit()
 
     def get_optimizer_state(self) -> dict[str, Any]:
-        return self.get(
-            "optimizer_state",
-            {
-                "cycle": 5,
-                "range_max_value": 35,
-                "range_max_start": 0,
-                "range_max_step": 5,
-                "range_max_end": 60,
-                "wick_to_wick": False,
-            },
-        )
+        defaults = self._optimizer_defaults()
+        state = self.get("optimizer_state", defaults)
+        if not isinstance(state, dict):
+            return defaults
+        return {**defaults, **state}
 
     def save_optimizer_state(self, state: dict[str, Any]) -> None:
         self.set("optimizer_state", state)
