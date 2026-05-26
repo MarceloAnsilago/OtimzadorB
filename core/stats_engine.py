@@ -15,6 +15,10 @@ class OptimizationStats:
     g3: int
     loss: int
     ops: int
+    g0_pct: float
+    g1_pct: float
+    g2_pct: float
+    g3_pct: float
     win_pct: float
     loss_pct: float
     score: float
@@ -121,6 +125,10 @@ def build_stats(
     loss = counters.get("LOSS", 0)
     ops = g0 + g1 + g2 + g3 + loss
     wins = g0 + g1 + g2 + g3
+    g0_pct = (g0 / ops) * 100.0 if ops else 0.0
+    g1_pct = (g1 / ops) * 100.0 if ops else 0.0
+    g2_pct = (g2 / ops) * 100.0 if ops else 0.0
+    g3_pct = (g3 / ops) * 100.0 if ops else 0.0
     win_pct = (wins / ops) * 100.0 if ops else 0.0
     loss_pct = (loss / ops) * 100.0 if ops else 0.0
     score = (g0 * 1.0) + (g1 * 0.82) + (g2 * 0.64) + (g3 * 0.46) - (loss * 1.0)
@@ -139,6 +147,10 @@ def build_stats(
         g3=g3,
         loss=loss,
         ops=ops,
+        g0_pct=round(g0_pct, 2),
+        g1_pct=round(g1_pct, 2),
+        g2_pct=round(g2_pct, 2),
+        g3_pct=round(g3_pct, 2),
         win_pct=round(win_pct, 2),
         loss_pct=round(loss_pct, 2),
         score=round(score, 4),

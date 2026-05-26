@@ -84,11 +84,11 @@ function renderRows(rows) {
     optimizerResultsBody.innerHTML = rows.map((row) => `
         <tr class="result-row" data-param="${row.param}">
             <td>${row.param}</td>
-            <td>${row.g0}</td>
-            <td>${row.g1}</td>
-            <td>${row.g2}</td>
-            <td>${row.g3}</td>
-            <td>${row.loss}</td>
+            <td>${formatCountPct(row.g0, row.g0_pct)}</td>
+            <td>${formatCountPct(row.g1, row.g1_pct)}</td>
+            <td>${formatCountPct(row.g2, row.g2_pct)}</td>
+            <td>${formatCountPct(row.g3, row.g3_pct)}</td>
+            <td>${formatCountPct(row.loss, row.loss_pct)}</td>
             <td>${row.ops}</td>
             <td>${row.win_pct}%</td>
             <td>${row.loss_pct}%</td>
@@ -99,6 +99,10 @@ function renderRows(rows) {
 
     renderPerformance(rows[0]);
     setSelectedRow(rows[0].param);
+}
+
+function formatCountPct(count, pct) {
+    return `${count} - ${Number(pct).toFixed(2)}%`;
 }
 
 function clearPerformanceChart() {
@@ -187,6 +191,7 @@ function renderPerformance(row) {
     if (performanceSummary) {
         performanceSummary.textContent = [
             `Param ${row.param}`,
+            `entradas ${row.ops}`,
             `acerto ${Number(row.win_pct).toFixed(2)}%`,
             `loss ${Number(row.loss_pct).toFixed(2)}%`,
             `capital final ${Number(row.final_capital).toFixed(2)}`,
