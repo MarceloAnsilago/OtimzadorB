@@ -53,6 +53,32 @@ def _generate_values(start: float, step: float, end: float, value_type: str) -> 
     return deduplicated
 
 
+def _collect_non_overlapping_results(
+    dataframe: pd.DataFrame,
+    request: OptimizationRequest,
+    filter_context: FilterContext,
+) -> tuple[dict[str, int], list]:
+    signals = build_signals(dataframe, filter_context)
+    counters = {"WIN_G0": 0, "WIN_G1": 0, "WIN_G2": 0, "WIN_G3": 0, "LOSS": 0}
+    martingale_results = []
+    next_available_index = 0
+
+    for signal in signals:
+        if signal.index < next_available_index:
+            continue
+
+        cycle_window = get_cycle_window(dataframe, signal.index, request.cycle)
+        if len(cycle_window.candles) < min(request.cycle, 4):
+            continue
+
+        result = evaluate_martingale(signal, cycle_window, max_gales=3)
+        counters[result.outcome] += 1
+        martingale_results.append(result)
+        next_available_index = signal.index + max(result.attempts_used, 1)
+
+    return counters, martingale_results
+
+
 class OptimizerEngine:
     def run(self, request: OptimizationRequest) -> dict[str, Any]:
         dataset_path = Path(request.dataset_path)
@@ -78,17 +104,11 @@ class OptimizerEngine:
             filter_values = dict(request.fixed_filters)
             filter_values[request.parameter.key] = parameter_value
             filter_context = FilterContext(values=filter_values)
-            signals = build_signals(dataframe, filter_context)
-
-            counters = {"WIN_G0": 0, "WIN_G1": 0, "WIN_G2": 0, "WIN_G3": 0, "LOSS": 0}
-            martingale_results = []
-            for signal in signals:
-                cycle_window = get_cycle_window(dataframe, signal.index, request.cycle)
-                if len(cycle_window.candles) < min(request.cycle, 4):
-                    continue
-                result = evaluate_martingale(signal, cycle_window, max_gales=3)
-                counters[result.outcome] += 1
-                martingale_results.append(result)
+            counters, martingale_results = _collect_non_overlapping_results(
+                dataframe,
+                request,
+                filter_context,
+            )
 
             stats = build_stats(
                 float(parameter_value),
@@ -121,6 +141,11 @@ class OptimizerEngine:
                     "final_capital": stats.final_capital,
                     "min_capital": stats.min_capital,
                     "max_drawdown_pct": stats.max_drawdown_pct,
+                    "max_loss_streak": stats.max_loss_streak,
+                    "max_loss_streak_entry_1": stats.max_loss_streak_entry_1,
+                    "max_loss_streak_entry_2": stats.max_loss_streak_entry_2,
+                    "max_loss_streak_entry_3": stats.max_loss_streak_entry_3,
+                    "break_even_hit_rate_pct": stats.break_even_hit_rate_pct,
                     "equity_curve": stats.equity_curve,
                 }
             )

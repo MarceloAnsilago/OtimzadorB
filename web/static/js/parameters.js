@@ -125,6 +125,13 @@ function buildChartLabels(length) {
     return Array.from({ length }, (_, index) => index);
 }
 
+function formatBreakEvenRate(value) {
+    if (value === null || value === undefined || Number.isNaN(Number(value))) {
+        return "inviavel";
+    }
+    return `${Number(value).toFixed(2)}%`;
+}
+
 function renderPerformance(row) {
     if (!row || !performanceChartCanvas || typeof Chart === "undefined" || !Array.isArray(row.equity_curve)) {
         clearPerformanceChart();
@@ -197,6 +204,11 @@ function renderPerformance(row) {
             `capital final ${Number(row.final_capital).toFixed(2)}`,
             `minimo ${Number(row.min_capital).toFixed(2)}`,
             `drawdown max ${Number(row.max_drawdown_pct).toFixed(2)}%`,
+            `acerto minimo p/ lucrar ${formatBreakEvenRate(row.break_even_hit_rate_pct)}`,
+            `loss seguidos no 3o mg ${Number(row.max_loss_streak || 0)}`,
+            `loss seguidos na 1a ${Number(row.max_loss_streak_entry_1 || 0)}`,
+            `loss seguidos na 2a ${Number(row.max_loss_streak_entry_2 || 0)}`,
+            `loss seguidos na 3a ${Number(row.max_loss_streak_entry_3 || 0)}`,
             `ruina ${Number(row.ruin_pct).toFixed(2)}%`,
         ].join(" | ");
     }
