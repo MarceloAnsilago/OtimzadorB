@@ -8,7 +8,7 @@ import pandas as pd
 
 from core.candle_classifier import add_candle_classification
 from core.candle_filters import FilterContext
-from core.cycle_engine import get_cycle_window
+from core.cycle_engine import get_entry_windows
 from core.martingale_evaluator import evaluate_martingale
 from core.signal_engine import build_signals
 from core.stats_engine import BankrollConfig, build_stats
@@ -67,14 +67,16 @@ def _collect_non_overlapping_results(
         if signal.index < next_available_index:
             continue
 
-        cycle_window = get_cycle_window(dataframe, signal.index, request.cycle)
-        if len(cycle_window.candles) < min(request.cycle, 4):
+        entry_windows = get_entry_windows(dataframe, signal.index, request.cycle, max_gales=3)
+        if not entry_windows:
             continue
 
-        result = evaluate_martingale(signal, cycle_window, max_gales=3)
-        counters[result.outcome] += 1
-        martingale_results.append(result)
-        next_available_index = signal.index + max(result.attempts_used, 1)
+        for entry_window in entry_windows:
+            result = evaluate_martingale(signal, entry_window, max_gales=3)
+            counters[result.outcome] += 1
+            martingale_results.append(result)
+
+        next_available_index = signal.index + request.cycle + 1
 
     return counters, martingale_results
 
