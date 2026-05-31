@@ -42,6 +42,14 @@ enum ENUM_SIM_NAO
    SIM = 1
 };
 
+enum ENUM_ENTRAR_MARTINGALE
+{
+   ENTRAR_MARTINGALE_NAO_USAR = 0,
+   ENTRAR_MARTINGALE_PRIMEIRO = 1,
+   ENTRAR_MARTINGALE_SEGUNDO = 2,
+   ENTRAR_MARTINGALE_TERCEIRO = 3
+};
+
 enum ENUM_DIRECAO
 {
    DIRECAO_ALTA = 1,
@@ -74,6 +82,7 @@ input ENUM_MODO_ENTRADA InpEntrada3       = MODO_DESATIVADO;
 input int              InpEntradaNCandles = 0;
 input bool             InpSentidoDoCandleSinal = true;
 input int              InpMaxMartingale   = 3;
+input ENUM_ENTRAR_MARTINGALE InpEntrarNoMartingale = ENTRAR_MARTINGALE_NAO_USAR;
 
 //----------------------------------------------------
 // IDENTIFICAÇÃO
@@ -136,6 +145,17 @@ input group "Otimizacao"
 
 input bool InpModoCurtoOtimizacao = true;
 input int  InpMaxBarrasOtimizacao = 5000;
+
+//----------------------------------------------------
+// BRIDGE IQ OPTION
+//----------------------------------------------------
+input group "Bridge IQ Option"
+
+input bool   InpBridgeAtivo                 = false;
+input string InpBridgeRootFolder            = "OpBinBridge";
+input string InpBridgeSignalsFolder         = "signals_in";
+input int    InpBridgeExpirationMinutes     = 1;
+input bool   InpBridgeExportarMesmoSemSinal = false;
 
 //+------------------------------------------------------------------+
 //| ESTRUTURAS                                                       |
@@ -228,6 +248,147 @@ OperationRecord g_operations[];
 OperationRecord g_best_operations[];
 const int OP_FRAME_RECORD_SIZE = 6;
 const int OP_FRAME_MAX_RECORDS = 20;
+datetime g_last_bridge_candle_time = 0;
+
+string GetBridgeInboxFolder()
+{
+   return InpBridgeRootFolder + "\\" + InpBridgeSignalsFolder;
+}
+
+bool EnsureBridgeFolders()
+{
+   if(!InpBridgeAtivo)
+      return false;
+
+   if(!FolderCreate(InpBridgeRootFolder, FILE_COMMON) && GetLastError() != 5019)
+   {
+      Print("Falha ao criar pasta da bridge. Erro: ", GetLastError());
+      return false;
+   }
+
+   ResetLastError();
+
+   string inbox_folder = GetBridgeInboxFolder();
+   if(!FolderCreate(inbox_folder, FILE_COMMON) && GetLastError() != 5019)
+   {
+      Print("Falha ao criar pasta de sinais da bridge. Erro: ", GetLastError());
+      return false;
+   }
+
+   return true;
+}
+
+double GetBridgeAmountHint()
+{
+   if(InpTipoAporte == APORTE_FIXO)
+      return InpValorAporte;
+
+   return 0.0;
+}
+
+bool ExportBridgeSignal(const int shift, const int signal_direction)
+{
+   if(!InpBridgeAtivo)
+      return false;
+
+   if(shift < 0)
+      return false;
+
+   if(ArraySize(g_rates) <= shift)
+      return false;
+
+   if(signal_direction == 0 && !InpBridgeExportarMesmoSemSinal)
+      return false;
+
+   if(!EnsureBridgeFolders())
+      return false;
+
+   datetime signal_time = g_rates[shift].time;
+   string direction_text = "NONE";
+   if(signal_direction > 0)
+      direction_text = "CALL";
+   else if(signal_direction < 0)
+      direction_text = "PUT";
+
+   string file_name = StringFormat("%s\\signal_%s_%I64d.json",
+      GetBridgeInboxFolder(),
+      SanitizeFilePart(_Symbol),
+      (long)signal_time);
+
+   int handle = FileOpen(file_name, FILE_WRITE | FILE_TXT | FILE_ANSI | FILE_COMMON);
+   if(handle == INVALID_HANDLE)
+   {
+      Print("Falha ao abrir arquivo de sinal da bridge. Erro: ", GetLastError());
+      return false;
+   }
+
+   string strategy_name = InpNomeEstrategia;
+   StringReplace(strategy_name, "\"", "'");
+
+   string json =
+      "{\r\n"
+      "  \"source\": \"mt5\",\r\n"
+      "  \"strategy\": \"" + strategy_name + "\",\r\n"
+      "  \"symbol\": \"" + _Symbol + "\",\r\n"
+      "  \"timeframe\": \"" + EnumToString(InpTimeframe) + "\",\r\n"
+      "  \"signal_time\": " + StringFormat("%I64d", (long)signal_time) + ",\r\n"
+      "  \"signal_time_text\": \"" + TimeToString(signal_time, TIME_DATE | TIME_SECONDS) + "\",\r\n"
+      "  \"direction\": \"" + direction_text + "\",\r\n"
+      "  \"direction_value\": " + IntegerToString(signal_direction) + ",\r\n"
+      "  \"expiration_minutes\": " + IntegerToString(InpBridgeExpirationMinutes) + ",\r\n"
+      "  \"amount_hint\": " + DoubleToString(GetBridgeAmountHint(), 2) + ",\r\n"
+      "  \"tipo_aporte\": \"" + EnumToString(InpTipoAporte) + "\",\r\n"
+      "  \"valor_aporte\": " + DoubleToString(InpValorAporte, 2) + ",\r\n"
+      "  \"payout_hint\": " + DoubleToString(InpPayout, 2) + ",\r\n"
+      "  \"magic_number\": " + StringFormat("%I64d", InpMagicNumber) + "\r\n"
+      "}\r\n";
+
+   FileWriteString(handle, json);
+   FileClose(handle);
+
+   Print("Bridge: sinal exportado em Common\\Files\\", file_name, " direcao=", direction_text);
+   return true;
+}
+
+void ProcessBridgeSignalOnNewBar()
+{
+   if(!InpBridgeAtivo)
+      return;
+
+   if(MQLInfoInteger(MQL_OPTIMIZATION) || MQLInfoInteger(MQL_FRAME_MODE))
+      return;
+
+   MqlRates latest_rates[];
+   ArraySetAsSeries(latest_rates, true);
+   int copied = CopyRates(_Symbol, InpTimeframe, 0, 3, latest_rates);
+   if(copied < 2)
+      return;
+
+   datetime closed_candle_time = latest_rates[1].time;
+   if(closed_candle_time <= 0 || closed_candle_time == g_last_bridge_candle_time)
+      return;
+
+   ArraySetAsSeries(g_rates, true);
+   g_rates_count = CopyRates(_Symbol, InpTimeframe, 0, 300, g_rates);
+   if(g_rates_count <= 2)
+      return;
+
+   if(UsaEstrategia1())
+   {
+      if(!LoadMovingAverageBuffer(g_rates_count))
+         return;
+   }
+
+   int signal_direction = GetStrategyDirection(1);
+   if(signal_direction == 0 && !InpBridgeExportarMesmoSemSinal)
+   {
+      g_last_bridge_candle_time = closed_candle_time;
+      return;
+   }
+
+   if(ExportBridgeSignal(1, signal_direction))
+      g_last_bridge_candle_time = closed_candle_time;
+}
 
 long GetRenderChartId()
 {
@@ -422,7 +583,7 @@ void ExportOptimizationPassFiles()
 
    FileWrite(summary_handle,
       "strategy", "symbol", "timeframe", "capital_inicial", "tipo_aporte",
-      "valor_aporte", "payout", "max_martingale", "entrada_n_candles", "entrada_1",
+      "valor_aporte", "payout", "max_martingale", "entrar_no_martingale", "entrada_n_candles", "entrada_1",
       "entrada_2", "entrada_3", "tipo_medida", "usar_pavios", "min_corpo", "max_corpo", "min_pavio_sup", "max_pavio_sup", "min_pavio_inf", "max_pavio_inf", "aceitar_doji",
       "ma_periodo", "ma_metodo", "inclinacao_minima_pontos", "ciclo_primeira_entrada", "martingale_no_proximo_ciclo", "total_operacoes", "total_entradas_executadas", "win_g0", "win_g1", "win_g2",
       "win_g3", "loss", "banca_final", "lucro_total", "maior_gale",
@@ -437,6 +598,7 @@ void ExportOptimizationPassFiles()
       DoubleToString(InpValorAporte, 2),
       DoubleToString(InpPayout, 2),
       IntegerToString(InpMaxMartingale),
+      EnumToString(InpEntrarNoMartingale),
       IntegerToString(InpEntradaNCandles),
       EnumToString(InpEntrada1),
       EnumToString(InpEntrada2),
@@ -881,7 +1043,7 @@ void DrawEntryMarkers()
       if(signal_shift < 0)
          continue;
 
-      int entry_shift = GetCandleOperacaoShift(signal_shift, g_operations[i].gale_used);
+      int entry_shift = GetCandleOperacaoShift(signal_shift, GetTentativasIgnoradasAntesDaPrimeiraEntrada() + g_operations[i].gale_used);
       if(entry_shift < 0)
          continue;
 
@@ -1437,12 +1599,29 @@ int GetEntradaOffsetCandles()
    return InpEntradaNCandles;
 }
 
+int GetTentativasIgnoradasAntesDaPrimeiraEntrada()
+{
+   switch(InpEntrarNoMartingale)
+   {
+      case ENTRAR_MARTINGALE_SEGUNDO:
+         return 1;
+
+      case ENTRAR_MARTINGALE_TERCEIRO:
+         return 2;
+
+      case ENTRAR_MARTINGALE_NAO_USAR:
+      case ENTRAR_MARTINGALE_PRIMEIRO:
+      default:
+         return 0;
+   }
+}
+
 int GetQuantidadeTentativasCiclo()
 {
    if(InpCicloPrimeiraEntrada == SO_PRIMEIRA_ENTRADA)
-      return 1;
+      return GetTentativasIgnoradasAntesDaPrimeiraEntrada() + 1;
 
-   return InpMaxMartingale + 1;
+   return GetTentativasIgnoradasAntesDaPrimeiraEntrada() + InpMaxMartingale + 1;
 }
 
 int GetCandleOperacaoShift(int candle_sinal, int tentativa_index)
@@ -1464,7 +1643,7 @@ int GetCicloRangeShiftFinal(int candle_sinal)
 
    int shift_final = candle_sinal - GetEntradaOffsetCandles();
    if(InpCicloPrimeiraEntrada == EXTENDER_CICLOS && !UsaMartingaleNoProximoCiclo())
-      shift_final = candle_sinal - (GetEntradaOffsetCandles() + InpMaxMartingale);
+      shift_final = candle_sinal - (GetEntradaOffsetCandles() + GetTentativasIgnoradasAntesDaPrimeiraEntrada() + InpMaxMartingale);
    if(shift_final < 0)
       shift_final = 0;
 
@@ -1731,10 +1910,43 @@ bool EntradaPassaValidacao(ENUM_MODO_ENTRADA modo, int shift)
    return false;
 }
 
+int GetEntradaSignal(ENUM_MODO_ENTRADA modo, int shift)
+{
+   if(modo == MODO_DESATIVADO)
+      return 0;
+
+   if(modo == MODO_FILTRO)
+   {
+      if(!CandlePassaFiltroClassico(shift))
+         return 0;
+
+      return GetDirecaoEntradaPorCandleSinal(shift);
+   }
+
+   if(modo == MODO_ESTRATEGIA_1)
+   {
+      if(!CandlePassaEstrategia1(shift))
+         return 0;
+
+      return GetDirecaoEntradaPorCandleSinal(shift);
+   }
+
+   if(modo == MODO_CICLO_PRIMEIRO_CANDLE_DIA)
+   {
+      if(!CandlePassaCicloPrimeiroCandleDia(shift))
+         return 0;
+
+      return GetDirecaoEntradaPorCandleSinal(shift);
+   }
+
+   return 0;
+}
+
 int GetStrategyDirection(int shift)
 {
    ENUM_MODO_ENTRADA entradas[3] = { InpEntrada1, InpEntrada2, InpEntrada3 };
    bool possui_entrada_ativa = false;
+   int signal_final = 0;
 
    for(int i = 0; i < 3; i++)
    {
@@ -1742,7 +1954,13 @@ int GetStrategyDirection(int shift)
       if(modo == MODO_DESATIVADO)
          continue;
 
-      if(!EntradaPassaValidacao(modo, shift))
+      int signal_atual = GetEntradaSignal(modo, shift);
+      if(signal_atual == 0)
+         return 0;
+
+      if(signal_final == 0)
+         signal_final = signal_atual;
+      else if(signal_final != signal_atual)
          return 0;
 
       possui_entrada_ativa = true;
@@ -1751,7 +1969,7 @@ int GetStrategyDirection(int shift)
    if(!possui_entrada_ativa)
       return 0;
 
-   return GetDirecaoEntradaPorCandleSinal(shift);
+   return signal_final;
 }
 
 //+------------------------------------------------------------------+
@@ -1837,9 +2055,10 @@ ENUM_RESULTADO ProcessarOperacao(
    double stake_atual = stake_base;
 
    double perda_acumulada = 0.0;
+   int tentativas_ignoradas = GetTentativasIgnoradasAntesDaPrimeiraEntrada();
    int total_tentativas = UsaCicloPrimeiroCandle()
       ? GetQuantidadeTentativasCiclo()
-      : (InpMaxMartingale + 1);
+      : (tentativas_ignoradas + InpMaxMartingale + 1);
 
    for(int mg = 0; mg < total_tentativas; mg++)
    {
@@ -1848,20 +2067,34 @@ ENUM_RESULTADO ProcessarOperacao(
       if(candle_operacao < 0)
          break;
 
-      entradas_usadas++;
-
       ENUM_DIRECAO direcao_resultado =
          GetDirecaoCandle(candle_operacao);
 
       bool win =
          ((int)direcao_resultado == direcao_entrada);
 
+      if(mg < tentativas_ignoradas)
+      {
+         if(win)
+         {
+            lucro_operacao = 0.0;
+            gale_usado = 0;
+            entradas_usadas = 0;
+            return RESULTADO_LOSS;
+         }
+
+         continue;
+      }
+
+      int gale_real = mg - tentativas_ignoradas;
+      entradas_usadas++;
+
       //------------------------------------------------
       // WIN
       //------------------------------------------------
       if(win)
       {
-         gale_usado = mg;
+         gale_usado = gale_real;
          lucro_operacao =
             (stake_atual * payout_decimal)
             - perda_acumulada;
@@ -1869,7 +2102,7 @@ ENUM_RESULTADO ProcessarOperacao(
          if(stake_atual > g_stats.maior_gale)
             g_stats.maior_gale = stake_atual;
 
-         switch(mg)
+         switch(gale_real)
          {
             case 0: return RESULTADO_WIN_G0;
             case 1: return RESULTADO_WIN_G1;
@@ -1895,9 +2128,9 @@ ENUM_RESULTADO ProcessarOperacao(
    }
 
    lucro_operacao = -perda_acumulada;
-   gale_usado = total_tentativas - 1;
+   gale_usado = InpMaxMartingale;
    if(entradas_usadas <= 0)
-      entradas_usadas = total_tentativas;
+      entradas_usadas = 0;
 
    return RESULTADO_LOSS;
 }
@@ -1926,7 +2159,7 @@ void ProcessarHistorico()
    if(start_bar < 10)
       start_bar = 10;
 
-   int rates_needed = start_bar + InpMaxMartingale + 20;
+   int rates_needed = start_bar + InpMaxMartingale + GetTentativasIgnoradasAntesDaPrimeiraEntrada() + 20;
    if(UsaEstrategia1())
       rates_needed += InpMAPeriodo;
 
@@ -1952,8 +2185,8 @@ void ProcessarHistorico()
       start_bar = g_rates_count - 1;
 
    int min_signal_shift = UsaCicloPrimeiroCandle()
-      ? (GetEntradaOffsetCandles() + (UsaMartingaleNoProximoCiclo() ? 0 : InpMaxMartingale))
-      : (GetEntradaOffsetCandles() + InpMaxMartingale);
+      ? (GetEntradaOffsetCandles() + (UsaMartingaleNoProximoCiclo() ? 0 : (GetTentativasIgnoradasAntesDaPrimeiraEntrada() + InpMaxMartingale)))
+      : (GetEntradaOffsetCandles() + GetTentativasIgnoradasAntesDaPrimeiraEntrada() + InpMaxMartingale);
    if(min_signal_shift < 1)
       min_signal_shift = 1;
 
@@ -1974,6 +2207,7 @@ void ProcessarHistorico()
       if(UsaMartingaleNoProximoCiclo())
       {
          double payout_decimal = InpPayout / 100.0;
+         int tentativas_ignoradas = GetTentativasIgnoradasAntesDaPrimeiraEntrada();
          if(payout_decimal <= 0.0)
          {
             i -= GetEntradaOffsetCandles();
@@ -1994,19 +2228,37 @@ void ProcessarHistorico()
             continue;
          }
 
+         ENUM_DIRECAO direcao_resultado = GetDirecaoCandle(candle_operacao);
+         bool win = ((int)direcao_resultado == direcao_entrada);
+         int gale_real = gale_proximo_ciclo - tentativas_ignoradas;
+
+         if(gale_real < 0)
+         {
+            if(win)
+            {
+               gale_proximo_ciclo = 0;
+               cadeia_martingale_ativa = false;
+            }
+            else
+            {
+               gale_proximo_ciclo++;
+            }
+
+            i -= GetEntradaOffsetCandles();
+            continue;
+         }
+
          double stake_atual = CalcularStakeParaNivel(
             stake_base_proximo_ciclo,
             payout_decimal,
-            gale_proximo_ciclo
+            gale_real
          );
 
-         ENUM_DIRECAO direcao_resultado = GetDirecaoCandle(candle_operacao);
-         bool win = ((int)direcao_resultado == direcao_entrada);
          double lucro = win ? (stake_atual * payout_decimal) : -stake_atual;
-         int gale_usado = gale_proximo_ciclo;
+         int gale_usado = gale_real;
          int entradas_usadas = 1;
          ENUM_RESULTADO resultado = win
-            ? ResultadoWinPorNivel(gale_proximo_ciclo)
+            ? ResultadoWinPorNivel(gale_real)
             : RESULTADO_LOSS;
 
          g_stats.total_operacoes++;
@@ -2051,7 +2303,7 @@ void ProcessarHistorico()
          );
          AddCurvePoint(g_stats.banca_final);
 
-         if(win || gale_proximo_ciclo >= InpMaxMartingale)
+         if(win || gale_real >= InpMaxMartingale)
          {
             gale_proximo_ciclo = 0;
             cadeia_martingale_ativa = false;
@@ -2071,6 +2323,15 @@ void ProcessarHistorico()
 
       ENUM_RESULTADO resultado =
          ProcessarOperacao(i, direcao_entrada, lucro, gale_usado, entradas_usadas);
+
+      if(entradas_usadas <= 0)
+      {
+         if(UsaCicloPrimeiroCandle())
+            i -= GetEntradaOffsetCandles();
+         else
+            i--;
+         continue;
+      }
 
       g_stats.total_operacoes++;
       g_stats.total_entradas_executadas += entradas_usadas;
@@ -2149,12 +2410,16 @@ int OnInit()
 
    Print("Entrada N candles: ", InpEntradaNCandles);
    Print("Sentido do candle sinal: ", (InpSentidoDoCandleSinal ? "igual" : "contrario"));
+   Print("Entrar no martingale: ", EnumToString(InpEntrarNoMartingale));
    Print("Ciclo primeiro candle do dia: ", EnumToString(InpCicloPrimeiraEntrada));
    Print("Martingale no proximo ciclo: ", EnumToString(InpMartingaleNoProximoCiclo));
    Print("Entradas configuradas: ",
       EnumToString(InpEntrada1), " | ",
       EnumToString(InpEntrada2), " | ",
       EnumToString(InpEntrada3));
+
+   if(InpBridgeAtivo)
+      EnsureBridgeFolders();
 
    ProcessarHistorico();
 
@@ -2328,6 +2593,7 @@ void OnTesterDeinit()
 
 void OnTick()
 {
+   ProcessBridgeSignalOnNewBar();
 }
 
 //+------------------------------------------------------------------+
