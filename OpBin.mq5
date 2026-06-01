@@ -971,9 +971,9 @@ void DrawCycleBox(
       return;
    }
 
-   ObjectSetInteger(chart_id, object_name, OBJPROP_COLOR, C'255,196,64');
-   ObjectSetInteger(chart_id, object_name, OBJPROP_STYLE, STYLE_SOLID);
-   ObjectSetInteger(chart_id, object_name, OBJPROP_WIDTH, 2);
+   ObjectSetInteger(chart_id, object_name, OBJPROP_COLOR, C'24,102,110');
+   ObjectSetInteger(chart_id, object_name, OBJPROP_STYLE, STYLE_DOT);
+   ObjectSetInteger(chart_id, object_name, OBJPROP_WIDTH, 1);
    ObjectSetInteger(chart_id, object_name, OBJPROP_FILL, false);
    ObjectSetInteger(chart_id, object_name, OBJPROP_BACK, false);
    ObjectSetInteger(chart_id, object_name, OBJPROP_SELECTABLE, false);
