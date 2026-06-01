@@ -5,6 +5,8 @@ __pycache__/
 *.log
 OpBin.compile*.log
 
+OpBinBridge/.venv/
 OpBinBridge/config.json
 OpBinBridge/logs/
+OpBinBridge/metaeditor.compile.log
 
