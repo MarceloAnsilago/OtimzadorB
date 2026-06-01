@@ -874,58 +874,44 @@ void DestroyCurveCanvas()
    ObjectDelete(chart_id, g_frame_banner_object_name);
 }
 
+void DeleteObjectsByPrefix(const long chart_id, const string prefix)
+{
+   if(chart_id <= 0 || StringLen(prefix) == 0)
+      return;
+
+   ObjectsDeleteAll(chart_id, prefix, 0, -1);
+   ChartRedraw(chart_id);
+}
+
 void DeleteEntryMarkers()
 {
-   long chart_id = ChartID();
-   int total = ObjectsTotal(chart_id, 0, -1);
+   long chart_id = GetRenderChartId();
+   DeleteObjectsByPrefix(chart_id, g_entry_marker_prefix);
+   DeleteObjectsByPrefix(chart_id, g_cycle_box_prefix);
 
-   for(int i = total - 1; i >= 0; i--)
+   if(chart_id != ChartID())
    {
-      string object_name = ObjectName(chart_id, i, 0, -1);
-
-      if(StringFind(object_name, g_entry_marker_prefix) == 0 ||
-         StringFind(object_name, g_cycle_box_prefix) == 0)
-         ObjectDelete(chart_id, object_name);
+      DeleteObjectsByPrefix(ChartID(), g_entry_marker_prefix);
+      DeleteObjectsByPrefix(ChartID(), g_cycle_box_prefix);
    }
-
-   ChartRedraw(chart_id);
 }
 
 void DeleteStatsPanel()
 {
-   long chart_id = ChartID();
-   ObjectDelete(chart_id, g_panel_background_name);
-   ObjectDelete(chart_id, g_panel_header_name);
-   ObjectDelete(chart_id, g_panel_line1_name);
-   ObjectDelete(chart_id, g_panel_line2_name);
-   ObjectDelete(chart_id, g_panel_line3_name);
-   ObjectDelete(chart_id, g_panel_line4_name);
-   ObjectDelete(chart_id, g_panel_line5_name);
-   ObjectDelete(chart_id, g_panel_line6_name);
-   ObjectDelete(chart_id, g_panel_line7_name);
-   ObjectDelete(chart_id, g_panel_line8_name);
-   ObjectDelete(chart_id, g_panel_line9_name);
-   ObjectDelete(chart_id, g_panel_line10_name);
-   ObjectDelete(chart_id, g_panel_line11_name);
-   ObjectDelete(chart_id, g_panel_line12_name);
-   ObjectDelete(chart_id, g_panel_line13_name);
-   ObjectDelete(chart_id, g_panel_line14_name);
-   ChartRedraw(chart_id);
+   long chart_id = GetRenderChartId();
+   DeleteObjectsByPrefix(chart_id, "OpBinStatsPanel");
+
+   if(chart_id != ChartID())
+      DeleteObjectsByPrefix(ChartID(), "OpBinStatsPanel");
 }
 
 void DeleteAllOpBinObjects()
 {
-   long chart_id = ChartID();
-   int total = ObjectsTotal(chart_id, 0, -1);
+   long chart_id = GetRenderChartId();
+   DeleteObjectsByPrefix(chart_id, "OpBin");
 
-   for(int i = total - 1; i >= 0; i--)
-   {
-      string object_name = ObjectName(chart_id, i, 0, -1);
-      if(StringFind(object_name, "OpBin") == 0)
-         ObjectDelete(chart_id, object_name);
-   }
-
-   ChartRedraw(chart_id);
+   if(chart_id != ChartID())
+      DeleteObjectsByPrefix(ChartID(), "OpBin");
 }
 
 bool EnsurePanelLabel(const string object_name, const ENUM_OBJECT object_type)
@@ -2574,6 +2560,11 @@ void ProcessarHistorico()
 
 int OnInit()
 {
+   DestroyCurveCanvas();
+   DeleteEntryMarkers();
+   DeleteStatsPanel();
+   DeleteAllOpBinObjects();
+
    Print("OnInit: frame_mode=", (int)MQLInfoInteger(MQL_FRAME_MODE),
       ", optimization=", (int)MQLInfoInteger(MQL_OPTIMIZATION),
       ", visual_mode=", (int)MQLInfoInteger(MQL_VISUAL_MODE));
