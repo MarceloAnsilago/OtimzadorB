@@ -231,6 +231,7 @@ int g_best_pass_losses = 0;
 string g_frame_name = "OpBinCurveFrame";
 string g_entry_marker_prefix = "OpBinEntry_";
 string g_cycle_box_prefix = "OpBinCycle_";
+string g_ma_line_prefix = "OpBinMA_";
 string g_panel_background_name = "OpBinStatsPanelBg";
 string g_panel_header_name = "OpBinStatsPanelHeader";
 string g_panel_line1_name = "OpBinStatsPanelLine1";
@@ -253,6 +254,7 @@ long g_result_chart_id = 0;
 string g_diag_file_name = "OpBinOptimization\\opbin_diag.log";
 MqlRates g_rates[];
 double g_ma_buffer[];
+int g_ma_handle = INVALID_HANDLE;
 int g_rates_count = 0;
 bool g_has_processed_frames = false;
 OperationRecord g_operations[];
@@ -529,6 +531,78 @@ long GetRenderChartId()
       return g_result_chart_id;
 
    return ChartID();
+}
+
+bool EnsureMovingAverageHandle()
+{
+   if(g_ma_handle != INVALID_HANDLE)
+      return true;
+
+   g_ma_handle = iMA(_Symbol, InpTimeframe, InpMAPeriodo, 0, InpMAMetodo, PRICE_CLOSE);
+   if(g_ma_handle == INVALID_HANDLE)
+   {
+      Print("Falha ao criar handle da media movel. Erro: ", GetLastError());
+      return false;
+   }
+
+   return true;
+}
+
+void DeleteMovingAverageOverlay()
+{
+   long chart_id = GetRenderChartId();
+   DeleteObjectsByPrefix(chart_id, g_ma_line_prefix);
+
+   if(chart_id != ChartID())
+      DeleteObjectsByPrefix(ChartID(), g_ma_line_prefix);
+}
+
+void ReleaseMovingAverageHandle()
+{
+   if(g_ma_handle == INVALID_HANDLE)
+      return;
+
+   IndicatorRelease(g_ma_handle);
+   g_ma_handle = INVALID_HANDLE;
+}
+
+void DrawMovingAverageOverlay()
+{
+   if(!UsaEstrategia1())
+      return;
+
+   if(ArraySize(g_ma_buffer) < 2 || g_rates_count < 2)
+      return;
+
+   long chart_id = GetRenderChartId();
+   DeleteMovingAverageOverlay();
+
+   int max_segments = MathMin(g_rates_count - 1, ArraySize(g_ma_buffer) - 1);
+   for(int shift = max_segments; shift >= 1; shift--)
+   {
+      datetime time_a = g_rates[shift].time;
+      datetime time_b = g_rates[shift - 1].time;
+      double price_a = g_ma_buffer[shift];
+      double price_b = g_ma_buffer[shift - 1];
+
+      if(price_a <= 0.0 || price_b <= 0.0)
+         continue;
+
+      string object_name = g_ma_line_prefix + IntegerToString(shift);
+      ObjectDelete(chart_id, object_name);
+
+      if(!ObjectCreate(chart_id, object_name, OBJ_TREND, 0, time_a, price_a, time_b, price_b))
+         continue;
+
+      ObjectSetInteger(chart_id, object_name, OBJPROP_COLOR, C'24,102,110');
+      ObjectSetInteger(chart_id, object_name, OBJPROP_STYLE, STYLE_DASHDOTDOT);
+      ObjectSetInteger(chart_id, object_name, OBJPROP_WIDTH, 2);
+      ObjectSetInteger(chart_id, object_name, OBJPROP_RAY_RIGHT, false);
+      ObjectSetInteger(chart_id, object_name, OBJPROP_BACK, false);
+      ObjectSetInteger(chart_id, object_name, OBJPROP_SELECTABLE, false);
+      ObjectSetInteger(chart_id, object_name, OBJPROP_HIDDEN, false);
+      ObjectSetInteger(chart_id, object_name, OBJPROP_ZORDER, 4);
+   }
 }
 
 bool EnsureResultChart()
@@ -1675,17 +1749,11 @@ double GetMovingAverageSlopePoints(int shift)
 
 bool LoadMovingAverageBuffer(const int bars_to_copy)
 {
-   int ma_handle = iMA(_Symbol, InpTimeframe, InpMAPeriodo, 0, InpMAMetodo, PRICE_CLOSE);
-
-   if(ma_handle == INVALID_HANDLE)
-   {
-      Print("Falha ao criar handle da media movel. Erro: ", GetLastError());
+   if(!EnsureMovingAverageHandle())
       return false;
-   }
 
    ArraySetAsSeries(g_ma_buffer, true);
-   int copied = CopyBuffer(ma_handle, 0, 0, bars_to_copy, g_ma_buffer);
-   IndicatorRelease(ma_handle);
+   int copied = CopyBuffer(g_ma_handle, 0, 0, bars_to_copy, g_ma_buffer);
 
    if(copied <= 0)
    {
@@ -2560,6 +2628,8 @@ void ProcessarHistorico()
 
 int OnInit()
 {
+   ReleaseMovingAverageHandle();
+   DeleteMovingAverageOverlay();
    DestroyCurveCanvas();
    DeleteEntryMarkers();
    DeleteStatsPanel();
@@ -2627,6 +2697,7 @@ int OnInit()
 
    if(!MQLInfoInteger(MQL_OPTIMIZATION))
    {
+      DrawMovingAverageOverlay();
       DestroyCurveCanvas();
       DrawEntryMarkers();
       DrawStatsPanel();
@@ -2645,6 +2716,8 @@ int OnInit()
 
 void OnDeinit(const int reason)
 {
+   DeleteMovingAverageOverlay();
+   ReleaseMovingAverageHandle();
    DestroyCurveCanvas();
    DeleteEntryMarkers();
    DeleteStatsPanel();
@@ -2779,5 +2852,8 @@ void OnTick()
 void OnChartEvent(const int id, const long &lparam, const double &dparam, const string &sparam)
 {
    if(id == CHARTEVENT_CHART_CHANGE && !MQLInfoInteger(MQL_OPTIMIZATION) && !MQLInfoInteger(MQL_FRAME_MODE))
+   {
+      DrawMovingAverageOverlay();
       DrawStatsPanel();
+   }
 }
