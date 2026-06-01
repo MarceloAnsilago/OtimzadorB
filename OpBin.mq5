@@ -533,6 +533,37 @@ long GetRenderChartId()
    return ChartID();
 }
 
+void ApplyDefaultChartStyle()
+{
+   if(MQLInfoInteger(MQL_OPTIMIZATION) || MQLInfoInteger(MQL_FRAME_MODE))
+      return;
+
+   long chart_id = ChartID();
+   color light_slate_gray = C'119,136,153';
+   color steel_blue = C'70,130,180';
+   color olive = C'128,128,0';
+   color live_blue = C'0,168,232';
+
+   ChartSetInteger(chart_id, CHART_MODE, CHART_CANDLES);
+   ChartSetInteger(chart_id, CHART_SHOW_GRID, false);
+   ChartSetInteger(chart_id, CHART_SHOW_OHLC, false);
+   ChartSetInteger(chart_id, CHART_SHOW_PERIOD_SEP, false);
+   ChartSetInteger(chart_id, CHART_COLOR_BACKGROUND, clrBlack);
+   ChartSetInteger(chart_id, CHART_COLOR_FOREGROUND, clrWhite);
+   ChartSetInteger(chart_id, CHART_COLOR_GRID, light_slate_gray);
+   ChartSetInteger(chart_id, CHART_COLOR_CHART_UP, clrLime);
+   ChartSetInteger(chart_id, CHART_COLOR_CHART_DOWN, clrLime);
+   ChartSetInteger(chart_id, CHART_COLOR_CANDLE_BULL, steel_blue);
+   ChartSetInteger(chart_id, CHART_COLOR_CANDLE_BEAR, olive);
+   ChartSetInteger(chart_id, CHART_COLOR_CHART_LINE, clrLime);
+   ChartSetInteger(chart_id, CHART_COLOR_VOLUME, clrLimeGreen);
+   ChartSetInteger(chart_id, CHART_COLOR_BID, light_slate_gray);
+   ChartSetInteger(chart_id, CHART_COLOR_ASK, clrRed);
+   ChartSetInteger(chart_id, CHART_COLOR_LAST, live_blue);
+   ChartSetInteger(chart_id, CHART_COLOR_STOP_LEVEL, clrRed);
+   ChartRedraw(chart_id);
+}
+
 bool EnsureMovingAverageHandle()
 {
    if(g_ma_handle != INVALID_HANDLE)
@@ -2634,6 +2665,7 @@ int OnInit()
    DeleteEntryMarkers();
    DeleteStatsPanel();
    DeleteAllOpBinObjects();
+   ApplyDefaultChartStyle();
 
    Print("OnInit: frame_mode=", (int)MQLInfoInteger(MQL_FRAME_MODE),
       ", optimization=", (int)MQLInfoInteger(MQL_OPTIMIZATION),
