@@ -53,30 +53,33 @@ class AssetCard(ctk.CTkFrame):
         self.setup_label = ctk.CTkLabel(self, text="", text_color="#9bb0cf")
         self.setup_label.grid(row=1, column=0, columnspan=4, sticky="w", padx=16, pady=(0, 6))
 
+        self.strategy_label = ctk.CTkLabel(self, text="", text_color="#f0c66e", justify="left")
+        self.strategy_label.grid(row=2, column=0, columnspan=4, sticky="w", padx=16, pady=(0, 6))
+
         self.signal_label = ctk.CTkLabel(self, text="", text_color="#8fa3bf")
-        self.signal_label.grid(row=2, column=0, columnspan=4, sticky="w", padx=16, pady=(0, 8))
+        self.signal_label.grid(row=3, column=0, columnspan=4, sticky="w", padx=16, pady=(0, 8))
 
         self.mt5_label = ctk.CTkLabel(self, text="MT5: -", font=ctk.CTkFont(size=15, weight="bold"))
-        self.mt5_label.grid(row=3, column=0, sticky="w", padx=16)
+        self.mt5_label.grid(row=4, column=0, sticky="w", padx=16)
 
         self.iq_label = ctk.CTkLabel(self, text="IQ: -", font=ctk.CTkFont(size=15, weight="bold"))
-        self.iq_label.grid(row=3, column=1, sticky="w", padx=16)
+        self.iq_label.grid(row=4, column=1, sticky="w", padx=16)
 
         self.diff_label = ctk.CTkLabel(self, text="Dif.: -", text_color="#c9d5e6")
-        self.diff_label.grid(row=3, column=2, sticky="w", padx=16)
+        self.diff_label.grid(row=4, column=2, sticky="w", padx=16)
 
         self.score_label = ctk.CTkLabel(self, text="Semelhanca: -", text_color="#c9d5e6")
-        self.score_label.grid(row=3, column=3, sticky="w", padx=16)
+        self.score_label.grid(row=4, column=3, sticky="w", padx=16)
 
         self.progress = ctk.CTkProgressBar(self, height=14, corner_radius=8, progress_color="#2fbf71")
-        self.progress.grid(row=4, column=0, columnspan=4, sticky="ew", padx=16, pady=(10, 6))
+        self.progress.grid(row=5, column=0, columnspan=4, sticky="ew", padx=16, pady=(10, 6))
         self.progress.set(0.0)
 
         self.progress_text = ctk.CTkLabel(self, text="Sem leitura", text_color="#8fa3bf")
-        self.progress_text.grid(row=5, column=0, columnspan=2, sticky="w", padx=16)
+        self.progress_text.grid(row=6, column=0, columnspan=2, sticky="w", padx=16)
 
         self.error_label = ctk.CTkLabel(self, text="", text_color="#ff7a7a")
-        self.error_label.grid(row=5, column=2, columnspan=2, sticky="e", padx=16)
+        self.error_label.grid(row=6, column=2, columnspan=2, sticky="e", padx=16)
 
         self.figure = Figure(figsize=(7.2, 2.3), dpi=100, facecolor="#121826")
         self.ax_price = self.figure.add_subplot(111)
@@ -84,7 +87,7 @@ class AssetCard(ctk.CTkFrame):
         self.figure.subplots_adjust(left=0.06, right=0.99, top=0.92, bottom=0.22)
         self._style_axes()
         self.canvas = FigureCanvasTkAgg(self.figure, master=self)
-        self.canvas.get_tk_widget().grid(row=6, column=0, columnspan=4, sticky="nsew", padx=10, pady=(10, 14))
+        self.canvas.get_tk_widget().grid(row=7, column=0, columnspan=4, sticky="nsew", padx=10, pady=(10, 14))
 
     def _style_axes(self) -> None:
         self.ax_price.clear()
@@ -113,6 +116,21 @@ class AssetCard(ctk.CTkFrame):
                 f"Hint {float(row.get('ea_amount_hint') or 0.0):.2f} | MG {int(row.get('ea_max_martingale') or 0)} | "
                 f"Modo MG {row.get('ea_entrar_martingale', '')} | Exp {int(row.get('ea_bridge_expiration_minutes') or 0)}m | "
                 f"Payout {float(row.get('ea_payout_hint') or 0.0):.2f}%"
+            )
+        )
+        self.strategy_label.configure(
+            text=(
+                f"Ops {int(row.get('ea_total_operacoes') or 0)} | Entradas {int(row.get('ea_total_entradas_executadas') or 0)} | "
+                f"Wins {int(row.get('ea_total_wins') or 0)} | Losses {int(row.get('ea_total_losses') or 0)} | "
+                f"Winrate {float(row.get('ea_winrate_pct') or 0.0):.2f}% | "
+                f"G0 {int(row.get('ea_win_g0') or 0)} G1 {int(row.get('ea_win_g1') or 0)} "
+                f"G2 {int(row.get('ea_win_g2') or 0)} G3 {int(row.get('ea_win_g3') or 0)}\n"
+                f"Banca {float(row.get('ea_banca_inicial') or 0.0):.2f} -> {float(row.get('ea_banca_final') or 0.0):.2f} | "
+                f"Lucro {float(row.get('ea_lucro_total') or 0.0):.2f} | Maior gale {float(row.get('ea_maior_gale') or 0.0):.2f} | "
+                f"DD {float(row.get('ea_max_drawdown') or 0.0):.2f} ({float(row.get('ea_max_drawdown_pct') or 0.0):.2f}%) | "
+                f"1a quebra {int(row.get('ea_primeira_quebra_apos_entradas') or 0)} | "
+                f"Media/sem {float(row.get('ea_media_entradas_semana') or 0.0):.2f} | "
+                f"Score {float(row.get('ea_score_otimizacao') or 0.0):.4f}"
             )
         )
         self.signal_label.configure(
