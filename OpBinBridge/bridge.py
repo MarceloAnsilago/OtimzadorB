@@ -79,12 +79,23 @@ class BridgeConfig:
         return self.bridge_root_path / self.receipts_folder
 
 
+@dataclass
+class MartingaleState:
+    symbol: str
+    enabled: bool
+    max_level: int
+    current_level: int = 0
+    last_result: str = ""
+
+
 class IQOptionBridge:
     def __init__(self, config: BridgeConfig) -> None:
         self.config = config
         self.client: Any = None
         self.browser_opened = False
         self.session_started_at = int(time.time())
+        self.martingale_states: dict[str, MartingaleState] = {}
+        self.pending_orders: dict[str, dict[str, Any]] = {}
 
     def ensure_connection(self, force: bool = False) -> None:
         if self.config.dry_run and not force:
@@ -154,6 +165,7 @@ class IQOptionBridge:
 
     def process_pending_signals(self) -> None:
         ensure_runtime_dirs(self.config)
+        self.reconcile_pending_orders()
         for signal_file in sorted(self.config.inbox_path.glob("*.json")):
             try:
                 payload = json.loads(signal_file.read_text(encoding="utf-8"))
@@ -171,6 +183,49 @@ class IQOptionBridge:
         if self.config.use_otc_symbols and not iq_symbol.endswith("-OTC"):
             return f"{iq_symbol}-OTC"
         return iq_symbol
+
+    def get_latest_status_for_symbol(self, symbol: str) -> dict[str, Any] | None:
+        normalized = symbol.upper().strip()
+        for status in self.read_mt5_statuses():
+            if str(status.get("symbol", "")).upper() != normalized:
+                continue
+            if not status.get("is_fresh"):
+                continue
+            return status
+        return None
+
+    def get_martingale_state(self, symbol: str) -> MartingaleState:
+        normalized = symbol.upper().strip()
+        state = self.martingale_states.get(normalized)
+        status = self.get_latest_status_for_symbol(normalized)
+        max_level = int(status.get("ea_max_martingale") or 0) if status else 0
+        mg_mode = str(status.get("ea_entrar_martingale", "") or "")
+        enabled = max_level > 0 and mg_mode != "ENTRAR_MARTINGALE_NAO_USAR"
+
+        if state is None:
+            state = MartingaleState(symbol=normalized, enabled=enabled, max_level=max_level)
+            self.martingale_states[normalized] = state
+        else:
+            state.enabled = enabled
+            state.max_level = max_level
+            if state.current_level > state.max_level:
+                state.current_level = state.max_level
+
+        return state
+
+    def calculate_martingale_amount(self, base_amount: float, payout_percent: float, level: int) -> float:
+        if level <= 0 or payout_percent <= 0:
+            return base_amount
+
+        payout_decimal = payout_percent / 100.0
+        stake = base_amount
+        accumulated_loss = 0.0
+        for _ in range(level):
+            accumulated_loss += stake
+            desired_profit = base_amount * payout_decimal
+            target = accumulated_loss + desired_profit
+            stake = target / payout_decimal
+        return stake
 
     def get_current_payout_percent(self, iq_symbol: str) -> float:
         self.ensure_connection(force=True)
@@ -197,6 +252,48 @@ class IQOptionBridge:
             logging.warning("Falha ao consultar payout digital para %s: %s", iq_symbol, exc)
 
         return 0.0
+
+    def reconcile_pending_orders(self) -> None:
+        if not self.pending_orders or self.config.dry_run:
+            return
+
+        now = time.time()
+        for symbol, order in list(self.pending_orders.items()):
+            expiration_minutes = int(order.get("expiration_minutes") or 0)
+            placed_at = float(order.get("placed_at") or 0.0)
+            ready_after = placed_at + (expiration_minutes * 60.0) + 5.0
+            if expiration_minutes <= 0 or now < ready_after:
+                continue
+
+            order_id = order.get("order_id")
+            try:
+                self.ensure_connection()
+                _result, profit_value = self.client.check_win_v4(order_id)
+                profit_value = float(profit_value or 0.0)
+                state = self.get_martingale_state(symbol)
+                if profit_value > 0:
+                    state.current_level = 0
+                    state.last_result = "win"
+                elif profit_value < 0:
+                    state.last_result = "loss"
+                    if state.enabled and state.current_level < state.max_level:
+                        state.current_level += 1
+                    else:
+                        state.current_level = 0
+                else:
+                    state.current_level = 0
+                    state.last_result = "equal"
+
+                logging.info(
+                    "Resultado IQ resolvido: %s order_id=%s lucro=%.2f proximo_mg=%d",
+                    symbol,
+                    order_id,
+                    profit_value,
+                    state.current_level,
+                )
+                del self.pending_orders[symbol]
+            except Exception as exc:
+                logging.warning("Falha ao reconciliar ordem pendente %s/%s: %s", symbol, order_id, exc)
 
     def set_balance_mode(self, balance_mode: str, persist: bool = True) -> None:
         normalized = balance_mode.upper().strip()
@@ -497,11 +594,14 @@ class IQOptionBridge:
             raise ValueError(f"Sinal invalido ou sem direcao executavel: {direction!r}")
         if self.config.allowed_symbols and symbol not in self.config.allowed_symbols:
             raise ValueError(f"Ativo nao permitido na bridge: {symbol}")
+        if symbol in self.pending_orders:
+            logging.info("Sinal %s aguardando resolucao da ordem pendente de %s.", signal_file.name, symbol)
+            return
 
-        amount = float(payload.get("amount_hint") or 0.0)
-        if amount <= 0:
-            amount = self.config.default_amount
-        if amount <= 0:
+        base_amount = float(payload.get("amount_hint") or 0.0)
+        if base_amount <= 0:
+            base_amount = self.config.default_amount
+        if base_amount <= 0:
             raise ValueError("Nenhum valor de entrada definido no sinal ou no config.")
 
         expiration = int(payload.get("expiration_minutes") or self.config.expiration_minutes_default)
@@ -538,12 +638,20 @@ class IQOptionBridge:
             )
             return
 
+        state = self.get_martingale_state(symbol)
+        payout_for_amount = current_payout_percent if current_payout_percent > 0 else payout_hint_percent
+        amount = round(self.calculate_martingale_amount(base_amount, payout_for_amount, state.current_level), 2)
+
         receipt: dict[str, Any] = {
             "status": "dry_run" if self.config.dry_run else "sent",
             "symbol": symbol,
             "iq_symbol": iq_symbol,
             "direction": direction,
+            "base_amount": round(base_amount, 2),
             "amount": amount,
+            "martingale_enabled": state.enabled,
+            "martingale_level": state.current_level,
+            "martingale_max_level": state.max_level,
             "expiration_minutes": expiration,
             "payout_hint_percent": payout_hint_percent,
             "payout_current_percent": round(current_payout_percent, 2),
@@ -558,14 +666,25 @@ class IQOptionBridge:
             if not ok:
                 raise RuntimeError(f"IQ Option recusou a ordem para {iq_symbol}.")
             receipt["order_id"] = order_id
+            receipt["placed_at"] = int(time.time())
+            self.pending_orders[symbol] = {
+                "order_id": order_id,
+                "placed_at": time.time(),
+                "expiration_minutes": expiration,
+                "amount": amount,
+                "base_amount": base_amount,
+                "martingale_level": state.current_level,
+            }
 
         logging.info(
-            "Sinal %s processado: mt5=%s iq=%s %s amount=%s exp=%s",
+            "Sinal %s processado: mt5=%s iq=%s %s amount=%s base=%s mg=%s exp=%s",
             signal_file.name,
             symbol,
             iq_symbol,
             direction,
             amount,
+            base_amount,
+            state.current_level,
             expiration,
         )
         self.move_with_receipt(signal_file, self.config.processed_path, receipt)
