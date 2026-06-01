@@ -445,3 +445,12 @@ ConnectionResetError: [WinError 10054] Foi for√ßado o cancelamento de uma conex√
 2026-06-01 20:03:55,043 INFO Sinal signal_GBPUSD_1780365780.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
 2026-06-01 20:04:55,425 INFO Sinal signal_GBPUSD_1780365840.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
 2026-06-01 20:05:59,664 INFO Sinal signal_EURJPY_1780365900.json processado: mt5=EURJPY iq=EURJPY-OTC CALL amount=2.0 exp=1
+2026-06-01 20:06:41,884 INFO Sinal signal_GBPUSD_1780365900.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
+2026-06-01 20:06:54,641 INFO Sinal signal_GBPUSD_1780365960.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
+2026-06-01 20:07:53,915 INFO Sinal signal_GBPUSD_1780366020.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
+2026-06-01 20:08:52,591 INFO Sinal signal_GBPUSD_1780366080.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
+2026-06-01 20:09:54,386 INFO Sinal signal_GBPUSD_1780366140.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
+2026-06-01 20:10:55,400 INFO Sinal signal_GBPUSD_1780366200.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
+2026-06-01 20:10:59,050 INFO Sinal signal_EURJPY_1780366200.json processado: mt5=EURJPY iq=EURJPY-OTC PUT amount=2.0 exp=1
+2026-06-01 20:11:53,401 INFO Sinal signal_GBPUSD_1780366260.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
+2026-06-01 20:13:01,718 INFO Sinal signal_GBPUSD_1780366320.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1

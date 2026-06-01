@@ -3,6 +3,7 @@
   "password": "sua-senha-iqoption",
   "balance_mode": "PRACTICE",
   "default_amount": 2.0,
+  "min_payout_percent": 80.0,
   "poll_interval_seconds": 1.0,
   "expiration_minutes_default": 1,
   "mt5_common_files_dir": "C:\\Users\\User\\AppData\\Roaming\\MetaQuotes\\Terminal\\Common\\Files",

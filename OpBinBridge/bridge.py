@@ -42,6 +42,7 @@ class BridgeConfig:
     receipts_folder: str
     allowed_symbols: list[str]
     dry_run: bool
+    min_payout_percent: float
     open_browser_on_start: bool
     browser_url: str
     status_freshness_seconds: int
@@ -170,6 +171,32 @@ class IQOptionBridge:
         if self.config.use_otc_symbols and not iq_symbol.endswith("-OTC"):
             return f"{iq_symbol}-OTC"
         return iq_symbol
+
+    def get_current_payout_percent(self, iq_symbol: str) -> float:
+        self.ensure_connection(force=True)
+
+        try:
+            all_profit = self.client.get_all_profit() or {}
+            normalized_profit = {str(key).upper(): value for key, value in dict(all_profit).items()}
+            symbol_profit = normalized_profit.get(iq_symbol.upper())
+            if isinstance(symbol_profit, dict):
+                turbo_profit = symbol_profit.get("turbo")
+                if turbo_profit is not None:
+                    return float(turbo_profit) * 100.0
+                binary_profit = symbol_profit.get("binary")
+                if binary_profit is not None:
+                    return float(binary_profit) * 100.0
+        except Exception as exc:
+            logging.warning("Falha ao consultar payout turbo/binary para %s: %s", iq_symbol, exc)
+
+        try:
+            digital_payout = self.client.get_digital_payout(iq_symbol)
+            if digital_payout:
+                return float(digital_payout)
+        except Exception as exc:
+            logging.warning("Falha ao consultar payout digital para %s: %s", iq_symbol, exc)
+
+        return 0.0
 
     def set_balance_mode(self, balance_mode: str, persist: bool = True) -> None:
         normalized = balance_mode.upper().strip()
@@ -481,6 +508,36 @@ class IQOptionBridge:
         if expiration <= 0:
             raise ValueError("expiration_minutes precisa ser maior que zero.")
 
+        payout_hint_percent = float(payload.get("payout_hint") or 0.0)
+        current_payout_percent = self.get_current_payout_percent(iq_symbol)
+        if self.config.min_payout_percent > 0 and current_payout_percent < self.config.min_payout_percent:
+            logging.info(
+                "Sinal %s ignorado por payout insuficiente: %s payout_atual=%.2f minimo=%.2f",
+                signal_file.name,
+                iq_symbol,
+                current_payout_percent,
+                self.config.min_payout_percent,
+            )
+            self.move_with_receipt(
+                signal_file,
+                self.config.ignored_path,
+                {
+                    "status": "ignored",
+                    "reason": "payout_below_minimum",
+                    "symbol": symbol,
+                    "iq_symbol": iq_symbol,
+                    "direction": direction,
+                    "amount": amount,
+                    "expiration_minutes": expiration,
+                    "payout_hint_percent": payout_hint_percent,
+                    "payout_current_percent": round(current_payout_percent, 2),
+                    "min_payout_percent": self.config.min_payout_percent,
+                    "signal_file": signal_file.name,
+                    "processed_at": int(time.time()),
+                },
+            )
+            return
+
         receipt: dict[str, Any] = {
             "status": "dry_run" if self.config.dry_run else "sent",
             "symbol": symbol,
@@ -488,6 +545,9 @@ class IQOptionBridge:
             "direction": direction,
             "amount": amount,
             "expiration_minutes": expiration,
+            "payout_hint_percent": payout_hint_percent,
+            "payout_current_percent": round(current_payout_percent, 2),
+            "min_payout_percent": self.config.min_payout_percent,
             "signal_file": signal_file.name,
             "processed_at": int(time.time()),
         }
@@ -625,6 +685,7 @@ def load_config(config_path: Path) -> BridgeConfig:
         receipts_folder=str(raw.get("receipts_folder", "receipts")),
         allowed_symbols=[str(item).upper() for item in raw.get("allowed_symbols", [])],
         dry_run=bool(raw.get("dry_run", True)),
+        min_payout_percent=float(raw.get("min_payout_percent", 0.0)),
         open_browser_on_start=bool(raw.get("open_browser_on_start", False)),
         browser_url=str(raw.get("browser_url", "https://iqoption.com/")),
         status_freshness_seconds=int(raw.get("status_freshness_seconds", 10)),
@@ -653,6 +714,9 @@ def validate_config(config: BridgeConfig) -> None:
 
     if config.expiration_minutes_default <= 0:
         raise ValueError("expiration_minutes_default precisa ser maior que zero.")
+
+    if config.min_payout_percent < 0:
+        raise ValueError("min_payout_percent nao pode ser negativo.")
 
     if config.status_freshness_seconds <= 0:
         raise ValueError("status_freshness_seconds precisa ser maior que zero.")
