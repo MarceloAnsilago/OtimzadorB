@@ -8,11 +8,18 @@
   "mt5_common_files_dir": "C:\\Users\\User\\AppData\\Roaming\\MetaQuotes\\Terminal\\Common\\Files",
   "bridge_root_folder": "OpBinBridge",
   "signals_in_folder": "signals_in",
+  "status_folder": "status",
   "processed_folder": "signals_processed",
   "failed_folder": "signals_failed",
   "receipts_folder": "receipts",
   "allowed_symbols": [],
   "dry_run": true,
+  "status_freshness_seconds": 10,
+  "iq_candle_interval_seconds": 60,
+  "use_otc_symbols": false,
+  "iq_symbol_map": {
+    "EURUSD": "EURUSD"
+  },
   "open_browser_on_start": true,
-  "browser_url": "https://iqoption.com/"
+  "browser_url": "https://iqoption.com/traderoom"
 }

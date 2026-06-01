@@ -9,4 +9,4 @@ if not exist "%VENV%\Scripts\python.exe" (
   exit /b 1
 )
 
-"%VENV%\Scripts\python.exe" -m streamlit run "%ROOT%streamlit_app.py"
+"%VENV%\Scripts\python.exe" "%ROOT%ctk_app.py"

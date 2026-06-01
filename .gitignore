@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+*.pyo
+
+*.log
+OpBin.compile*.log
+
+OpBinBridge/config.json
+OpBinBridge/logs/
+

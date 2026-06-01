@@ -27,7 +27,15 @@ enum ENUM_MODO_ENTRADA
    MODO_DESATIVADO = -1,
    MODO_FILTRO = 0,
    MODO_ESTRATEGIA_1 = 1,
-   MODO_CICLO_PRIMEIRO_CANDLE_DIA = 2
+   MODO_CICLO_PRIMEIRO_CANDLE_DIA = 2,
+   MODO_TESTE_TODO_CANDLE = 3
+};
+
+enum ENUM_DIRECAO_TESTE_TODO_CANDLE
+{
+   TESTE_CALL = 1,
+   TESTE_PUT = -1,
+   TESTE_ALTERNAR = 2
 };
 
 enum ENUM_CICLO_PRIMEIRA_ENTRADA
@@ -81,6 +89,7 @@ input ENUM_MODO_ENTRADA InpEntrada2       = MODO_DESATIVADO;
 input ENUM_MODO_ENTRADA InpEntrada3       = MODO_DESATIVADO;
 input int              InpEntradaNCandles = 0;
 input bool             InpSentidoDoCandleSinal = true;
+input ENUM_DIRECAO_TESTE_TODO_CANDLE InpDirecaoTesteTodoCandle = TESTE_ALTERNAR;
 input int              InpMaxMartingale   = 3;
 input ENUM_ENTRAR_MARTINGALE InpEntrarNoMartingale = ENTRAR_MARTINGALE_NAO_USAR;
 
@@ -154,8 +163,10 @@ input group "Bridge IQ Option"
 input bool   InpBridgeAtivo                 = false;
 input string InpBridgeRootFolder            = "OpBinBridge";
 input string InpBridgeSignalsFolder         = "signals_in";
+input string InpBridgeStatusFolder          = "status";
 input int    InpBridgeExpirationMinutes     = 1;
 input bool   InpBridgeExportarMesmoSemSinal = false;
+input int    InpBridgeStatusIntervalSeconds = 2;
 
 //+------------------------------------------------------------------+
 //| ESTRUTURAS                                                       |
@@ -249,10 +260,16 @@ OperationRecord g_best_operations[];
 const int OP_FRAME_RECORD_SIZE = 6;
 const int OP_FRAME_MAX_RECORDS = 20;
 datetime g_last_bridge_candle_time = 0;
+datetime g_last_bridge_status_time = 0;
 
 string GetBridgeInboxFolder()
 {
    return InpBridgeRootFolder + "\\" + InpBridgeSignalsFolder;
+}
+
+string GetBridgeStatusFolder()
+{
+   return InpBridgeRootFolder + "\\" + InpBridgeStatusFolder;
 }
 
 bool EnsureBridgeFolders()
@@ -272,6 +289,15 @@ bool EnsureBridgeFolders()
    if(!FolderCreate(inbox_folder, FILE_COMMON) && GetLastError() != 5019)
    {
       Print("Falha ao criar pasta de sinais da bridge. Erro: ", GetLastError());
+      return false;
+   }
+
+   ResetLastError();
+
+   string status_folder = GetBridgeStatusFolder();
+   if(!FolderCreate(status_folder, FILE_COMMON) && GetLastError() != 5019)
+   {
+      Print("Falha ao criar pasta de status da bridge. Erro: ", GetLastError());
       return false;
    }
 
@@ -348,6 +374,90 @@ bool ExportBridgeSignal(const int shift, const int signal_direction)
 
    Print("Bridge: sinal exportado em Common\\Files\\", file_name, " direcao=", direction_text);
    return true;
+}
+
+bool ExportBridgeStatus()
+{
+   if(!InpBridgeAtivo)
+      return false;
+
+   if(!EnsureBridgeFolders())
+      return false;
+
+   MqlTick tick;
+   if(!SymbolInfoTick(_Symbol, tick))
+      return false;
+
+   datetime now = TimeCurrent();
+   string file_name = StringFormat("%s\\status_%s.json",
+      GetBridgeStatusFolder(),
+      SanitizeFilePart(_Symbol));
+
+   int handle = FileOpen(file_name, FILE_WRITE | FILE_TXT | FILE_ANSI | FILE_COMMON);
+   if(handle == INVALID_HANDLE)
+   {
+      Print("Falha ao abrir arquivo de status da bridge. Erro: ", GetLastError());
+      return false;
+   }
+
+   string strategy_name = InpNomeEstrategia;
+   StringReplace(strategy_name, "\"", "'");
+
+   double point_value = SymbolInfoDouble(_Symbol, SYMBOL_POINT);
+   double bid = tick.bid;
+   double ask = tick.ask;
+   double last = tick.last;
+   double spread_points = 0.0;
+   if(point_value > 0.0)
+      spread_points = (ask - bid) / point_value;
+
+   string json =
+      "{\r\n"
+      "  \"source\": \"mt5\",\r\n"
+      "  \"strategy\": \"" + strategy_name + "\",\r\n"
+      "  \"symbol\": \"" + _Symbol + "\",\r\n"
+      "  \"timeframe\": \"" + EnumToString(InpTimeframe) + "\",\r\n"
+      "  \"bridge_active\": true,\r\n"
+      "  \"ea_tipo_aporte\": \"" + EnumToString(InpTipoAporte) + "\",\r\n"
+      "  \"ea_valor_aporte\": " + DoubleToString(InpValorAporte, 2) + ",\r\n"
+      "  \"ea_amount_hint\": " + DoubleToString(GetBridgeAmountHint(), 2) + ",\r\n"
+      "  \"ea_payout_hint\": " + DoubleToString(InpPayout, 2) + ",\r\n"
+      "  \"ea_max_martingale\": " + IntegerToString(InpMaxMartingale) + ",\r\n"
+      "  \"ea_entrar_martingale\": \"" + EnumToString(InpEntrarNoMartingale) + "\",\r\n"
+      "  \"ea_bridge_expiration_minutes\": " + IntegerToString(InpBridgeExpirationMinutes) + ",\r\n"
+      "  \"ea_balance_mode\": \"BRIDGE_DEFINED\",\r\n"
+      "  \"chart_id\": " + StringFormat("%I64d", ChartID()) + ",\r\n"
+      "  \"server_time\": " + StringFormat("%I64d", (long)now) + ",\r\n"
+      "  \"server_time_text\": \"" + TimeToString(now, TIME_DATE | TIME_SECONDS) + "\",\r\n"
+      "  \"bid\": " + DoubleToString(bid, _Digits) + ",\r\n"
+      "  \"ask\": " + DoubleToString(ask, _Digits) + ",\r\n"
+      "  \"last\": " + DoubleToString(last, _Digits) + ",\r\n"
+      "  \"spread_points\": " + DoubleToString(spread_points, 2) + ",\r\n"
+      "  \"digits\": " + IntegerToString(_Digits) + ",\r\n"
+      "  \"point\": " + DoubleToString(point_value, 10) + "\r\n"
+      "}\r\n";
+
+   FileWriteString(handle, json);
+   FileClose(handle);
+   g_last_bridge_status_time = now;
+   return true;
+}
+
+void ProcessBridgeStatusHeartbeat()
+{
+   if(!InpBridgeAtivo)
+      return;
+
+   if(MQLInfoInteger(MQL_OPTIMIZATION) || MQLInfoInteger(MQL_FRAME_MODE))
+      return;
+
+   datetime now = TimeCurrent();
+   if(InpBridgeStatusIntervalSeconds > 0 &&
+      g_last_bridge_status_time > 0 &&
+      (now - g_last_bridge_status_time) < InpBridgeStatusIntervalSeconds)
+      return;
+
+   ExportBridgeStatus();
 }
 
 void ProcessBridgeSignalOnNewBar()
@@ -1674,6 +1784,20 @@ int GetDirecaoEntradaPorCandleSinal(int shift)
    return -(int)direcao_sinal;
 }
 
+int GetDirecaoTesteTodoCandle(int shift)
+{
+   if(InpDirecaoTesteTodoCandle == TESTE_CALL)
+      return 1;
+
+   if(InpDirecaoTesteTodoCandle == TESTE_PUT)
+      return -1;
+
+   if(ArraySize(g_rates) <= shift)
+      return 0;
+
+   return ((long)g_rates[shift].time % 2 == 0) ? 1 : -1;
+}
+
 //+------------------------------------------------------------------+
 //| TAMANHO DO CORPO                                                 |
 //+------------------------------------------------------------------+
@@ -1907,6 +2031,9 @@ bool EntradaPassaValidacao(ENUM_MODO_ENTRADA modo, int shift)
    if(modo == MODO_CICLO_PRIMEIRO_CANDLE_DIA)
       return CandlePassaCicloPrimeiroCandleDia(shift);
 
+   if(modo == MODO_TESTE_TODO_CANDLE)
+      return (GetDirecaoTesteTodoCandle(shift) != 0);
+
    return false;
 }
 
@@ -1938,6 +2065,9 @@ int GetEntradaSignal(ENUM_MODO_ENTRADA modo, int shift)
 
       return GetDirecaoEntradaPorCandleSinal(shift);
    }
+
+   if(modo == MODO_TESTE_TODO_CANDLE)
+      return GetDirecaoTesteTodoCandle(shift);
 
    return 0;
 }
@@ -2419,7 +2549,10 @@ int OnInit()
       EnumToString(InpEntrada3));
 
    if(InpBridgeAtivo)
+   {
       EnsureBridgeFolders();
+      ExportBridgeStatus();
+   }
 
    ProcessarHistorico();
 
@@ -2593,6 +2726,7 @@ void OnTesterDeinit()
 
 void OnTick()
 {
+   ProcessBridgeStatusHeartbeat();
    ProcessBridgeSignalOnNewBar();
 }
 
