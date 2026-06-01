@@ -594,14 +594,14 @@ void DrawMovingAverageOverlay()
       if(!ObjectCreate(chart_id, object_name, OBJ_TREND, 0, time_a, price_a, time_b, price_b))
          continue;
 
-      ObjectSetInteger(chart_id, object_name, OBJPROP_COLOR, C'24,102,110');
+      ObjectSetInteger(chart_id, object_name, OBJPROP_COLOR, C'0,168,232');
       ObjectSetInteger(chart_id, object_name, OBJPROP_STYLE, STYLE_DASHDOTDOT);
       ObjectSetInteger(chart_id, object_name, OBJPROP_WIDTH, 2);
       ObjectSetInteger(chart_id, object_name, OBJPROP_RAY_RIGHT, false);
-      ObjectSetInteger(chart_id, object_name, OBJPROP_BACK, false);
+      ObjectSetInteger(chart_id, object_name, OBJPROP_BACK, true);
       ObjectSetInteger(chart_id, object_name, OBJPROP_SELECTABLE, false);
       ObjectSetInteger(chart_id, object_name, OBJPROP_HIDDEN, false);
-      ObjectSetInteger(chart_id, object_name, OBJPROP_ZORDER, 4);
+      ObjectSetInteger(chart_id, object_name, OBJPROP_ZORDER, 0);
    }
 }
 

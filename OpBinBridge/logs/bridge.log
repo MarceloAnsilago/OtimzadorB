@@ -438,3 +438,6 @@ ConnectionResetError: [WinError 10054] Foi for√ßado o cancelamento de uma conex√
 2026-06-01 19:57:53,183 INFO Sinal signal_GBPUSD_1780365420.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
 2026-06-01 19:59:03,601 INFO Sinal signal_GBPUSD_1780365480.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
 2026-06-01 19:59:53,950 INFO Sinal signal_GBPUSD_1780365540.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
+2026-06-01 20:00:56,435 INFO Sinal signal_EURJPY_1780365600.json processado: mt5=EURJPY iq=EURJPY-OTC CALL amount=2.0 exp=1
+2026-06-01 20:01:10,068 INFO Sinal signal_GBPUSD_1780365600.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
+2026-06-01 20:01:53,087 INFO Sinal signal_GBPUSD_1780365660.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
