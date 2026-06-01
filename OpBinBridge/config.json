@@ -1,0 +1,22 @@
+{
+  "email": "celosmg@hotmail.com",
+  "password": "84611669",
+  "balance_mode": "PRACTICE",
+  "default_amount": 2.0,
+  "poll_interval_seconds": 1.0,
+  "expiration_minutes_default": 1,
+  "mt5_common_files_dir": "C:\\Users\\User\\AppData\\Roaming\\MetaQuotes\\Terminal\\Common\\Files",
+  "bridge_root_folder": "OpBinBridge",
+  "signals_in_folder": "signals_in",
+  "status_folder": "status",
+  "processed_folder": "signals_processed",
+  "failed_folder": "signals_failed",
+  "receipts_folder": "receipts",
+  "allowed_symbols": [],
+  "dry_run": false,
+  "status_freshness_seconds": 10,
+  "iq_candle_interval_seconds": 60,
+  "iq_symbol_map": {},
+  "browser_url": "https://iqoption.com/traderoom",
+  "use_otc_symbols": true
+}

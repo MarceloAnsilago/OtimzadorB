@@ -1,0 +1,374 @@
+2026-05-31 17:38:20,968 INFO Sinal signal_test.json processado: EURUSD CALL amount=2.0 exp=1
+2026-05-31 17:38:20,969 ERROR Falha ao processar signal_test.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 110, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 158, in process_signal_file
+    self.move_with_receipt(signal_file, self.config.processed_path, receipt)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 166, in move_with_receipt
+    receipt_path.write_text(json.dumps(receipt, indent=2, ensure_ascii=True), encoding="utf-8")
+  File "C:\Users\User\AppData\Local\Programs\Python\Python311\Lib\pathlib.py", line 1078, in write_text
+    with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Local\Programs\Python\Python311\Lib\pathlib.py", line 1044, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\User\\AppData\\Roaming\\MetaQuotes\\Terminal\\Common\\Files\\OpBinBridge\\receipts\\signal_test.receipt.json'
+2026-05-31 17:38:47,056 INFO Sinal signal_test.json processado: EURUSD CALL amount=2.0 exp=1
+2026-05-31 17:50:05,302 INFO Bridge iniciada. Inbox: C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\Common\Files\OpBinBridge\signals_in
+2026-05-31 17:50:37,116 INFO Bridge iniciada. Inbox: C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\Common\Files\OpBinBridge\signals_in
+2026-05-31 17:53:07,056 INFO Bridge iniciada. Inbox: C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\Common\Files\OpBinBridge\signals_in
+2026-05-31 19:37:29,768 INFO Pagina da IQ Option aberta no navegador: https://iqoption.com/
+2026-05-31 19:51:04,755 INFO Pagina da IQ Option aberta no navegador: https://iqoption.com/
+2026-05-31 19:51:41,389 INFO Pagina da IQ Option aberta no navegador: https://iqoption.com/
+2026-05-31 20:41:44,931 INFO Bridge iniciada. Inbox: C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\Common\Files\OpBinBridge\signals_in
+2026-05-31 20:41:44,931 WARNING Bridge em DRY RUN. Nenhuma ordem real sera enviada.
+2026-05-31 20:41:46,708 INFO Bridge encerrada pelo usuario.
+2026-05-31 20:42:31,825 INFO Pagina da IQ Option aberta no navegador: https://iqoption.com/
+2026-05-31 20:46:07,501 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:48:58,768 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:51:19,311 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:52:24,070 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:52:25,136 ERROR Falha ao processar signal_EURGBP_1780281900.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 153, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 256, in process_signal_file
+    raise ValueError(f"Sinal invalido ou sem direcao executavel: {direction!r}")
+ValueError: Sinal invalido ou sem direcao executavel: 'NONE'
+2026-05-31 20:52:25,138 ERROR Falha ao processar signal_EURGBP_1780281960.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 153, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 256, in process_signal_file
+    raise ValueError(f"Sinal invalido ou sem direcao executavel: {direction!r}")
+ValueError: Sinal invalido ou sem direcao executavel: 'NONE'
+2026-05-31 20:52:25,140 ERROR Falha ao processar signal_EURGBP_1780282020.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 153, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 256, in process_signal_file
+    raise ValueError(f"Sinal invalido ou sem direcao executavel: {direction!r}")
+ValueError: Sinal invalido ou sem direcao executavel: 'NONE'
+2026-05-31 20:52:25,142 ERROR Falha ao processar signal_EURGBP_1780282080.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 153, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 256, in process_signal_file
+    raise ValueError(f"Sinal invalido ou sem direcao executavel: {direction!r}")
+ValueError: Sinal invalido ou sem direcao executavel: 'NONE'
+2026-05-31 20:52:25,143 ERROR Falha ao processar signal_EURGBP_1780282140.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 153, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 256, in process_signal_file
+    raise ValueError(f"Sinal invalido ou sem direcao executavel: {direction!r}")
+ValueError: Sinal invalido ou sem direcao executavel: 'NONE'
+2026-05-31 20:52:25,146 ERROR Falha ao processar signal_EURGBP_1780282200.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 153, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 256, in process_signal_file
+    raise ValueError(f"Sinal invalido ou sem direcao executavel: {direction!r}")
+ValueError: Sinal invalido ou sem direcao executavel: 'NONE'
+2026-05-31 20:52:25,148 ERROR Falha ao processar signal_EURGBP_1780282260.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 153, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 256, in process_signal_file
+    raise ValueError(f"Sinal invalido ou sem direcao executavel: {direction!r}")
+ValueError: Sinal invalido ou sem direcao executavel: 'NONE'
+2026-05-31 20:52:25,150 ERROR Falha ao processar signal_EURUSD_1780282020.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 153, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 256, in process_signal_file
+    raise ValueError(f"Sinal invalido ou sem direcao executavel: {direction!r}")
+ValueError: Sinal invalido ou sem direcao executavel: 'NONE'
+2026-05-31 20:52:25,152 ERROR Falha ao processar signal_EURUSD_1780282080.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 153, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 256, in process_signal_file
+    raise ValueError(f"Sinal invalido ou sem direcao executavel: {direction!r}")
+ValueError: Sinal invalido ou sem direcao executavel: 'NONE'
+2026-05-31 20:52:25,154 ERROR Falha ao processar signal_EURUSD_1780282140.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 153, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 256, in process_signal_file
+    raise ValueError(f"Sinal invalido ou sem direcao executavel: {direction!r}")
+ValueError: Sinal invalido ou sem direcao executavel: 'NONE'
+2026-05-31 20:52:25,156 ERROR Falha ao processar signal_EURUSD_1780282200.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 153, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 256, in process_signal_file
+    raise ValueError(f"Sinal invalido ou sem direcao executavel: {direction!r}")
+ValueError: Sinal invalido ou sem direcao executavel: 'NONE'
+2026-05-31 20:52:25,157 ERROR Falha ao processar signal_EURUSD_1780282260.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 153, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 256, in process_signal_file
+    raise ValueError(f"Sinal invalido ou sem direcao executavel: {direction!r}")
+ValueError: Sinal invalido ou sem direcao executavel: 'NONE'
+2026-05-31 20:52:27,086 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:52:30,560 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:52:34,155 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:52:38,039 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:52:42,113 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:52:46,175 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:52:49,881 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:52:53,572 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:52:57,519 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:53:01,365 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:53:05,758 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:53:09,754 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:53:13,457 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:53:17,098 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:53:20,644 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:53:22,640 ERROR Exception in callback _ProactorBasePipeTransport._call_connection_lost(None)
+handle: <Handle _ProactorBasePipeTransport._call_connection_lost(None)>
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Local\Programs\Python\Python311\Lib\asyncio\events.py", line 84, in _run
+    self._context.run(self._callback, *self._args)
+  File "C:\Users\User\AppData\Local\Programs\Python\Python311\Lib\asyncio\proactor_events.py", line 165, in _call_connection_lost
+    self._sock.shutdown(socket.SHUT_RDWR)
+ConnectionResetError: [WinError 10054] Foi forçado o cancelamento de uma conexão existente pelo host remoto
+2026-05-31 20:53:24,708 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:53:28,388 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:53:32,095 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:53:35,843 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:53:39,855 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:53:43,857 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:53:47,440 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:53:51,106 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:53:55,258 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:53:59,015 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:54:02,583 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:54:06,274 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:54:10,176 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:54:13,886 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:54:17,692 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:54:21,459 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:57:28,775 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:59:24,889 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 20:59:33,270 INFO Pagina da IQ Option aberta no navegador: https://iqoption.com/traderoom
+2026-05-31 21:06:27,377 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 21:14:09,604 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 21:20:02,908 INFO Conectado na IQ Option em modo PRACTICE
+2026-05-31 21:20:29,399 INFO Pagina da IQ Option aberta no navegador: https://iqoption.com/traderoom
+2026-06-01 08:29:29,513 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-01 08:30:57,417 INFO Pagina da IQ Option aberta no navegador: https://iqoption.com/traderoom
+2026-06-01 08:37:07,931 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-01 08:37:23,589 INFO Pagina da IQ Option aberta no navegador: https://iqoption.com/traderoom
+2026-06-01 18:27:55,152 INFO Bridge iniciada. Inbox: C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\Common\Files\OpBinBridge\signals_in
+2026-06-01 18:27:55,152 WARNING Bridge em DRY RUN. Nenhuma ordem real sera enviada.
+2026-06-01 18:27:55,168 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780282320.json
+2026-06-01 18:27:55,168 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780282380.json
+2026-06-01 18:27:55,184 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780282440.json
+2026-06-01 18:27:55,184 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780282500.json
+2026-06-01 18:27:55,184 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780282560.json
+2026-06-01 18:27:55,199 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780282620.json
+2026-06-01 18:27:55,199 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780282680.json
+2026-06-01 18:27:55,215 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780282740.json
+2026-06-01 18:27:55,215 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780282800.json
+2026-06-01 18:27:55,215 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780282860.json
+2026-06-01 18:27:55,231 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780282920.json
+2026-06-01 18:27:55,231 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780282980.json
+2026-06-01 18:27:55,231 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780283040.json
+2026-06-01 18:27:55,247 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780283100.json
+2026-06-01 18:27:55,247 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780283160.json
+2026-06-01 18:27:55,247 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780283220.json
+2026-06-01 18:27:55,263 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780283280.json
+2026-06-01 18:27:55,263 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780283340.json
+2026-06-01 18:27:55,263 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780283400.json
+2026-06-01 18:27:55,279 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780283460.json
+2026-06-01 18:27:55,279 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780283520.json
+2026-06-01 18:27:55,279 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780283580.json
+2026-06-01 18:27:55,295 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780283640.json
+2026-06-01 18:27:55,295 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780283700.json
+2026-06-01 18:27:55,295 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780283760.json
+2026-06-01 18:27:55,310 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780283820.json
+2026-06-01 18:27:55,310 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780283880.json
+2026-06-01 18:27:55,310 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780283940.json
+2026-06-01 18:27:55,326 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780284000.json
+2026-06-01 18:27:55,326 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780284060.json
+2026-06-01 18:27:55,326 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780284120.json
+2026-06-01 18:27:55,342 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780284180.json
+2026-06-01 18:27:55,342 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780284240.json
+2026-06-01 18:27:55,342 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780323960.json
+2026-06-01 18:27:55,358 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780324020.json
+2026-06-01 18:27:55,358 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780324080.json
+2026-06-01 18:27:55,374 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780324140.json
+2026-06-01 18:27:55,374 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780324200.json
+2026-06-01 18:27:55,374 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780324260.json
+2026-06-01 18:27:55,390 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780324320.json
+2026-06-01 18:27:55,390 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780324380.json
+2026-06-01 18:27:55,390 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780324440.json
+2026-06-01 18:27:55,406 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780324500.json
+2026-06-01 18:27:55,406 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780324560.json
+2026-06-01 18:27:55,406 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780324620.json
+2026-06-01 18:27:55,421 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780324680.json
+2026-06-01 18:27:55,421 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780324740.json
+2026-06-01 18:27:55,421 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780324800.json
+2026-06-01 18:27:55,437 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780324860.json
+2026-06-01 18:27:55,437 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780324920.json
+2026-06-01 18:27:55,437 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780324980.json
+2026-06-01 18:27:55,453 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780325040.json
+2026-06-01 18:27:55,453 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780325100.json
+2026-06-01 18:27:55,469 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780325160.json
+2026-06-01 18:27:55,469 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780325220.json
+2026-06-01 18:27:55,469 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780325280.json
+2026-06-01 18:27:55,485 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780325340.json
+2026-06-01 18:27:55,485 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780325400.json
+2026-06-01 18:27:55,485 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780325460.json
+2026-06-01 18:27:55,500 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780325520.json
+2026-06-01 18:27:55,500 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780325580.json
+2026-06-01 18:27:55,500 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780359960.json
+2026-06-01 18:27:55,500 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780283640.json
+2026-06-01 18:27:55,516 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780283700.json
+2026-06-01 18:27:55,516 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780283760.json
+2026-06-01 18:27:55,516 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780283820.json
+2026-06-01 18:27:55,532 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780283880.json
+2026-06-01 18:27:55,532 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780283940.json
+2026-06-01 18:27:55,532 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780284000.json
+2026-06-01 18:27:55,548 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780284060.json
+2026-06-01 18:27:55,548 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780284120.json
+2026-06-01 18:27:55,548 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780284180.json
+2026-06-01 18:27:55,564 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780284240.json
+2026-06-01 18:27:55,564 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780323960.json
+2026-06-01 18:27:55,579 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780324020.json
+2026-06-01 18:27:55,579 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780324080.json
+2026-06-01 18:27:55,579 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780324140.json
+2026-06-01 18:27:55,595 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780324200.json
+2026-06-01 18:27:55,595 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780324260.json
+2026-06-01 18:27:55,595 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780324320.json
+2026-06-01 18:27:55,611 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780324380.json
+2026-06-01 18:27:55,611 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780324440.json
+2026-06-01 18:27:55,611 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780324500.json
+2026-06-01 18:27:55,627 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780324560.json
+2026-06-01 18:27:55,627 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780324620.json
+2026-06-01 18:27:55,627 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780324680.json
+2026-06-01 18:27:55,643 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780324740.json
+2026-06-01 18:27:55,643 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780324800.json
+2026-06-01 18:27:55,643 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780324860.json
+2026-06-01 18:27:55,659 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780324920.json
+2026-06-01 18:27:55,659 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780324980.json
+2026-06-01 18:27:55,674 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780325040.json
+2026-06-01 18:27:55,674 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780325100.json
+2026-06-01 18:27:55,674 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780325160.json
+2026-06-01 18:27:55,691 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780282320.json
+2026-06-01 18:27:55,691 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780282380.json
+2026-06-01 18:27:55,691 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780282440.json
+2026-06-01 18:27:55,706 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780282500.json
+2026-06-01 18:27:55,706 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780282560.json
+2026-06-01 18:27:55,706 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780282620.json
+2026-06-01 18:27:55,722 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780282680.json
+2026-06-01 18:27:55,722 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780282740.json
+2026-06-01 18:27:55,722 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780282800.json
+2026-06-01 18:27:55,739 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780282860.json
+2026-06-01 18:27:55,739 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780282920.json
+2026-06-01 18:27:55,753 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780282980.json
+2026-06-01 18:27:55,753 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780283040.json
+2026-06-01 18:27:55,753 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780283100.json
+2026-06-01 18:27:55,770 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780283160.json
+2026-06-01 18:27:55,770 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780283220.json
+2026-06-01 18:27:55,770 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780283280.json
+2026-06-01 18:27:55,785 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780283340.json
+2026-06-01 18:27:55,785 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780283400.json
+2026-06-01 18:27:55,785 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780283460.json
+2026-06-01 18:27:55,801 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780283520.json
+2026-06-01 18:27:55,801 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780283580.json
+2026-06-01 18:27:55,801 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780283640.json
+2026-06-01 18:27:55,817 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780283700.json
+2026-06-01 18:27:55,817 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780283760.json
+2026-06-01 18:27:55,833 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780283820.json
+2026-06-01 18:27:55,833 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780283880.json
+2026-06-01 18:27:55,833 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780283940.json
+2026-06-01 18:27:55,849 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780284000.json
+2026-06-01 18:27:55,849 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780284060.json
+2026-06-01 18:27:55,849 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780284120.json
+2026-06-01 18:27:55,865 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780284180.json
+2026-06-01 18:27:55,865 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780284240.json
+2026-06-01 18:27:55,865 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780323960.json
+2026-06-01 18:27:55,880 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780324020.json
+2026-06-01 18:27:55,880 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780324080.json
+2026-06-01 18:27:55,880 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780324140.json
+2026-06-01 18:27:55,896 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780324200.json
+2026-06-01 18:27:55,896 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780324260.json
+2026-06-01 18:27:55,896 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780324320.json
+2026-06-01 18:27:55,912 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780324380.json
+2026-06-01 18:27:55,912 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780324440.json
+2026-06-01 18:27:55,928 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780324500.json
+2026-06-01 18:27:55,928 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780324560.json
+2026-06-01 18:27:55,928 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780324620.json
+2026-06-01 18:27:55,944 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780324680.json
+2026-06-01 18:27:55,944 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780324740.json
+2026-06-01 18:27:55,944 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780324800.json
+2026-06-01 18:27:55,960 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780324860.json
+2026-06-01 18:27:55,960 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780324920.json
+2026-06-01 18:27:55,960 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780324980.json
+2026-06-01 18:27:55,976 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780325040.json
+2026-06-01 18:27:55,976 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780325100.json
+2026-06-01 18:27:55,991 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780325160.json
+2026-06-01 18:27:55,991 INFO Ignorando backlog anterior a sessao: signal_EURUSD_1780325220.json
+2026-06-01 18:28:49,654 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-01 18:29:03,043 INFO Pagina da IQ Option aberta no navegador: https://iqoption.com/traderoom
+2026-06-01 18:34:39,146 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-01 18:42:50,796 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-01 18:46:51,708 WARNING Falha ao ler status MT5 status_EURUSD.json: [Errno 13] Permission denied: 'C:\\Users\\User\\AppData\\Roaming\\MetaQuotes\\Terminal\\Common\\Files\\OpBinBridge\\status\\status_EURUSD.json'
+2026-06-01 18:50:07,947 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-01 18:53:45,879 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780360020.json
+2026-06-01 18:53:45,958 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780360080.json
+2026-06-01 18:53:46,131 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780360140.json
+2026-06-01 18:53:46,320 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780360200.json
+2026-06-01 18:53:46,616 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780360260.json
+2026-06-01 18:53:46,916 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780360320.json
+2026-06-01 18:53:47,134 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780360380.json
+2026-06-01 18:53:47,134 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780360440.json
+2026-06-01 18:53:47,134 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780360500.json
+2026-06-01 18:53:47,134 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780360560.json
+2026-06-01 18:53:47,134 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780360620.json
+2026-06-01 18:53:47,134 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780360680.json
+2026-06-01 18:53:47,134 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780360740.json
+2026-06-01 18:53:47,134 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780360800.json
+2026-06-01 18:53:47,134 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780360860.json
+2026-06-01 18:53:47,134 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780360920.json
+2026-06-01 18:53:47,134 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780360980.json
+2026-06-01 18:53:47,150 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780361040.json
+2026-06-01 18:53:47,150 INFO Ignorando backlog anterior a sessao: signal_EURGBP_1780361100.json
+2026-06-01 18:53:47,150 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780360200.json
+2026-06-01 18:53:47,150 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780360500.json
+2026-06-01 18:53:47,150 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780360800.json
+2026-06-01 18:53:47,150 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780361100.json
+2026-06-01 18:53:47,150 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780360920.json
+2026-06-01 18:53:47,150 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780360980.json
+2026-06-01 18:53:47,150 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780361040.json
+2026-06-01 18:53:47,150 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780361100.json
+2026-06-01 18:53:47,150 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780361160.json
+2026-06-01 18:53:47,150 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780361220.json
+2026-06-01 18:53:47,150 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780361280.json
+2026-06-01 18:53:47,150 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780361340.json
+2026-06-01 18:53:47,576 INFO Sinal signal_GBPUSD_1780361400.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
+2026-06-01 18:53:48,081 INFO Sinal signal_GBPUSD_1780361460.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
+2026-06-01 18:53:48,600 INFO Sinal signal_GBPUSD_1780361520.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
+2026-06-01 18:55:01,556 INFO Sinal signal_GBPUSD_1780361580.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
+2026-06-01 18:55:02,462 INFO Sinal signal_GBPUSD_1780361640.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
+2026-06-01 18:56:10,792 INFO Ignorando backlog anterior a sessao: signal_EURJPY_1780361700.json
+2026-06-01 18:56:10,795 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780361700.json
+2026-06-01 18:56:13,961 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-01 18:57:08,129 INFO Sinal signal_GBPUSD_1780361760.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
+2026-06-01 18:57:53,078 INFO Sinal signal_GBPUSD_1780361820.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
+2026-06-01 18:58:53,098 INFO Sinal signal_GBPUSD_1780361880.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
+2026-06-01 18:59:53,772 INFO Sinal signal_GBPUSD_1780361940.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
+2026-06-01 19:00:53,680 INFO Sinal signal_EURJPY_1780362000.json processado: mt5=EURJPY iq=EURJPY-OTC CALL amount=2.0 exp=1
+2026-06-01 19:00:54,148 INFO Sinal signal_GBPUSD_1780362000.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
+2026-06-01 19:01:55,054 INFO Sinal signal_GBPUSD_1780362060.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
+2026-06-01 19:02:55,704 INFO Sinal signal_GBPUSD_1780362120.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
+2026-06-01 19:03:57,568 INFO Sinal signal_GBPUSD_1780362180.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
+2026-06-01 19:04:52,772 INFO Sinal signal_GBPUSD_1780362240.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
+2026-06-01 19:05:52,846 INFO Sinal signal_GBPUSD_1780362300.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
+2026-06-01 19:06:18,581 INFO Sinal signal_EURJPY_1780362300.json processado: mt5=EURJPY iq=EURJPY-OTC CALL amount=2.0 exp=1
+2026-06-01 19:06:57,468 INFO Sinal signal_GBPUSD_1780362360.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
