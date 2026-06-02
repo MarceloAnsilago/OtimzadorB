@@ -2,26 +2,6 @@
   "email": "seu-email-iqoption",
   "password": "sua-senha-iqoption",
   "balance_mode": "PRACTICE",
-  "default_amount": 2.0,
   "min_payout_percent": 80.0,
-  "poll_interval_seconds": 1.0,
-  "expiration_minutes_default": 1,
-  "mt5_common_files_dir": "C:\\Users\\User\\AppData\\Roaming\\MetaQuotes\\Terminal\\Common\\Files",
-  "bridge_root_folder": "OpBinBridge",
-  "signals_in_folder": "signals_in",
-  "status_folder": "status",
-  "processed_folder": "signals_processed",
-  "failed_folder": "signals_failed",
-  "receipts_folder": "receipts",
-  "allowed_symbols": [],
-  "dry_run": true,
-  "status_freshness_seconds": 10,
-  "iq_candle_interval_seconds": 60,
-  "use_otc_symbols": false,
-  "mt5_terminal_path": "C:\\Users\\User\\AppData\\Roaming\\MetaQuotes\\Terminal\\SEU_HASH_DO_TERMINAL\\terminal64.exe",
-  "iq_symbol_map": {
-    "EURUSD": "EURUSD"
-  },
-  "open_browser_on_start": true,
-  "browser_url": "https://iqoption.com/traderoom"
+  "use_otc_symbols": false
 }

@@ -468,3 +468,1084 @@ ConnectionResetError: [WinError 10054] Foi for√ßado o cancelamento de uma conex√
 2026-06-01 21:02:36,563 INFO Conectado na IQ Option em modo PRACTICE
 2026-06-01 21:02:36,949 INFO MT5 aberto: C:\Program Files\Infinox MetaTrader 5 Terminal\terminal64.exe
 2026-06-01 21:02:52,788 INFO Sinal signal_EURJPY_1780369260.json processado: mt5=EURJPY iq=EURJPY-OTC PUT amount=2.0 base=2.0 mg=0 exp=1
+2026-06-01 21:03:01,249 INFO Pagina da IQ Option aberta no navegador: https://iqoption.com/traderoom
+2026-06-01 21:03:38,523 INFO Sinal signal_GBPUSD_1780369320.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 base=2.0 mg=0 exp=1
+2026-06-01 21:03:54,692 INFO Sinal signal_GBPUSD_1780369380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:03:57,757 INFO Sinal signal_GBPUSD_1780369380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:04:01,226 INFO Resultado IQ resolvido: EURJPY order_id=13950643114 lucro=-2.00 proximo_mg=0
+2026-06-01 21:04:01,226 INFO Sinal signal_GBPUSD_1780369380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:04:04,593 INFO Sinal signal_GBPUSD_1780369380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:04:07,822 INFO Sinal signal_GBPUSD_1780369380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:04:10,943 INFO Sinal signal_GBPUSD_1780369380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:04:14,126 INFO Sinal signal_GBPUSD_1780369380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:04:17,626 INFO Sinal signal_GBPUSD_1780369380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:04:21,026 INFO Sinal signal_GBPUSD_1780369380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:04:24,392 INFO Sinal signal_GBPUSD_1780369380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:04:27,822 INFO Sinal signal_GBPUSD_1780369380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:04:30,990 INFO Sinal signal_GBPUSD_1780369380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:04:34,438 INFO Sinal signal_GBPUSD_1780369380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:04:38,109 INFO Sinal signal_GBPUSD_1780369380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:04:40,999 INFO Sinal signal_GBPUSD_1780369380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:04:52,182 INFO Resultado IQ resolvido: GBPUSD order_id=13950645095 lucro=-2.00 proximo_mg=0
+2026-06-01 21:04:54,541 INFO Sinal signal_GBPUSD_1780369380.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 base=2.0 mg=0 exp=1
+2026-06-01 21:04:54,544 INFO Sinal signal_GBPUSD_1780369440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:04:57,760 INFO Sinal signal_GBPUSD_1780369440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:05:01,011 INFO Sinal signal_GBPUSD_1780369440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:05:04,109 INFO Sinal signal_GBPUSD_1780369440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:05:07,594 INFO Sinal signal_GBPUSD_1780369440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:05:10,893 INFO Sinal signal_GBPUSD_1780369440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:05:14,244 INFO Sinal signal_GBPUSD_1780369440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:05:17,577 INFO Sinal signal_GBPUSD_1780369440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:05:20,811 INFO Sinal signal_GBPUSD_1780369440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:05:24,074 INFO Sinal signal_GBPUSD_1780369440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:05:27,394 INFO Sinal signal_GBPUSD_1780369440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:05:30,634 INFO Sinal signal_GBPUSD_1780369440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:05:34,095 INFO Sinal signal_GBPUSD_1780369440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:05:37,466 INFO Sinal signal_GBPUSD_1780369440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:05:40,937 INFO Sinal signal_GBPUSD_1780369440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:05:44,078 INFO Sinal signal_GBPUSD_1780369440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:05:47,313 INFO Sinal signal_GBPUSD_1780369440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:05:50,725 INFO Sinal signal_GBPUSD_1780369440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:05:54,142 INFO Sinal signal_GBPUSD_1780369440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:05:54,142 INFO Sinal signal_GBPUSD_1780369500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:05:57,528 INFO Sinal signal_GBPUSD_1780369440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:05:57,528 INFO Sinal signal_GBPUSD_1780369500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:06:00,777 INFO Resultado IQ resolvido: GBPUSD order_id=13950648801 lucro=-2.00 proximo_mg=0
+2026-06-01 21:06:03,492 INFO Sinal signal_GBPUSD_1780369440.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 base=2.0 mg=0 exp=1
+2026-06-01 21:06:03,494 INFO Sinal signal_GBPUSD_1780369500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:06:06,694 INFO Sinal signal_GBPUSD_1780369500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:06:09,894 INFO Sinal signal_GBPUSD_1780369500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:06:13,162 INFO Sinal signal_GBPUSD_1780369500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:06:16,494 INFO Sinal signal_GBPUSD_1780369500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:06:19,862 INFO Sinal signal_GBPUSD_1780369500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:06:23,130 INFO Sinal signal_GBPUSD_1780369500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:06:26,266 INFO Sinal signal_GBPUSD_1780369500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:06:29,640 INFO Sinal signal_GBPUSD_1780369500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:06:32,923 INFO Sinal signal_GBPUSD_1780369500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:06:35,946 INFO Sinal signal_GBPUSD_1780369500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:06:39,352 INFO Sinal signal_GBPUSD_1780369500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:06:42,745 INFO Sinal signal_GBPUSD_1780369500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:06:46,052 INFO Sinal signal_GBPUSD_1780369500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:06:49,328 INFO Sinal signal_GBPUSD_1780369500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:06:55,396 INFO Sinal signal_EURJPY_1780369560.json processado: mt5=EURJPY iq=EURJPY-OTC PUT amount=2.0 base=2.0 mg=0 exp=1
+2026-06-01 21:06:55,399 INFO Sinal signal_GBPUSD_1780369500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:06:55,400 INFO Sinal signal_GBPUSD_1780369560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:06:58,863 INFO Sinal signal_GBPUSD_1780369500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:06:58,863 INFO Sinal signal_GBPUSD_1780369560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:07:02,231 INFO Sinal signal_GBPUSD_1780369500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:07:02,232 INFO Sinal signal_GBPUSD_1780369560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:07:05,762 INFO Sinal signal_GBPUSD_1780369500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:07:05,763 INFO Sinal signal_GBPUSD_1780369560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:07:09,047 INFO Resultado IQ resolvido: GBPUSD order_id=13950652261 lucro=-2.00 proximo_mg=0
+2026-06-01 21:07:12,260 INFO Sinal signal_GBPUSD_1780369500.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 base=2.0 mg=0 exp=1
+2026-06-01 21:07:12,262 INFO Sinal signal_GBPUSD_1780369560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:07:15,579 INFO Sinal signal_GBPUSD_1780369560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:07:18,846 INFO Sinal signal_GBPUSD_1780369560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:07:22,096 INFO Sinal signal_GBPUSD_1780369560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:07:25,500 INFO Sinal signal_GBPUSD_1780369560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:07:28,864 INFO Sinal signal_GBPUSD_1780369560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:07:32,148 INFO Sinal signal_GBPUSD_1780369560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:07:35,145 INFO Sinal signal_GBPUSD_1780369560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:07:38,423 INFO Sinal signal_GBPUSD_1780369560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:07:41,842 INFO Sinal signal_GBPUSD_1780369560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:07:45,057 INFO Sinal signal_GBPUSD_1780369560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:07:48,359 INFO Sinal signal_GBPUSD_1780369560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:07:51,682 INFO Sinal signal_GBPUSD_1780369560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:07:54,812 INFO Sinal signal_GBPUSD_1780369560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:07:54,813 INFO Sinal signal_GBPUSD_1780369620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:07:58,398 INFO Sinal signal_GBPUSD_1780369560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:07:58,398 INFO Sinal signal_GBPUSD_1780369620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:08:01,880 INFO Resultado IQ resolvido: EURJPY order_id=13950654795 lucro=-2.00 proximo_mg=0
+2026-06-01 21:08:01,880 INFO Sinal signal_GBPUSD_1780369560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:08:01,880 INFO Sinal signal_GBPUSD_1780369620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:08:05,232 INFO Sinal signal_GBPUSD_1780369560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:08:05,232 INFO Sinal signal_GBPUSD_1780369620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:08:08,698 INFO Sinal signal_GBPUSD_1780369560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:08:08,698 INFO Sinal signal_GBPUSD_1780369620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:08:11,914 INFO Sinal signal_GBPUSD_1780369560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:08:11,914 INFO Sinal signal_GBPUSD_1780369620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:08:15,447 INFO Sinal signal_GBPUSD_1780369560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:08:15,448 INFO Sinal signal_GBPUSD_1780369620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:08:18,980 INFO Resultado IQ resolvido: GBPUSD order_id=13950655780 lucro=1.74 proximo_mg=0
+2026-06-01 21:08:22,045 ERROR Falha ao processar signal_GBPUSD_1780369560.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 190, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 683, in process_signal_file
+    raise RuntimeError(f"IQ Option recusou a ordem para {iq_symbol}.")
+RuntimeError: IQ Option recusou a ordem para GBPUSD-OTC.
+2026-06-01 21:08:25,003 INFO Sinal signal_GBPUSD_1780369620.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 base=2.0 mg=0 exp=1
+2026-06-01 21:08:55,221 INFO Sinal signal_GBPUSD_1780369680.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:08:58,454 INFO Sinal signal_GBPUSD_1780369680.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:09:01,834 INFO Sinal signal_GBPUSD_1780369680.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:09:05,120 INFO Sinal signal_GBPUSD_1780369680.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:09:08,383 INFO Sinal signal_GBPUSD_1780369680.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:09:11,954 INFO Sinal signal_GBPUSD_1780369680.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:09:15,170 INFO Sinal signal_GBPUSD_1780369680.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:09:18,391 INFO Sinal signal_GBPUSD_1780369680.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:09:21,753 INFO Sinal signal_GBPUSD_1780369680.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:09:25,085 INFO Sinal signal_GBPUSD_1780369680.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:09:28,419 INFO Sinal signal_GBPUSD_1780369680.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:09:51,990 INFO Resultado IQ resolvido: GBPUSD order_id=13950658965 lucro=-2.00 proximo_mg=0
+2026-06-01 21:09:54,716 INFO Sinal signal_GBPUSD_1780369680.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 base=2.0 mg=0 exp=1
+2026-06-01 21:09:57,982 INFO Sinal signal_GBPUSD_1780369740.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:10:01,201 INFO Sinal signal_GBPUSD_1780369740.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:10:04,448 INFO Sinal signal_GBPUSD_1780369740.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-01 21:10:07,832 INFO Sinal signal_GBPUSD_1780369740.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 08:01:43,286 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780369740.json
+2026-06-02 08:01:46,031 INFO MT5 aberto: C:\Program Files\Infinox MetaTrader 5 Terminal\terminal64.exe
+2026-06-02 08:01:46,093 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 08:02:21,120 INFO Pagina da IQ Option aberta no navegador: https://iqoption.com/traderoom
+2026-06-02 08:02:48,246 INFO Sinal signal_GBPUSD_1780408860.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 base=2.0 mg=0 exp=1
+2026-06-02 08:02:54,196 INFO Sinal signal_GBPUSD_1780408920.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 08:02:57,245 INFO Sinal signal_GBPUSD_1780408920.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 08:02:59,479 INFO Sinal signal_GBPUSD_1780408920.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 08:03:02,478 INFO Sinal signal_GBPUSD_1780408920.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 08:03:05,377 INFO Sinal signal_GBPUSD_1780408920.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 08:03:08,129 INFO Sinal signal_GBPUSD_1780408920.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 08:03:11,461 INFO Sinal signal_GBPUSD_1780408920.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 08:03:14,443 INFO Sinal signal_GBPUSD_1780408920.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 08:03:17,411 INFO Sinal signal_GBPUSD_1780408920.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 08:03:20,511 INFO Sinal signal_GBPUSD_1780408920.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 08:03:23,562 INFO Sinal signal_GBPUSD_1780408920.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 08:03:26,668 INFO Sinal signal_GBPUSD_1780408920.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 08:03:29,653 INFO Sinal signal_GBPUSD_1780408920.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 08:03:30,151 INFO Sinal signal_GBPUSD_1780408920.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 08:03:32,379 INFO Sinal signal_GBPUSD_1780408920.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 08:03:35,437 INFO Sinal signal_GBPUSD_1780408920.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 08:03:38,342 INFO Sinal signal_GBPUSD_1780408920.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 08:03:41,320 INFO Sinal signal_GBPUSD_1780408920.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 08:03:44,250 INFO Sinal signal_GBPUSD_1780408920.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 08:03:47,293 INFO Sinal signal_GBPUSD_1780408920.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 08:03:50,269 INFO Sinal signal_GBPUSD_1780408920.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 08:03:53,346 INFO Resultado IQ resolvido: GBPUSD order_id=13951863746 lucro=-2.00 proximo_mg=0
+2026-06-02 08:06:42,658 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780408920.json
+2026-06-02 08:06:42,660 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780408980.json
+2026-06-02 08:06:42,662 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780409040.json
+2026-06-02 08:06:42,663 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780409100.json
+2026-06-02 08:06:45,392 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 08:12:56,611 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780409160.json
+2026-06-02 08:12:56,623 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780409220.json
+2026-06-02 08:12:56,631 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780409280.json
+2026-06-02 08:12:56,638 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780409340.json
+2026-06-02 08:12:56,639 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780409400.json
+2026-06-02 08:12:56,641 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780409460.json
+2026-06-02 08:12:58,989 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 08:13:03,812 INFO MT5 aberto: C:\Program Files\Infinox MetaTrader 5 Terminal\terminal64.exe
+2026-06-02 08:13:11,823 INFO Pagina da IQ Option aberta no navegador: https://iqoption.com/traderoom
+2026-06-02 08:36:26,662 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 08:36:28,480 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780409580.json
+2026-06-02 08:36:28,480 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780409640.json
+2026-06-02 08:36:28,480 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780409700.json
+2026-06-02 08:36:28,480 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780409760.json
+2026-06-02 08:36:28,486 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780409820.json
+2026-06-02 08:36:28,486 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780409880.json
+2026-06-02 08:36:28,486 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780409940.json
+2026-06-02 08:36:28,486 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780410000.json
+2026-06-02 08:36:28,486 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780410060.json
+2026-06-02 08:36:28,486 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780410120.json
+2026-06-02 08:36:28,494 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780410180.json
+2026-06-02 08:36:28,494 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780410240.json
+2026-06-02 08:36:28,497 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780410300.json
+2026-06-02 08:36:28,497 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780410360.json
+2026-06-02 08:36:28,497 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780410420.json
+2026-06-02 08:36:28,497 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780410480.json
+2026-06-02 08:36:28,502 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780410540.json
+2026-06-02 08:36:28,503 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780410600.json
+2026-06-02 08:36:28,505 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780410660.json
+2026-06-02 08:36:28,507 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780410720.json
+2026-06-02 08:36:28,507 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780410780.json
+2026-06-02 08:36:28,510 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780410840.json
+2026-06-02 08:36:28,511 INFO Ignorando backlog anterior a sessao: signal_GBPUSD_1780410900.json
+2026-06-02 08:43:08,006 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 08:50:36,939 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 08:52:14,067 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 08:53:04,860 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 08:54:42,801 INFO MT5 aberto: C:\Program Files\Infinox MetaTrader 5 Terminal\terminal64.exe
+2026-06-02 08:54:56,219 INFO Pagina da IQ Option aberta no navegador: https://iqoption.com/traderoom
+2026-06-02 08:55:08,417 INFO Pagina da IQ Option aberta no navegador: https://iqoption.com/traderoom
+2026-06-02 09:00:33,417 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 09:00:33,770 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 09:00:36,673 INFO Sinal signal_GBPUSD_1780411320.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 base=2.0 mg=0 exp=1
+2026-06-02 09:00:36,673 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:36,673 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:36,673 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:36,673 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:36,673 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:36,679 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:36,679 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:36,679 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:36,680 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:36,680 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:37,852 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:37,852 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:37,852 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:37,852 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:37,852 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:37,852 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:37,852 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:37,852 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:37,852 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:37,852 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:39,617 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:39,653 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:39,654 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:39,654 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:39,654 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:39,654 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:39,654 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:39,654 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:39,654 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:39,654 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:40,719 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:40,719 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:40,721 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:40,721 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:40,722 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:40,722 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:40,722 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:40,722 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:40,722 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:40,722 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:42,434 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:42,518 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:42,519 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:42,519 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:42,519 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:42,519 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:42,519 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:42,519 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:42,519 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:42,519 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:43,585 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:43,585 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:43,585 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:43,585 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:43,585 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:43,585 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:43,585 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:43,585 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:43,585 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:43,585 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:45,345 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:45,394 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:45,394 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:45,396 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:45,396 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:45,396 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:45,396 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:45,396 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:45,396 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:45,396 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:46,453 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:46,453 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:46,453 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:46,453 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:46,453 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:46,453 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:46,453 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:46,453 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:46,453 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:46,453 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:47,903 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:47,985 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:48,126 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:48,219 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:48,311 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:48,311 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:48,311 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:48,311 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:48,311 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:48,311 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:49,377 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:49,377 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:49,377 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:49,377 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:49,377 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:49,377 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:49,377 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:49,377 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:49,377 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:49,377 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:51,199 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:51,199 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:51,199 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:51,199 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:51,199 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:51,199 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:51,199 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:51,199 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:51,199 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:51,199 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:52,269 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:52,269 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:52,269 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:52,269 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:52,269 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:52,269 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:52,269 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:52,269 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:52,269 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:52,269 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:53,861 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:53,877 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:53,985 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:53,985 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:53,986 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:53,986 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:53,986 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:53,986 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:53,987 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:53,987 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:53,987 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:55,028 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:55,028 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:55,028 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:55,030 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:55,030 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:55,030 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:55,030 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:55,030 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:55,030 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:55,030 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:55,030 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:56,338 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:56,469 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:56,586 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:56,678 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:56,826 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:56,927 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:56,927 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:56,927 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:56,927 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:56,927 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:56,927 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:58,003 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:58,003 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:58,003 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:58,003 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:58,003 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:58,003 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:58,006 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:58,006 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:58,006 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:58,006 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:58,006 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:59,664 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:59,836 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:59,851 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:59,852 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:59,852 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:59,852 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:59,852 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:59,852 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:59,852 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:59,852 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:00:59,852 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:01,467 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:01,586 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:01,767 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:01,775 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:01,776 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:01,776 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:01,776 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:01,776 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:01,776 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:01,776 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:01,834 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:02,960 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:02,960 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:02,960 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:02,960 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:02,960 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:02,960 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:02,960 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:02,960 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:02,960 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:02,960 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:02,975 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:04,291 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:04,385 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:04,494 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:04,543 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:04,544 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:04,544 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:04,544 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:04,544 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:04,545 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:04,545 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:04,545 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:05,662 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:05,662 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:05,662 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:05,664 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:05,664 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:05,664 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:05,664 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:05,664 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:05,664 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:05,664 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:05,664 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:06,686 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:06,686 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:06,686 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:06,686 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:06,686 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:06,688 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:06,689 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:06,689 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:06,689 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:06,689 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:06,689 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:08,109 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:08,211 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:08,301 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:08,383 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:08,478 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:08,495 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:08,495 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:08,495 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:08,495 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:08,496 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:08,496 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:09,569 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:09,569 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:09,569 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:09,569 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:09,569 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:09,569 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:09,569 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:09,569 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:09,569 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:09,569 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:09,569 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:11,125 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:11,303 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:11,427 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:11,427 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:11,427 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:11,427 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:11,427 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:11,427 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:11,427 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:11,427 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:11,427 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:12,503 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:12,503 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:12,505 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:12,505 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:12,505 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:12,505 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:12,505 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:12,505 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:12,505 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:12,505 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:12,505 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:13,917 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:14,069 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:14,151 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:14,315 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:14,374 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:14,374 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:14,374 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:14,375 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:14,375 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:14,375 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:14,375 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:15,809 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:15,969 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:16,087 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:16,143 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:16,143 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:16,145 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:16,145 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:16,146 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:16,146 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:16,146 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:16,194 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:17,283 INFO Pagina da IQ Option aberta no navegador: https://iqoption.com/traderoom
+2026-06-02 09:01:17,371 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:17,372 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:17,372 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:17,372 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:17,373 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:17,373 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:17,373 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:17,373 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:17,374 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:17,374 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:17,374 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:18,823 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:18,823 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:18,824 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:18,824 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:18,944 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:19,067 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:19,219 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:19,335 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:19,434 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:19,529 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:19,585 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:20,836 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:20,836 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:20,836 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:20,836 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:20,836 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:20,836 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:20,836 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:20,836 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:20,836 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:20,836 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:20,836 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:22,444 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:22,557 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:22,557 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:22,557 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:22,558 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:22,558 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:22,558 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:22,558 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:22,559 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:22,559 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:22,559 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:23,614 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:23,614 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:23,615 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:23,615 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:23,615 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:23,616 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:23,616 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:23,616 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:23,616 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:23,617 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:23,617 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:25,534 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:25,564 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:25,565 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:25,565 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:25,565 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:25,565 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:25,566 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:25,566 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:25,567 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:25,567 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:25,567 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:26,675 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:26,675 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:26,675 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:26,676 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:26,676 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:26,676 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:26,676 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:26,677 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:26,677 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:26,677 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:26,677 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:28,601 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:28,631 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:28,632 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:28,632 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:28,632 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:28,633 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:28,633 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:28,633 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:28,634 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:28,634 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:28,634 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:29,680 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:29,681 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:29,681 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:29,681 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:29,681 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:29,682 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:29,682 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:29,682 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:29,682 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:29,682 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:29,683 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:31,523 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:31,660 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:31,661 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:31,661 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:31,662 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:31,662 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:31,662 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:31,663 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:31,663 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:31,664 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:31,664 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:33,323 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:33,477 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:33,629 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:33,630 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:33,630 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:33,630 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:33,631 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:33,631 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:33,632 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:33,632 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:33,691 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:34,940 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:34,941 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:34,941 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:34,941 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:34,941 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:34,942 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:34,942 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:34,942 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:34,942 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:34,942 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:34,943 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:36,333 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:36,333 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:36,334 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:36,532 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:36,626 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:36,779 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:36,935 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:37,027 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:37,197 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:37,304 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:37,350 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:38,404 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:38,404 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:38,404 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:38,404 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:38,404 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:38,405 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:38,405 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:38,405 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:38,405 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:38,406 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:38,406 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:39,963 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:40,132 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:40,289 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:40,290 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:40,290 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:40,290 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:40,291 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:40,291 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:40,292 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:40,292 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:40,292 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:41,399 INFO Sinal signal_GBPUSD_1780411380.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:41,400 INFO Sinal signal_GBPUSD_1780411440.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:41,400 INFO Sinal signal_GBPUSD_1780411500.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:41,400 INFO Sinal signal_GBPUSD_1780411560.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:41,400 INFO Sinal signal_GBPUSD_1780411620.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:41,401 INFO Sinal signal_GBPUSD_1780412040.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:41,401 INFO Sinal signal_GBPUSD_1780412100.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:41,401 INFO Sinal signal_GBPUSD_1780412160.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:41,401 INFO Sinal signal_GBPUSD_1780412280.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:41,401 INFO Sinal signal_GBPUSD_1780412340.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:41,402 INFO Sinal signal_GBPUSD_1780412400.json aguardando resolucao da ordem pendente de GBPUSD.
+2026-06-02 09:01:51,770 INFO Resultado IQ resolvido: GBPUSD order_id=13951977939 lucro=1.70 proximo_mg=0
+2026-06-02 09:09:13,447 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 09:09:13,730 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 09:09:33,594 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 09:09:33,896 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 09:12:38,388 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 09:12:38,651 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 14:51:45,210 INFO Ignorando sinal vencido/stale: signal_EURUSD_1780412580.json
+2026-06-02 14:51:45,479 INFO Ignorando sinal vencido/stale: signal_EURUSD_1780412640.json
+2026-06-02 14:51:45,513 INFO Ignorando sinal vencido/stale: signal_EURUSD_1780412700.json
+2026-06-02 14:51:45,513 INFO Ignorando sinal vencido/stale: signal_EURUSD_1780412760.json
+2026-06-02 14:51:45,513 INFO Ignorando sinal vencido/stale: signal_EURUSD_1780412820.json
+2026-06-02 14:51:45,518 INFO Ignorando sinal vencido/stale: signal_EURUSD_1780412880.json
+2026-06-02 14:51:45,518 INFO Ignorando sinal vencido/stale: signal_EURUSD_1780412940.json
+2026-06-02 14:51:45,518 INFO Ignorando sinal vencido/stale: signal_EURUSD_1780413000.json
+2026-06-02 14:51:45,522 INFO Ignorando sinal vencido/stale: signal_EURUSD_1780413060.json
+2026-06-02 14:51:45,524 INFO Ignorando sinal vencido/stale: signal_GBPUSD_1780411380.json
+2026-06-02 14:51:45,524 INFO Ignorando sinal vencido/stale: signal_GBPUSD_1780411440.json
+2026-06-02 14:51:45,527 INFO Ignorando sinal vencido/stale: signal_GBPUSD_1780411500.json
+2026-06-02 14:51:45,528 INFO Ignorando sinal vencido/stale: signal_GBPUSD_1780411560.json
+2026-06-02 14:51:45,528 INFO Ignorando sinal vencido/stale: signal_GBPUSD_1780411620.json
+2026-06-02 14:51:45,530 INFO Ignorando sinal vencido/stale: signal_GBPUSD_1780412040.json
+2026-06-02 14:51:45,530 INFO Ignorando sinal vencido/stale: signal_GBPUSD_1780412100.json
+2026-06-02 14:51:45,533 INFO Ignorando sinal vencido/stale: signal_GBPUSD_1780412160.json
+2026-06-02 14:51:45,533 INFO Ignorando sinal vencido/stale: signal_GBPUSD_1780412280.json
+2026-06-02 14:51:45,533 INFO Ignorando sinal vencido/stale: signal_GBPUSD_1780412340.json
+2026-06-02 14:51:45,533 INFO Ignorando sinal vencido/stale: signal_GBPUSD_1780412400.json
+2026-06-02 14:51:45,533 INFO Ignorando sinal vencido/stale: signal_GBPUSD_1780412460.json
+2026-06-02 14:51:45,533 INFO Ignorando sinal vencido/stale: signal_GBPUSD_1780412520.json
+2026-06-02 14:51:45,542 INFO Ignorando sinal vencido/stale: signal_GBPUSD_1780412580.json
+2026-06-02 14:51:45,543 INFO Ignorando sinal vencido/stale: signal_GBPUSD_1780412640.json
+2026-06-02 14:51:45,543 INFO Ignorando sinal vencido/stale: signal_GBPUSD_1780412700.json
+2026-06-02 14:51:45,543 INFO Ignorando sinal vencido/stale: signal_GBPUSD_1780412760.json
+2026-06-02 14:51:45,543 INFO Ignorando sinal vencido/stale: signal_GBPUSD_1780412820.json
+2026-06-02 14:51:45,543 INFO Ignorando sinal vencido/stale: signal_GBPUSD_1780412880.json
+2026-06-02 14:51:45,543 INFO Ignorando sinal vencido/stale: signal_GBPUSD_1780412940.json
+2026-06-02 14:51:45,543 INFO Ignorando sinal vencido/stale: signal_GBPUSD_1780413000.json
+2026-06-02 14:51:45,543 INFO Ignorando sinal vencido/stale: signal_GBPUSD_1780413060.json
+2026-06-02 14:51:46,916 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 14:51:49,600 INFO MT5 aberto: C:\Program Files\Infinox MetaTrader 5 Terminal\terminal64.exe
+2026-06-02 14:51:58,034 INFO Pagina da IQ Option aberta no navegador: https://iqoption.com/traderoom
+2026-06-02 14:58:52,516 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 15:07:01,061 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 15:07:29,516 INFO Pagina da IQ Option aberta no navegador: https://iqoption.com/traderoom
+2026-06-02 15:07:52,875 INFO MT5 aberto: C:\Program Files\Infinox MetaTrader 5 Terminal\terminal64.exe
+2026-06-02 15:11:54,067 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 15:20:20,088 INFO MT5 aberto: C:\Program Files\Infinox MetaTrader 5 Terminal\terminal64.exe
+2026-06-02 15:20:43,439 INFO Pagina da IQ Option aberta no navegador: https://iqoption.com/traderoom
+2026-06-02 15:21:36,725 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 15:21:38,102 INFO MT5 aberto: C:\Program Files\Infinox MetaTrader 5 Terminal\terminal64.exe
+2026-06-02 15:21:42,029 WARNING Falha ao consultar payout digital para EURUSD: Operacao excedeu 3.0s.
+2026-06-02 15:21:43,543 ERROR Falha ao processar signal_EURUSD_1780435200.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 261, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 797, in process_signal_file
+    raise RuntimeError(f"IQ Option recusou a ordem para {iq_symbol}.")
+RuntimeError: IQ Option recusou a ordem para EURUSD.
+2026-06-02 15:21:50,741 WARNING Falha ao consultar payout digital para GBPUSD: Operacao excedeu 3.0s.
+2026-06-02 15:21:53,197 ERROR Falha ao processar signal_GBPUSD_1780435200.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 261, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 797, in process_signal_file
+    raise RuntimeError(f"IQ Option recusou a ordem para {iq_symbol}.")
+RuntimeError: IQ Option recusou a ordem para GBPUSD.
+2026-06-02 15:25:12,767 WARNING Falha ao consultar payout digital para EURUSD: Operacao excedeu 3.0s.
+2026-06-02 15:25:16,011 ERROR Falha ao processar signal_EURUSD_1780435440.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 261, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 797, in process_signal_file
+    raise RuntimeError(f"IQ Option recusou a ordem para {iq_symbol}.")
+RuntimeError: IQ Option recusou a ordem para EURUSD.
+2026-06-02 15:25:21,728 WARNING Falha ao consultar payout turbo/binary para GBPUSD: Operacao excedeu 3.0s.
+2026-06-02 15:25:25,028 WARNING Falha ao consultar payout digital para GBPUSD: Operacao excedeu 3.0s.
+2026-06-02 15:25:27,694 ERROR Falha ao processar signal_GBPUSD_1780435440.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 261, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 797, in process_signal_file
+    raise RuntimeError(f"IQ Option recusou a ordem para {iq_symbol}.")
+RuntimeError: IQ Option recusou a ordem para GBPUSD.
+2026-06-02 15:33:15,882 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 15:33:21,204 WARNING Falha ao consultar payout digital para EURUSD: Operacao excedeu 3.0s.
+2026-06-02 15:33:22,700 INFO Sinal signal_EURUSD_1780435920.json processado: mt5=EURUSD iq=EURUSD-OTC CALL amount=2.0 base=2.0 mg=0 exp=1
+2026-06-02 15:33:29,622 WARNING Falha ao consultar payout digital para GBPUSD: Operacao excedeu 3.0s.
+2026-06-02 15:33:32,057 INFO Sinal signal_GBPUSD_1780435920.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 base=2.0 mg=0 exp=1
+2026-06-02 15:37:01,690 INFO Resultado IQ resolvido: mt5=EURUSD iq=EURUSD-OTC order_id=13952996303 lucro=1.70 proximo_mg=0
+2026-06-02 15:37:49,304 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 15:37:54,605 WARNING Falha ao consultar payout digital para EURUSD: Operacao excedeu 3.0s.
+2026-06-02 15:37:56,108 INFO Sinal signal_EURUSD_1780436160.json processado: mt5=EURUSD iq=EURUSD-OTC CALL amount=2.0 base=2.0 mg=0 exp=1
+2026-06-02 15:38:01,426 WARNING Falha ao consultar payout digital para GBPUSD: Operacao excedeu 3.0s.
+2026-06-02 15:38:02,862 INFO Sinal signal_GBPUSD_1780436160.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 base=2.0 mg=0 exp=1
+2026-06-02 15:38:40,046 WARNING Falha ao ler status MT5 status_GBPUSD.json: [Errno 13] Permission denied: 'C:\\Users\\User\\AppData\\Roaming\\MetaQuotes\\Terminal\\Common\\Files\\OpBinBridge\\status\\status_GBPUSD.json'
+2026-06-02 15:39:11,403 INFO Pagina da IQ Option aberta no navegador: https://iqoption.com/traderoom
+2026-06-02 15:39:34,739 INFO Pagina da IQ Option aberta no navegador: https://iqoption.com/traderoom
+2026-06-02 15:41:16,476 INFO Resultado IQ resolvido: mt5=EURUSD iq=EURUSD-OTC order_id=13953006640 lucro=-2.00 proximo_mg=1
+2026-06-02 15:41:17,948 INFO Resultado IQ resolvido: mt5=GBPUSD iq=GBPUSD-OTC order_id=13953007065 lucro=-2.00 proximo_mg=0
+2026-06-02 15:41:27,781 WARNING Falha ao consultar payout digital para EURUSD: Operacao excedeu 3.0s.
+2026-06-02 15:41:30,925 INFO Sinal signal_EURUSD_1780436400.json processado: mt5=EURUSD iq=EURUSD-OTC CALL amount=4.5 base=2.0 mg=1 exp=1
+2026-06-02 15:41:36,564 WARNING Falha ao consultar payout turbo/binary para GBPUSD: Operacao excedeu 3.0s.
+2026-06-02 15:41:39,627 WARNING Falha ao consultar payout digital para GBPUSD: Operacao excedeu 3.0s.
+2026-06-02 15:41:45,559 INFO Sinal signal_GBPUSD_1780436400.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 base=2.0 mg=0 exp=1
+2026-06-02 15:47:58,290 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 15:48:03,747 WARNING Falha ao consultar payout digital para EURUSD: Operacao excedeu 3.0s.
+2026-06-02 15:48:05,323 ERROR Falha ao processar signal_EURUSD_1780436820.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 261, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 878, in process_signal_file
+    raise RuntimeError("IQ Option recusou a ordem. " + " | ".join(buy_errors))
+RuntimeError: IQ Option recusou a ordem. EURUSD: recusado
+2026-06-02 15:48:12,803 WARNING Falha ao consultar payout digital para GBPUSD: Operacao excedeu 3.0s.
+2026-06-02 15:48:14,909 ERROR Falha ao processar signal_GBPUSD_1780436820.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 261, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 878, in process_signal_file
+    raise RuntimeError("IQ Option recusou a ordem. " + " | ".join(buy_errors))
+RuntimeError: IQ Option recusou a ordem. GBPUSD: recusado
+2026-06-02 15:52:13,515 WARNING Falha ao consultar payout digital para EURUSD: Operacao excedeu 3.0s.
+2026-06-02 15:52:16,331 ERROR Falha ao processar signal_EURUSD_1780437060.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 261, in process_pending_signals
+    if self.should_ignore_signal_file(signal_file, payload):
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 878, in process_signal_file
+    self.config.ignored_path,
+RuntimeError: IQ Option recusou a ordem. EURUSD: recusado
+2026-06-02 15:52:22,082 WARNING Falha ao consultar payout turbo/binary para GBPUSD: Operacao excedeu 3.0s.
+2026-06-02 15:52:25,348 WARNING Falha ao consultar payout digital para GBPUSD: Operacao excedeu 3.0s.
+2026-06-02 15:52:27,796 ERROR Falha ao processar signal_GBPUSD_1780437060.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 261, in process_pending_signals
+    if self.should_ignore_signal_file(signal_file, payload):
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 878, in process_signal_file
+    self.config.ignored_path,
+RuntimeError: IQ Option recusou a ordem. GBPUSD: recusado
+2026-06-02 15:52:54,424 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 15:52:59,438 WARNING Falha ao verificar disponibilidade do ativo GBPUSD: Operacao excedeu 5.0s.
+2026-06-02 15:53:04,497 ERROR Falha ao processar signal_GBPUSD_1780437120.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 263, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 953, in process_signal_file
+    raise RuntimeError("IQ Option recusou a ordem. " + " | ".join(buy_errors))
+RuntimeError: IQ Option recusou a ordem. GBPUSD: Operacao excedeu 5.0s.
+2026-06-02 15:55:23,936 ERROR Falha ao processar signal_EURUSD_1780437240.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 261, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 810, in process_signal_file
+    if not self.is_symbol_tradable(selected_iq_symbol):
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'IQOptionBridge' object has no attribute 'is_symbol_tradable'
+2026-06-02 15:55:23,952 ERROR Falha ao processar signal_GBPUSD_1780437240.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 261, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 810, in process_signal_file
+    if not self.is_symbol_tradable(selected_iq_symbol):
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'IQOptionBridge' object has no attribute 'is_symbol_tradable'
+2026-06-02 15:57:44,475 INFO MT5 aberto: C:\Program Files\Infinox MetaTrader 5 Terminal\terminal64.exe
+2026-06-02 15:59:00,986 ERROR Falha ao processar signal_EURUSD_1780437480.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 261, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 810, in process_signal_file
+    if not self.is_symbol_tradable(selected_iq_symbol):
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'IQOptionBridge' object has no attribute 'is_symbol_tradable'
+2026-06-02 15:59:00,988 ERROR Falha ao processar signal_GBPUSD_1780437480.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 261, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 810, in process_signal_file
+    if not self.is_symbol_tradable(selected_iq_symbol):
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'IQOptionBridge' object has no attribute 'is_symbol_tradable'
+2026-06-02 15:59:57,526 ERROR Falha ao processar signal_EURUSD_1780437540.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 261, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 810, in process_signal_file
+    if not self.is_symbol_tradable(selected_iq_symbol):
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'IQOptionBridge' object has no attribute 'is_symbol_tradable'
+2026-06-02 15:59:57,526 ERROR Falha ao processar signal_GBPUSD_1780437540.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 261, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 810, in process_signal_file
+    if not self.is_symbol_tradable(selected_iq_symbol):
+           ^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'IQOptionBridge' object has no attribute 'is_symbol_tradable'
+2026-06-02 16:00:53,803 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 16:01:01,819 ERROR Falha ao processar signal_EURUSD_1780437600.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 261, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 903, in process_signal_file
+    raise RuntimeError("IQ Option recusou a ordem. " + " | ".join(buy_errors))
+RuntimeError: IQ Option recusou a ordem. EURUSD: Operacao excedeu 8.0s.
+2026-06-02 16:01:11,682 ERROR Falha ao processar signal_GBPUSD_1780437600.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 261, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 903, in process_signal_file
+    raise RuntimeError("IQ Option recusou a ordem. " + " | ".join(buy_errors))
+RuntimeError: IQ Option recusou a ordem. GBPUSD: Operacao excedeu 8.0s.
+2026-06-02 16:03:30,616 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 16:03:30,616 INFO do1A20260602D190500T1MCSPT
+2026-06-02 16:03:31,211 ERROR Falha ao processar signal_EURUSD_1780437720.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 261, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 905, in process_signal_file
+    raise RuntimeError("IQ Option recusou a ordem. " + " | ".join(buy_errors))
+RuntimeError: IQ Option recusou a ordem. EURUSD: recusado
+2026-06-02 16:03:31,211 INFO do5A20260602D190500T1MCSPT
+2026-06-02 16:03:31,591 ERROR Falha ao processar signal_GBPUSD_1780437720.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 261, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 905, in process_signal_file
+    raise RuntimeError("IQ Option recusou a ordem. " + " | ".join(buy_errors))
+RuntimeError: IQ Option recusou a ordem. GBPUSD: recusado
+2026-06-02 16:07:22,938 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 16:07:22,942 INFO do1A20260602D190900T1MCSPT
+2026-06-02 16:07:23,551 ERROR Falha ao processar signal_EURUSD_1780437960.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 261, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 906, in process_signal_file
+    raise RuntimeError("IQ Option recusou a ordem. " + " | ".join(buy_errors))
+RuntimeError: IQ Option recusou a ordem. EURUSD: recusado retorno={'code': 'error_place_digital_order', 'message': 'invalid instrument'}
+2026-06-02 16:07:23,557 INFO do5A20260602D190900T1MCSPT
+2026-06-02 16:07:23,874 ERROR Falha ao processar signal_GBPUSD_1780437960.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 261, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 906, in process_signal_file
+    raise RuntimeError("IQ Option recusou a ordem. " + " | ".join(buy_errors))
+RuntimeError: IQ Option recusou a ordem. GBPUSD: recusado retorno={'code': 'error_place_digital_order', 'message': 'invalid instrument'}
+2026-06-02 16:07:51,386 INFO do1A20260602D190900T1MCSPT
+2026-06-02 16:07:51,768 ERROR Falha ao processar signal_EURUSD_1780438020.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 261, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 906, in process_signal_file
+    raise RuntimeError("IQ Option recusou a ordem. " + " | ".join(buy_errors))
+RuntimeError: IQ Option recusou a ordem. EURUSD: recusado retorno={'code': 'error_place_digital_order', 'message': 'invalid instrument'}
+2026-06-02 16:07:51,774 INFO do5A20260602D190900T1MCSPT
+2026-06-02 16:07:52,085 ERROR Falha ao processar signal_GBPUSD_1780438020.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 261, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 906, in process_signal_file
+    raise RuntimeError("IQ Option recusou a ordem. " + " | ".join(buy_errors))
+RuntimeError: IQ Option recusou a ordem. GBPUSD: recusado retorno={'code': 'error_place_digital_order', 'message': 'invalid instrument'}
+2026-06-02 16:08:52,186 INFO do1A20260602D191000T1MCSPT
+2026-06-02 16:08:52,551 ERROR Falha ao processar signal_EURUSD_1780438080.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 261, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 906, in process_signal_file
+    executed_symbol = candidate_symbol
+RuntimeError: IQ Option recusou a ordem. EURUSD: recusado retorno={'code': 'error_place_digital_order', 'message': 'invalid instrument'}
+2026-06-02 16:08:53,624 INFO do5A20260602D191000T1MCSPT
+2026-06-02 16:08:53,904 ERROR Falha ao processar signal_GBPUSD_1780438080.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 261, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 906, in process_signal_file
+    executed_symbol = candidate_symbol
+RuntimeError: IQ Option recusou a ordem. GBPUSD: recusado retorno={'code': 'error_place_digital_order', 'message': 'invalid instrument'}
+2026-06-02 16:12:27,976 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 16:12:40,009 INFO do1A20260602D191400T1MCSPT
+2026-06-02 16:12:40,452 ERROR Falha ao processar signal_EURUSD_1780438260.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 261, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 1021, in process_signal_file
+    receipt = self._execute_trade_request(trade, signal_file.name)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 902, in _execute_trade_request
+    raise RuntimeError("IQ Option recusou a ordem. " + " | ".join(buy_errors))
+RuntimeError: IQ Option recusou a ordem. EURUSD: recusado retorno={'code': 'error_place_digital_order', 'message': 'invalid instrument'}
+2026-06-02 16:12:54,390 INFO do5A20260602D191400T1MCSPT
+2026-06-02 16:12:55,000 ERROR Falha ao processar signal_GBPUSD_1780438260.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 261, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 1021, in process_signal_file
+    receipt = self._execute_trade_request(trade, signal_file.name)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 902, in _execute_trade_request
+    raise RuntimeError("IQ Option recusou a ordem. " + " | ".join(buy_errors))
+RuntimeError: IQ Option recusou a ordem. GBPUSD: recusado retorno={'code': 'error_place_digital_order', 'message': 'invalid instrument'}
+2026-06-02 16:16:32,482 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 16:16:44,584 INFO do1A20260602D191800T1MCSPT
+2026-06-02 16:16:45,467 ERROR Falha ao processar signal_EURUSD_1780438500.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 261, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 1053, in process_signal_file
+    receipt = self._execute_trade_request(trade, signal_file.name)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 876, in _execute_trade_request
+    raise RuntimeError("IQ Option recusou a ordem. " + " | ".join(buy_errors))
+RuntimeError: IQ Option recusou a ordem. EURUSD: recusado retorno='Cannot purchase an option (the asset is not available at the moment).'
+2026-06-02 16:16:59,967 INFO do5A20260602D191800T1MCSPT
+2026-06-02 16:17:01,248 ERROR Falha ao processar signal_GBPUSD_1780438500.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 261, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 1053, in process_signal_file
+    receipt = self._execute_trade_request(trade, signal_file.name)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 876, in _execute_trade_request
+    raise RuntimeError("IQ Option recusou a ordem. " + " | ".join(buy_errors))
+RuntimeError: IQ Option recusou a ordem. GBPUSD: recusado retorno='Cannot purchase an option (the asset is not available at the moment).'
+2026-06-02 16:17:20,701 INFO do1A20260602D191800T1MCSPT
+2026-06-02 16:17:52,019 INFO do1A20260602D191900T1MCSPT
+2026-06-02 16:19:27,669 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 16:19:39,689 INFO do1A20260602D192100T1MCSPT
+2026-06-02 16:19:40,625 ERROR Falha ao processar signal_EURUSD_1780438680.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 265, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 1064, in process_signal_file
+    receipt = self._execute_trade_request(trade, signal_file.name)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 884, in _execute_trade_request
+    raise AssetUnavailableError(
+bridge.AssetUnavailableError: Mercado aberto indisponivel na IQ no momento. EURUSD: recusado retorno='Cannot purchase an option (the asset is not available at the moment).'
+2026-06-02 16:19:54,364 INFO do5A20260602D192100T1MCSPT
+2026-06-02 16:19:56,002 ERROR Falha ao processar signal_GBPUSD_1780438680.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 265, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 1064, in process_signal_file
+    receipt = self._execute_trade_request(trade, signal_file.name)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 884, in _execute_trade_request
+    raise AssetUnavailableError(
+bridge.AssetUnavailableError: Mercado aberto indisponivel na IQ no momento. GBPUSD: recusado retorno='Cannot purchase an option (the asset is not available at the moment).'
+2026-06-02 16:20:13,686 INFO do1A20260602D192100T1MCSPT
+2026-06-02 16:20:33,187 INFO do1A20260602D192200T1MCSPT
+2026-06-02 16:21:59,306 INFO do1A20260602D192300T1MCSPT
+2026-06-02 16:22:22,182 INFO do1A20260602D192400T1MCSPT
+2026-06-02 16:26:10,464 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 16:26:22,496 INFO do1A20260602D192800T1MCSPT
+2026-06-02 16:26:23,677 ERROR Falha ao processar signal_EURUSD_1780439100.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 265, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 1064, in process_signal_file
+    receipt = self._execute_trade_request(trade, signal_file.name)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 884, in _execute_trade_request
+    raise AssetUnavailableError(
+bridge.AssetUnavailableError: Mercado aberto indisponivel na IQ no momento. EURUSD: recusado retorno='Cannot purchase an option (the asset is not available at the moment).'
+2026-06-02 16:26:38,241 INFO do5A20260602D192800T1MCSPT
+2026-06-02 16:26:39,277 ERROR Falha ao processar signal_GBPUSD_1780439100.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 265, in process_pending_signals
+    "symbol": symbol,
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 1064, in process_signal_file
+    "amount": amount,
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 884, in _execute_trade_request
+    break
+bridge.AssetUnavailableError: Mercado aberto indisponivel na IQ no momento. GBPUSD: recusado retorno='Cannot purchase an option (the asset is not available at the moment).'
+2026-06-02 16:32:16,150 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 16:32:37,999 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-02 16:32:50,116 INFO do1A20260602D193400T1MCSPT
+2026-06-02 16:32:50,908 ERROR Falha ao processar signal_EURUSD_1780439460.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 292, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 1141, in process_signal_file
+    receipt = self._execute_trade_request(trade, signal_file.name)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 926, in _execute_trade_request
+    raise AssetUnavailableError(
+bridge.AssetUnavailableError: Mercado aberto indisponivel na IQ no momento. EURUSD: recusado retorno='Cannot purchase an option (the asset is not available at the moment).'
+2026-06-02 16:33:05,570 INFO do5A20260602D193400T1MCSPT
+2026-06-02 16:33:06,786 ERROR Falha ao processar signal_GBPUSD_1780439460.json
+Traceback (most recent call last):
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 292, in process_pending_signals
+    self.process_signal_file(signal_file, payload)
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 1141, in process_signal_file
+    receipt = self._execute_trade_request(trade, signal_file.name)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\bridge.py", line 926, in _execute_trade_request
+    raise AssetUnavailableError(
+bridge.AssetUnavailableError: Mercado aberto indisponivel na IQ no momento. GBPUSD: recusado retorno='Cannot purchase an option (the asset is not available at the moment).'
+2026-06-02 16:33:09,520 INFO Janela embutida da IQ iniciada.
+2026-06-02 16:34:25,890 INFO do1A20260602D193600T1MCSPT
+2026-06-02 16:34:48,339 INFO do1A20260602D193600T1MCSPT
+2026-06-02 16:35:13,028 INFO do1A20260602D193600T1MCSPT
+2026-06-02 16:35:38,893 INFO do1A20260602D193700T1MCSPT
+2026-06-02 16:35:46,024 WARNING Falha ao ler status MT5 status_EURJPY.json: [Errno 13] Permission denied: 'C:\\Users\\User\\AppData\\Roaming\\MetaQuotes\\Terminal\\Common\\Files\\OpBinBridge\\status\\status_EURJPY.json'
+2026-06-02 16:35:49,618 INFO Pagina da IQ Option aberta no navegador: https://iqoption.com/traderoom
+2026-06-02 16:36:07,840 INFO do1A20260602D193700T1MCSPT
+2026-06-02 16:36:37,324 INFO do1A20260602D193800T1MCSPT

@@ -343,7 +343,7 @@ bool ExportBridgeSignal(const int shift, const int signal_direction)
       SanitizeFilePart(_Symbol),
       (long)signal_time);
 
-   int handle = FileOpen(file_name, FILE_WRITE | FILE_TXT | FILE_ANSI | FILE_COMMON);
+   int handle = FileOpen(file_name, FILE_WRITE | FILE_TXT | FILE_ANSI | FILE_COMMON | FILE_SHARE_READ | FILE_SHARE_WRITE);
    if(handle == INVALID_HANDLE)
    {
       Print("Falha ao abrir arquivo de sinal da bridge. Erro: ", GetLastError());
@@ -395,7 +395,7 @@ bool ExportBridgeStatus()
       GetBridgeStatusFolder(),
       SanitizeFilePart(_Symbol));
 
-   int handle = FileOpen(file_name, FILE_WRITE | FILE_TXT | FILE_ANSI | FILE_COMMON);
+   int handle = FileOpen(file_name, FILE_WRITE | FILE_TXT | FILE_ANSI | FILE_COMMON | FILE_SHARE_READ | FILE_SHARE_WRITE);
    if(handle == INVALID_HANDLE)
    {
       Print("Falha ao abrir arquivo de status da bridge. Erro: ", GetLastError());
