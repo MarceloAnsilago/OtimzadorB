@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import logging
+import os
 import shutil
 import sys
 import time
@@ -45,6 +46,7 @@ class BridgeConfig:
     min_payout_percent: float
     open_browser_on_start: bool
     browser_url: str
+    mt5_terminal_path: Path
     status_freshness_seconds: int
     iq_symbol_map: dict[str, str]
     iq_candle_interval_seconds: int
@@ -161,6 +163,20 @@ class IQOptionBridge:
             return True
         else:
             logging.warning("Nao foi possivel abrir o navegador automaticamente.")
+            return False
+
+    def open_mt5(self) -> bool:
+        terminal_path = self.config.mt5_terminal_path.expanduser()
+        if not terminal_path.exists():
+            logging.warning("Executavel do MT5 nao encontrado: %s", terminal_path)
+            return False
+
+        try:
+            os.startfile(str(terminal_path))
+            logging.info("MT5 aberto: %s", terminal_path)
+            return True
+        except OSError:
+            logging.exception("Nao foi possivel abrir o MT5: %s", terminal_path)
             return False
 
     def process_pending_signals(self) -> None:
@@ -807,6 +823,7 @@ def load_config(config_path: Path) -> BridgeConfig:
         min_payout_percent=float(raw.get("min_payout_percent", 0.0)),
         open_browser_on_start=bool(raw.get("open_browser_on_start", False)),
         browser_url=str(raw.get("browser_url", "https://iqoption.com/")),
+        mt5_terminal_path=Path(raw.get("mt5_terminal_path") or (DEFAULT_TERMINAL_DIR / "terminal64.exe")),
         status_freshness_seconds=int(raw.get("status_freshness_seconds", 10)),
         iq_symbol_map={str(key).upper(): str(value).upper() for key, value in symbol_map_raw.items()},
         iq_candle_interval_seconds=int(raw.get("iq_candle_interval_seconds", 60)),

@@ -354,6 +354,7 @@ class OpBinBridgeApp(ctk.CTk):
             ("Inbox MT5", str(self.bridge.config.inbox_path)),
             ("Status MT5", str(status_path)),
             ("URL IQ Option", self.bridge.config.browser_url),
+            ("Executavel MT5", str(self.bridge.config.mt5_terminal_path)),
         ]
         for index, (label, value) in enumerate(details, start=1):
             ctk.CTkLabel(summary, text=label, text_color="#8fa3bf").grid(
@@ -408,11 +409,14 @@ class OpBinBridgeApp(ctk.CTk):
         ctk.CTkButton(controls, text="Abrir IQ Option", command=self._open_browser_action).grid(
             row=3, column=0, sticky="ew", padx=16, pady=6
         )
-        ctk.CTkButton(controls, text="Processar sinais pendentes", command=self._process_signals_action).grid(
+        ctk.CTkButton(controls, text="Abrir MT5", command=self._open_mt5_action).grid(
             row=4, column=0, sticky="ew", padx=16, pady=6
         )
-        ctk.CTkButton(controls, text="Atualizar agora", command=lambda: self._start_fetch(force=True)).grid(
+        ctk.CTkButton(controls, text="Processar sinais pendentes", command=self._process_signals_action).grid(
             row=5, column=0, sticky="ew", padx=16, pady=6
+        )
+        ctk.CTkButton(controls, text="Atualizar agora", command=lambda: self._start_fetch(force=True)).grid(
+            row=6, column=0, sticky="ew", padx=16, pady=6
         )
 
         self.auto_switch = ctk.CTkSwitch(
@@ -422,7 +426,7 @@ class OpBinBridgeApp(ctk.CTk):
             onvalue=True,
             offvalue=False,
         )
-        self.auto_switch.grid(row=6, column=0, sticky="w", padx=16, pady=(12, 6))
+        self.auto_switch.grid(row=7, column=0, sticky="w", padx=16, pady=(12, 6))
 
         self.dry_run_switch = ctk.CTkSwitch(
             controls,
@@ -432,7 +436,7 @@ class OpBinBridgeApp(ctk.CTk):
             offvalue=False,
             command=self._toggle_dry_run,
         )
-        self.dry_run_switch.grid(row=7, column=0, sticky="w", padx=16, pady=(0, 6))
+        self.dry_run_switch.grid(row=8, column=0, sticky="w", padx=16, pady=(0, 6))
 
         self.otc_switch = ctk.CTkSwitch(
             controls,
@@ -442,10 +446,10 @@ class OpBinBridgeApp(ctk.CTk):
             offvalue=False,
             command=self._toggle_otc_mode,
         )
-        self.otc_switch.grid(row=8, column=0, sticky="w", padx=16, pady=(0, 6))
+        self.otc_switch.grid(row=9, column=0, sticky="w", padx=16, pady=(0, 6))
 
         interval_row = ctk.CTkFrame(controls, fg_color="transparent")
-        interval_row.grid(row=9, column=0, sticky="ew", padx=16, pady=(4, 16))
+        interval_row.grid(row=10, column=0, sticky="ew", padx=16, pady=(4, 16))
         interval_row.grid_columnconfigure(1, weight=1)
         ctk.CTkLabel(interval_row, text="Intervalo (s)").grid(row=0, column=0, sticky="w")
         interval_menu = ctk.CTkOptionMenu(
@@ -531,6 +535,16 @@ class OpBinBridgeApp(ctk.CTk):
                 ("success", "Pagina da IQ Option aberta no navegador.")
                 if self.bridge.open_browser()
                 else ("warning", "Nao foi possivel abrir automaticamente. Verifique o navegador padrao.")
+            )
+
+        self._run_background_action(job)
+
+    def _open_mt5_action(self) -> None:
+        def job() -> tuple[str, str]:
+            return (
+                ("success", "MT5 aberto com sucesso.")
+                if self.bridge.open_mt5()
+                else ("warning", "Nao foi possivel abrir o MT5. Verifique o caminho do executavel.")
             )
 
         self._run_background_action(job)

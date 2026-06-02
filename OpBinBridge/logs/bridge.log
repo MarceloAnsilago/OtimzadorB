@@ -458,3 +458,6 @@ ConnectionResetError: [WinError 10054] Foi for√ßado o cancelamento de uma conex√
 2026-06-01 20:14:53,964 INFO Sinal signal_GBPUSD_1780366440.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
 2026-06-01 20:15:53,051 INFO Sinal signal_GBPUSD_1780366500.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
 2026-06-01 20:15:56,740 INFO Sinal signal_EURJPY_1780366500.json processado: mt5=EURJPY iq=EURJPY-OTC PUT amount=2.0 exp=1
+2026-06-01 20:16:58,442 INFO Sinal signal_GBPUSD_1780366560.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
+2026-06-01 20:56:56,741 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-01 20:56:59,330 INFO Pagina da IQ Option aberta no navegador: https://iqoption.com/traderoom

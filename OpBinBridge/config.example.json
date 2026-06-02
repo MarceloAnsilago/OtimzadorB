@@ -18,6 +18,7 @@
   "status_freshness_seconds": 10,
   "iq_candle_interval_seconds": 60,
   "use_otc_symbols": false,
+  "mt5_terminal_path": "C:\\Users\\User\\AppData\\Roaming\\MetaQuotes\\Terminal\\SEU_HASH_DO_TERMINAL\\terminal64.exe",
   "iq_symbol_map": {
     "EURUSD": "EURUSD"
   },
