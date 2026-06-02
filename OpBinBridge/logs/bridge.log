@@ -461,3 +461,10 @@ ConnectionResetError: [WinError 10054] Foi for√ßado o cancelamento de uma conex√
 2026-06-01 20:16:58,442 INFO Sinal signal_GBPUSD_1780366560.json processado: mt5=GBPUSD iq=GBPUSD-OTC CALL amount=2.0 exp=1
 2026-06-01 20:56:56,741 INFO Conectado na IQ Option em modo PRACTICE
 2026-06-01 20:56:59,330 INFO Pagina da IQ Option aberta no navegador: https://iqoption.com/traderoom
+2026-06-01 21:00:49,075 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-01 21:00:49,774 WARNING Executavel do MT5 nao encontrado: C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\terminal64.exe
+2026-06-01 21:00:57,837 WARNING Executavel do MT5 nao encontrado: C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\terminal64.exe
+2026-06-01 21:01:06,847 INFO Pagina da IQ Option aberta no navegador: https://iqoption.com/traderoom
+2026-06-01 21:02:36,563 INFO Conectado na IQ Option em modo PRACTICE
+2026-06-01 21:02:36,949 INFO MT5 aberto: C:\Program Files\Infinox MetaTrader 5 Terminal\terminal64.exe
+2026-06-01 21:02:52,788 INFO Sinal signal_EURJPY_1780369260.json processado: mt5=EURJPY iq=EURJPY-OTC PUT amount=2.0 base=2.0 mg=0 exp=1
