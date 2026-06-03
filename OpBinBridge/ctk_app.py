@@ -451,6 +451,7 @@ class App(tk.Tk):
         super().__init__()
         self.scanner = scanner
         self.config_model = config
+        self.bridge_paths = self._load_bridge_paths()
 
         self.title("IQ Payout Scanner")
         self.geometry("980x700")
@@ -469,6 +470,10 @@ class App(tk.Tk):
         self.selected_execution_kind_var = tk.StringVar(value="-")
         self.selected_expiration_detail_var = tk.StringVar(value="-")
         self.iq_clock_var = tk.StringVar(value="Hora IQ: -")
+        self.bridge_state_var = tk.StringVar(value="Bridge: -")
+        self.bridge_queue_var = tk.StringVar(value="Fila: -")
+        self.bridge_receipts_var = tk.StringVar(value="Recibos: -")
+        self.bridge_error_var = tk.StringVar(value="Ultimo erro: -")
         self.order_amount_var = tk.StringVar(value="2")
         self.order_direction_var = tk.StringVar(value="CALL")
         self.order_expiration_var = tk.StringVar(value="Selecione uma expiracao")
@@ -478,6 +483,7 @@ class App(tk.Tk):
 
         self._configure_style()
         self._build_layout()
+        self._schedule_bridge_refresh()
 
     def _configure_style(self) -> None:
         style = ttk.Style(self)
@@ -499,6 +505,7 @@ class App(tk.Tk):
         root.pack(fill="both", expand=True)
         root.columnconfigure(0, weight=1)
         root.rowconfigure(2, weight=1)
+        root.rowconfigure(3, weight=0)
 
         header = ttk.Frame(root, style="Card.TFrame", padding=18)
         header.grid(row=0, column=0, sticky="ew")
@@ -611,6 +618,46 @@ class App(tk.Tk):
         scrollbar = ttk.Scrollbar(table_frame, orient="vertical", command=self.tree.yview)
         scrollbar.grid(row=0, column=1, sticky="ns")
         self.tree.configure(yscrollcommand=scrollbar.set)
+
+        bridge_frame = ttk.Frame(root, style="Card.TFrame", padding=14)
+        bridge_frame.grid(row=3, column=0, sticky="ew", pady=(12, 0))
+        bridge_frame.columnconfigure(0, weight=1)
+        bridge_frame.columnconfigure(1, weight=1)
+        ttk.Label(bridge_frame, text="Bridge MT5", style="Head.TLabel").grid(row=0, column=0, columnspan=2, sticky="w")
+        ttk.Label(bridge_frame, textvariable=self.bridge_state_var, style="Body.TLabel").grid(row=1, column=0, sticky="w", pady=(8, 0))
+        ttk.Label(bridge_frame, textvariable=self.bridge_queue_var, style="Body.TLabel").grid(row=1, column=1, sticky="w", pady=(8, 0))
+        ttk.Label(bridge_frame, textvariable=self.bridge_receipts_var, style="Body.TLabel").grid(row=2, column=0, sticky="w", pady=(6, 0))
+        ttk.Label(bridge_frame, textvariable=self.bridge_error_var, style="Body.TLabel").grid(row=2, column=1, sticky="w", pady=(6, 0))
+
+        pending_card = ttk.Frame(bridge_frame, style="Card.TFrame")
+        pending_card.grid(row=3, column=0, sticky="nsew", padx=(0, 8), pady=(10, 0))
+        pending_card.columnconfigure(0, weight=1)
+        ttk.Label(pending_card, text="Pendentes", style="Body.TLabel").grid(row=0, column=0, sticky="w", pady=(0, 6))
+        self.pending_listbox = tk.Listbox(
+            pending_card,
+            height=6,
+            bg="#142235",
+            fg="#d1d9e4",
+            selectbackground="#223853",
+            relief="flat",
+            highlightthickness=0,
+        )
+        self.pending_listbox.grid(row=1, column=0, sticky="ew")
+
+        receipts_card = ttk.Frame(bridge_frame, style="Card.TFrame")
+        receipts_card.grid(row=3, column=1, sticky="nsew", pady=(10, 0))
+        receipts_card.columnconfigure(0, weight=1)
+        ttk.Label(receipts_card, text="Ultimos Recibos", style="Body.TLabel").grid(row=0, column=0, sticky="w", pady=(0, 6))
+        self.receipts_listbox = tk.Listbox(
+            receipts_card,
+            height=6,
+            bg="#142235",
+            fg="#d1d9e4",
+            selectbackground="#223853",
+            relief="flat",
+            highlightthickness=0,
+        )
+        self.receipts_listbox.grid(row=1, column=0, sticky="ew")
 
     def _scan_in_background(self) -> None:
         try:
@@ -818,6 +865,171 @@ class App(tk.Tk):
             self.selected_expiration_detail_var.set(f"{exp_text} | {duration} min")
         else:
             self.selected_expiration_detail_var.set(f"{duration} min")
+
+    def _load_bridge_paths(self) -> dict[str, Path]:
+        raw = json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
+        common_dir = Path(str(raw.get("mt5_common_files_dir", "")).strip())
+        bridge_root = str(raw.get("bridge_root_folder", "OpBinBridge")).strip() or "OpBinBridge"
+        base_path = common_dir / bridge_root
+        return {
+            "base": base_path,
+            "inbox": base_path / str(raw.get("signals_in_folder", "signals_in")).strip(),
+            "status": base_path / str(raw.get("status_folder", "status")).strip(),
+            "processed": base_path / str(raw.get("processed_folder", "signals_processed")).strip(),
+            "failed": base_path / str(raw.get("failed_folder", "signals_failed")).strip(),
+            "ignored": base_path / str(raw.get("ignored_folder", "signals_ignored")).strip(),
+            "receipts": base_path / str(raw.get("receipts_folder", "receipts")).strip(),
+        }
+
+    def _schedule_bridge_refresh(self) -> None:
+        self._refresh_bridge_dashboard_in_background()
+        self.after(3000, self._schedule_bridge_refresh)
+
+    def _refresh_bridge_dashboard_in_background(self) -> None:
+        def worker() -> None:
+            snapshot = self._collect_bridge_snapshot()
+            self.after(0, lambda: self._apply_bridge_snapshot(snapshot))
+
+        threading.Thread(target=worker, daemon=True).start()
+
+    def _collect_bridge_snapshot(self) -> dict[str, Any]:
+        inbox = self.bridge_paths["inbox"]
+        status_dir = self.bridge_paths["status"]
+        receipts_dir = self.bridge_paths["receipts"]
+        failed_dir = self.bridge_paths["failed"]
+        ignored_dir = self.bridge_paths["ignored"]
+        processed_dir = self.bridge_paths["processed"]
+
+        pending_files = self._safe_sorted_files(inbox, "signal_*.json", limit=6)
+        receipt_files = self._safe_sorted_multi(receipts_dir, ["*.json", "*.receipt.json"], limit=6)
+        failed_count = self._safe_count_files(failed_dir, "*.json")
+        ignored_count = self._safe_count_files(ignored_dir, "*.json")
+        processed_count = self._safe_count_files(processed_dir, "*.json")
+
+        status_payload: dict[str, Any] = {}
+        bridge_status_file = status_dir / "bridge_status.json"
+        if bridge_status_file.exists():
+            try:
+                status_payload = json.loads(bridge_status_file.read_text(encoding="utf-8"))
+            except Exception:
+                status_payload = {}
+        if not status_payload:
+            status_payload = self._collect_legacy_status_snapshot(status_dir)
+
+        pending_items = [self._format_pending_item(path) for path in pending_files]
+        receipt_items = [self._format_receipt_item(path) for path in receipt_files]
+        return {
+            "state_text": self._format_bridge_state(status_payload),
+            "queue_text": (
+                f"Fila: {len(pending_files)} pendente(s) | {processed_count} processado(s) | "
+                f"{ignored_count} ignorado(s) | {failed_count} falho(s)"
+            ),
+            "receipts_text": f"Recibos: {len(receipt_files)} arquivo(s) recentes",
+            "error_text": self._format_bridge_error(status_payload),
+            "pending_items": pending_items or ["Nenhum sinal pendente."],
+            "receipt_items": receipt_items or ["Nenhum recibo recente."],
+        }
+
+    def _apply_bridge_snapshot(self, snapshot: dict[str, Any]) -> None:
+        self.bridge_state_var.set(str(snapshot.get("state_text", "Bridge: -")))
+        self.bridge_queue_var.set(str(snapshot.get("queue_text", "Fila: -")))
+        self.bridge_receipts_var.set(str(snapshot.get("receipts_text", "Recibos: -")))
+        self.bridge_error_var.set(str(snapshot.get("error_text", "Ultimo erro: -")))
+        self._fill_listbox(self.pending_listbox, list(snapshot.get("pending_items", [])))
+        self._fill_listbox(self.receipts_listbox, list(snapshot.get("receipt_items", [])))
+
+    def _fill_listbox(self, widget: tk.Listbox, items: list[str]) -> None:
+        widget.delete(0, tk.END)
+        for item in items:
+            widget.insert(tk.END, item)
+
+    def _safe_sorted_files(self, directory: Path, pattern: str, limit: int) -> list[Path]:
+        if not directory.exists():
+            return []
+        files = [path for path in directory.glob(pattern) if path.is_file()]
+        files.sort(key=lambda item: item.stat().st_mtime, reverse=True)
+        return files[:limit]
+
+    def _safe_sorted_multi(self, directory: Path, patterns: list[str], limit: int) -> list[Path]:
+        collected: dict[str, Path] = {}
+        for pattern in patterns:
+            for path in self._safe_sorted_files(directory, pattern, limit * 2):
+                collected[str(path)] = path
+        files = list(collected.values())
+        files.sort(key=lambda item: item.stat().st_mtime, reverse=True)
+        return files[:limit]
+
+    def _safe_count_files(self, directory: Path, pattern: str) -> int:
+        if not directory.exists():
+            return 0
+        return sum(1 for path in directory.glob(pattern) if path.is_file())
+
+    def _collect_legacy_status_snapshot(self, status_dir: Path) -> dict[str, Any]:
+        legacy_files = self._safe_sorted_files(status_dir, "status_*.json", limit=20)
+        if not legacy_files:
+            return {}
+        latest_file = legacy_files[0]
+        latest_payload: dict[str, Any] = {}
+        try:
+            latest_payload = json.loads(latest_file.read_text(encoding="utf-8-sig"))
+        except Exception:
+            latest_payload = {}
+        active_symbols: list[str] = []
+        for path in legacy_files[:6]:
+            try:
+                payload = json.loads(path.read_text(encoding="utf-8-sig"))
+                if bool(payload.get("bridge_active")):
+                    active_symbols.append(str(payload.get("symbol", path.stem)).upper().strip())
+            except Exception:
+                continue
+        return {
+            "state": "legacy",
+            "heartbeat": str(latest_payload.get("server_time_text", "")).strip(),
+            "active_signal": ", ".join(active_symbols),
+            "last_error": "",
+        }
+
+    def _format_pending_item(self, path: Path) -> str:
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8-sig"))
+            symbol = str(payload.get("symbol", path.stem)).upper().strip()
+            direction = str(payload.get("direction", "-")).upper().strip()
+            expiration = int(payload.get("expiration_minutes", 0) or 0)
+            signal_time_text = str(payload.get("signal_time_text", "")).strip()
+            return f"{symbol} {direction} {expiration}m {signal_time_text}".strip()
+        except Exception:
+            return path.name
+
+    def _format_receipt_item(self, path: Path) -> str:
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8-sig"))
+            status = str(payload.get("status", "-")).upper().strip()
+            execution = dict(payload.get("execution", {}) or {})
+            symbol = str(
+                execution.get("order_symbol")
+                or payload.get("iq_symbol")
+                or execution.get("symbol_requested")
+                or payload.get("symbol")
+                or path.stem
+            ).upper().strip()
+            direction = str(execution.get("direction") or payload.get("direction") or "-").upper().strip()
+            order_id = str(execution.get("order_id") or payload.get("order_id") or "").strip()
+            order_tail = order_id[-6:] if order_id and order_id != "dry-run" else order_id
+            return f"{status} {symbol} {direction} id={order_tail or '-'}".strip()
+        except Exception:
+            return path.name
+
+    def _format_bridge_state(self, payload: dict[str, Any]) -> str:
+        state = str(payload.get("state", "offline")).upper().strip()
+        heartbeat = str(payload.get("heartbeat", "")).strip()
+        active_signal = str(payload.get("active_signal", "")).strip()
+        suffix = f" | hb {heartbeat}" if heartbeat else ""
+        active = f" | ativo {active_signal}" if active_signal else ""
+        return f"Bridge: {state}{suffix}{active}"
+
+    def _format_bridge_error(self, payload: dict[str, Any]) -> str:
+        last_error = str(payload.get("last_error", "")).strip()
+        return f"Ultimo erro: {last_error or '-'}"
 
     def _persist_config(self, show_message: bool = False) -> None:
         try:

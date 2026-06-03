@@ -20,6 +20,10 @@ except ModuleNotFoundError:
 ROOT_DIR = Path(__file__).resolve().parent
 
 
+class IgnoredSignalError(RuntimeError):
+    pass
+
+
 @dataclass
 class BridgeRuntimeConfig:
     mt5_common_files_dir: Path
@@ -28,6 +32,7 @@ class BridgeRuntimeConfig:
     status_folder: str
     processed_folder: str
     failed_folder: str
+    ignored_folder: str
     receipts_folder: str
     poll_interval_seconds: float
     default_amount: float
@@ -53,6 +58,7 @@ class BridgeRuntimeConfig:
             status_folder=str(raw.get("status_folder", "status")).strip() or "status",
             processed_folder=str(raw.get("processed_folder", "signals_processed")).strip() or "signals_processed",
             failed_folder=str(raw.get("failed_folder", "signals_failed")).strip() or "signals_failed",
+            ignored_folder=str(raw.get("ignored_folder", "signals_ignored")).strip() or "signals_ignored",
             receipts_folder=str(raw.get("receipts_folder", "receipts")).strip() or "receipts",
             poll_interval_seconds=float(raw.get("poll_interval_seconds", 1.0)),
             default_amount=float(raw.get("default_amount", 2.0)),
@@ -84,6 +90,10 @@ class BridgeRuntimeConfig:
         return self.bridge_root_path / self.failed_folder
 
     @property
+    def ignored_path(self) -> Path:
+        return self.bridge_root_path / self.ignored_folder
+
+    @property
     def receipts_path(self) -> Path:
         return self.bridge_root_path / self.receipts_folder
 
@@ -96,6 +106,7 @@ class BridgeWorker:
         self.scanner = IQPayoutScanner(self.app_config)
         self.processed_count = 0
         self.failed_count = 0
+        self.ignored_count = 0
         self.last_error = ""
         self.last_signal_file = ""
         self._ensure_directories()
@@ -121,6 +132,7 @@ class BridgeWorker:
             self.runtime_config.status_path,
             self.runtime_config.processed_path,
             self.runtime_config.failed_path,
+            self.runtime_config.ignored_path,
             self.runtime_config.receipts_path,
         ):
             folder.mkdir(parents=True, exist_ok=True)
@@ -136,6 +148,10 @@ class BridgeWorker:
             try:
                 self._process_one_signal(signal_file)
                 self.processed_count += 1
+            except IgnoredSignalError as exc:
+                self.ignored_count += 1
+                self.last_error = str(exc)
+                self._handle_ignored_signal(signal_file, exc)
             except Exception as exc:
                 self.failed_count += 1
                 self.last_error = str(exc)
@@ -204,7 +220,7 @@ class BridgeWorker:
         if expiration_minutes <= 0:
             raise RuntimeError(f"Expiration_minutes invalido no sinal: {expiration_minutes!r}.")
         if self.runtime_config.allowed_symbols and symbol not in self.runtime_config.allowed_symbols:
-            raise RuntimeError(f"Symbol {symbol} nao esta na allowlist da bridge.")
+            raise IgnoredSignalError(f"Symbol {symbol} nao esta na allowlist da bridge.")
 
     def _resolve_amount(self, payload: dict[str, Any]) -> float:
         raw_amount = payload.get("amount_hint", self.runtime_config.default_amount)
@@ -246,12 +262,12 @@ class BridgeWorker:
 
         if best_any_open is not None:
             symbol_name, payout_percent = best_any_open
-            raise RuntimeError(
+            raise IgnoredSignalError(
                 f"{symbol_name} esta aberto em {option_kind.upper()}, mas payout {payout_percent:.2f}% "
                 f"esta abaixo do minimo configurado ({self.runtime_config.min_payout_percent:.2f}%)."
             )
 
-        raise RuntimeError(
+        raise IgnoredSignalError(
             f"Nenhum simbolo operavel encontrado para {requested_symbol} em {option_kind.upper()}. "
             "Verifique mapeamento, OTC e disponibilidade na IQ."
         )
@@ -341,6 +357,20 @@ class BridgeWorker:
         self._write_receipt(signal_file, payload)
         self._move_signal_file(signal_file, self.runtime_config.failed_path)
 
+    def _handle_ignored_signal(self, signal_file: Path, exc: Exception) -> None:
+        payload = {
+            "status": "ignored",
+            "message": str(exc),
+            "source_file": signal_file.name,
+            "ignored_at": time.strftime("%Y-%m-%d %H:%M:%S"),
+            "bridge": {
+                "hostname": socket.gethostname(),
+                "pid": os.getpid(),
+            },
+        }
+        self._write_receipt(signal_file, payload)
+        self._move_signal_file(signal_file, self.runtime_config.ignored_path)
+
     def _move_signal_file(self, signal_file: Path, target_folder: Path) -> None:
         target_folder.mkdir(parents=True, exist_ok=True)
         destination = target_folder / signal_file.name
@@ -356,6 +386,7 @@ class BridgeWorker:
             "last_error": self.last_error,
             "processed_count": self.processed_count,
             "failed_count": self.failed_count,
+            "ignored_count": self.ignored_count,
             "dry_run": self.runtime_config.dry_run,
             "balance_mode": self.app_config.balance_mode,
             "heartbeat": time.strftime("%Y-%m-%d %H:%M:%S"),

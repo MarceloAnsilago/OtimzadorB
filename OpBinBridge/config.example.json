@@ -11,6 +11,7 @@
   "status_folder": "status",
   "processed_folder": "signals_processed",
   "failed_folder": "signals_failed",
+  "ignored_folder": "signals_ignored",
   "receipts_folder": "receipts",
   "allowed_symbols": [],
   "dry_run": false,
