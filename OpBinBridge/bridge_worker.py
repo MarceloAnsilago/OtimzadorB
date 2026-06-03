@@ -7,6 +7,7 @@ import socket
 import time
 from dataclasses import dataclass
 from pathlib import Path
+from datetime import datetime
 from typing import Any
 
 import iqoptionapi.constants as OP_code
@@ -272,6 +273,77 @@ class BridgeWorker:
             "Verifique mapeamento, OTC e disponibilidade na IQ."
         )
 
+    def export_operability_snapshot(self, requested_symbols: list[str] | None = None, expirations: list[int] | None = None) -> None:
+        self.scanner.connect()
+        assert self.scanner.client is not None
+        all_profit = dict(self.scanner.client.get_all_profit() or {})
+        turbo_open_map, binary_open_map = self.scanner._get_binary_open_maps()
+        symbols_to_export = requested_symbols or self._discover_symbols_for_operability()
+        expirations_to_export = expirations or [1, 5, 15]
+
+        generated_at = time.strftime("%Y-%m-%d %H:%M:%S")
+        for requested_symbol in symbols_to_export:
+            symbol_name = str(requested_symbol).upper().strip()
+            if not symbol_name:
+                continue
+            rows: list[dict[str, Any]] = []
+            for expiration_minutes in expirations_to_export:
+                option_kind = self.scanner._get_option_kind_for_duration(int(expiration_minutes))
+                open_map = turbo_open_map if option_kind == "turbo" else binary_open_map
+                candidates = self._build_symbol_candidates(self.runtime_config.iq_symbol_map.get(symbol_name, symbol_name))
+                preferred_order: list[str] = []
+                if self.runtime_config.use_otc_symbols:
+                    preferred_order.extend(candidates["otc"])
+                    preferred_order.extend(candidates["regular"])
+                else:
+                    preferred_order.extend(candidates["regular"])
+                    preferred_order.extend(candidates["otc"])
+
+                selected_symbol = ""
+                selected_payout = 0.0
+                selected_open = False
+                reason = "unavailable"
+                for candidate in preferred_order:
+                    normalized_candidate = candidate.upper().strip()
+                    if normalized_candidate not in OP_code.ACTIVES:
+                        continue
+                    payout_percent = self.scanner._to_percent((all_profit.get(normalized_candidate) or {}).get(option_kind))
+                    is_open = bool(self.scanner._get_open_info(normalized_candidate, open_map).get("open"))
+                    if not selected_symbol:
+                        selected_symbol = normalized_candidate
+                        selected_payout = payout_percent
+                        selected_open = is_open
+                    if is_open and payout_percent >= self.runtime_config.min_payout_percent:
+                        selected_symbol = normalized_candidate
+                        selected_payout = payout_percent
+                        selected_open = True
+                        reason = "operable"
+                        break
+                    if is_open:
+                        selected_symbol = normalized_candidate
+                        selected_payout = payout_percent
+                        selected_open = True
+                        reason = "below_min_payout"
+                rows.append(
+                    {
+                        "expiration_minutes": int(expiration_minutes),
+                        "option_kind": option_kind.upper(),
+                        "operable": bool(selected_open and selected_payout >= self.runtime_config.min_payout_percent),
+                        "selected_symbol": selected_symbol,
+                        "selected_payout_percent": selected_payout,
+                        "reason": reason,
+                    }
+                )
+
+            payload = {
+                "symbol": symbol_name,
+                "generated_at": generated_at,
+                "min_payout_percent": self.runtime_config.min_payout_percent,
+                "use_otc_symbols": self.runtime_config.use_otc_symbols,
+                "rows": rows,
+            }
+            self._write_json_atomic(self.runtime_config.status_path / f"operability_{symbol_name}.json", payload)
+
     def _build_symbol_candidates(self, symbol: str) -> dict[str, list[str]]:
         normalized = symbol.upper().strip()
         is_otc = normalized.endswith("-OTC") or normalized.endswith("-OTC-OP")
@@ -394,6 +466,10 @@ class BridgeWorker:
             "pid": os.getpid(),
         }
         self._write_json_atomic(self.runtime_config.status_path / "bridge_status.json", payload)
+        try:
+            self.export_operability_snapshot()
+        except Exception:
+            pass
 
     def _write_json_atomic(self, path: Path, payload: dict[str, Any]) -> None:
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -418,6 +494,26 @@ class BridgeWorker:
             if normalized and normalized not in unique:
                 unique.append(normalized)
         return unique
+
+    def _discover_symbols_for_operability(self) -> list[str]:
+        symbols: list[str] = []
+        for path in self.runtime_config.status_path.glob("status_*.json"):
+            try:
+                payload = json.loads(path.read_text(encoding="utf-8-sig"))
+                symbol = str(payload.get("symbol", "")).upper().strip()
+                if symbol and symbol not in symbols:
+                    symbols.append(symbol)
+            except Exception:
+                continue
+        for path in self.runtime_config.inbox_path.glob("signal_*.json"):
+            try:
+                payload = json.loads(path.read_text(encoding="utf-8-sig"))
+                symbol = str(payload.get("symbol", "")).upper().strip()
+                if symbol and symbol not in symbols:
+                    symbols.append(symbol)
+            except Exception:
+                continue
+        return symbols
 
 
 def main() -> None:

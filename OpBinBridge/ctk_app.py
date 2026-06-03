@@ -1,9 +1,11 @@
 from __future__ import annotations
 
 import json
+import os
 import threading
 import time
 import tkinter as tk
+import webbrowser
 from dataclasses import dataclass
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -542,6 +544,8 @@ class App(tk.Tk):
 
         ttk.Button(controls, text="Buscar payouts", command=self._scan_in_background).grid(row=6, column=0, sticky="ew", pady=4)
         ttk.Button(controls, text="Salvar config", command=self._persist_config).grid(row=7, column=0, sticky="ew", pady=4)
+        ttk.Button(controls, text="Abrir IQ", command=self._open_iq_browser).grid(row=8, column=0, sticky="ew", pady=4)
+        ttk.Button(controls, text="Abrir MT5", command=self._open_mt5_terminal).grid(row=9, column=0, sticky="ew", pady=4)
 
         help_card = ttk.Frame(top, style="Card.TFrame", padding=16)
         help_card.grid(row=0, column=1, sticky="nsew")
@@ -881,6 +885,9 @@ class App(tk.Tk):
             "receipts": base_path / str(raw.get("receipts_folder", "receipts")).strip(),
         }
 
+    def _load_raw_config(self) -> dict[str, Any]:
+        return json.loads(CONFIG_PATH.read_text(encoding="utf-8"))
+
     def _schedule_bridge_refresh(self) -> None:
         self._refresh_bridge_dashboard_in_background()
         self.after(3000, self._schedule_bridge_refresh)
@@ -1030,6 +1037,28 @@ class App(tk.Tk):
     def _format_bridge_error(self, payload: dict[str, Any]) -> str:
         last_error = str(payload.get("last_error", "")).strip()
         return f"Ultimo erro: {last_error or '-'}"
+
+    def _open_iq_browser(self) -> None:
+        raw = self._load_raw_config()
+        url = str(raw.get("browser_url", "")).strip()
+        if not url:
+            messagebox.showerror("IQ Payout Scanner", "browser_url nao configurado em config.json.")
+            return
+        try:
+            webbrowser.open(url)
+        except Exception as exc:
+            messagebox.showerror("IQ Payout Scanner", f"Falha ao abrir a IQ: {exc}")
+
+    def _open_mt5_terminal(self) -> None:
+        raw = self._load_raw_config()
+        mt5_path = Path(str(raw.get("mt5_terminal_path", "")).strip())
+        if not mt5_path.exists():
+            messagebox.showerror("IQ Payout Scanner", "mt5_terminal_path nao encontrado em config.json.")
+            return
+        try:
+            os.startfile(str(mt5_path))
+        except Exception as exc:
+            messagebox.showerror("IQ Payout Scanner", f"Falha ao abrir o MT5: {exc}")
 
     def _persist_config(self, show_message: bool = False) -> None:
         try:
