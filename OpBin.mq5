@@ -274,6 +274,13 @@ string GetBridgeStatusFolder()
    return InpBridgeRootFolder + "\\" + InpBridgeStatusFolder;
 }
 
+string GetBridgeOperabilityFilePath()
+{
+   return StringFormat("%s\\operability_%s.json",
+      GetBridgeStatusFolder(),
+      SanitizeFilePart(_Symbol));
+}
+
 bool EnsureBridgeFolders()
 {
    if(!InpBridgeAtivo)
@@ -304,6 +311,101 @@ bool EnsureBridgeFolders()
    }
 
    return true;
+}
+
+string ReadCommonTextFile(string file_name)
+{
+   int handle = FileOpen(file_name, FILE_READ | FILE_TXT | FILE_ANSI | FILE_COMMON | FILE_SHARE_READ | FILE_SHARE_WRITE);
+   if(handle == INVALID_HANDLE)
+      return "";
+
+   string content = "";
+   while(!FileIsEnding(handle))
+      content += FileReadString(handle);
+   FileClose(handle);
+   return content;
+}
+
+bool TryReadBridgeOperability(
+   const int expiration_minutes,
+   bool &has_snapshot,
+   bool &operable,
+   string &selected_symbol,
+   string &reason_text
+)
+{
+   has_snapshot = false;
+   operable = false;
+   selected_symbol = "";
+   reason_text = "";
+
+   string content = ReadCommonTextFile(GetBridgeOperabilityFilePath());
+   if(StringLen(content) == 0)
+      return false;
+
+   has_snapshot = true;
+   string marker = StringFormat("\"expiration_minutes\": %d", expiration_minutes);
+   int start_pos = StringFind(content, marker);
+   if(start_pos < 0)
+      return false;
+
+   int next_row_pos = StringFind(content, "\"expiration_minutes\":", start_pos + StringLen(marker));
+   string row_text = (next_row_pos > start_pos)
+      ? StringSubstr(content, start_pos, next_row_pos - start_pos)
+      : StringSubstr(content, start_pos);
+
+   if(StringFind(row_text, "\"operable\": true") >= 0)
+      operable = true;
+   else if(StringFind(row_text, "\"operable\": false") >= 0)
+      operable = false;
+
+   string symbol_marker = "\"selected_symbol\": \"";
+   int symbol_pos = StringFind(row_text, symbol_marker);
+   if(symbol_pos >= 0)
+   {
+      int symbol_start = symbol_pos + StringLen(symbol_marker);
+      int symbol_end = StringFind(row_text, "\"", symbol_start);
+      if(symbol_end > symbol_start)
+         selected_symbol = StringSubstr(row_text, symbol_start, symbol_end - symbol_start);
+   }
+
+   string reason_marker = "\"reason\": \"";
+   int reason_pos = StringFind(row_text, reason_marker);
+   if(reason_pos >= 0)
+   {
+      int reason_start = reason_pos + StringLen(reason_marker);
+      int reason_end = StringFind(row_text, "\"", reason_start);
+      if(reason_end > reason_start)
+         reason_text = StringSubstr(row_text, reason_start, reason_end - reason_start);
+   }
+
+   return true;
+}
+
+bool BridgeAllowsSignalExport(const int expiration_minutes, string &block_reason)
+{
+   block_reason = "";
+   bool has_snapshot = false;
+   bool operable = false;
+   string selected_symbol = "";
+   string reason_text = "";
+   if(!TryReadBridgeOperability(expiration_minutes, has_snapshot, operable, selected_symbol, reason_text))
+      return true;
+
+   if(!has_snapshot)
+      return true;
+
+   if(operable)
+      return true;
+
+   block_reason = StringFormat(
+      "Bridge bloqueou sinal para %s em %d min. reason=%s selected_symbol=%s",
+      _Symbol,
+      expiration_minutes,
+      reason_text,
+      selected_symbol
+   );
+   return false;
 }
 
 double GetBridgeAmountHint()
@@ -517,6 +619,14 @@ void ProcessBridgeSignalOnNewBar()
    int signal_direction = GetStrategyDirection(1);
    if(signal_direction == 0 && !InpBridgeExportarMesmoSemSinal)
    {
+      g_last_bridge_candle_time = closed_candle_time;
+      return;
+   }
+
+   string bridge_block_reason = "";
+   if(!BridgeAllowsSignalExport(InpBridgeExpirationMinutes, bridge_block_reason))
+   {
+      Print(bridge_block_reason);
       g_last_bridge_candle_time = closed_candle_time;
       return;
    }
