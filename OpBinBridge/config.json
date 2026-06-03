@@ -20,5 +20,5 @@
   "iq_symbol_map": {},
   "browser_url": "https://iqoption.com/traderoom",
   "mt5_terminal_path": "C:\\Program Files\\Infinox MetaTrader 5 Terminal\\terminal64.exe",
-  "use_otc_symbols": false
+  "use_otc_symbols": true
 }
