@@ -2,6 +2,18 @@
   "email": "seu-email-iqoption",
   "password": "sua-senha-iqoption",
   "balance_mode": "PRACTICE",
+  "default_amount": 2.0,
   "min_payout_percent": 80.0,
+  "poll_interval_seconds": 1.0,
+  "mt5_common_files_dir": "C:\\Users\\User\\AppData\\Roaming\\MetaQuotes\\Terminal\\Common\\Files",
+  "bridge_root_folder": "OpBinBridge",
+  "signals_in_folder": "signals_in",
+  "status_folder": "status",
+  "processed_folder": "signals_processed",
+  "failed_folder": "signals_failed",
+  "receipts_folder": "receipts",
+  "allowed_symbols": [],
+  "dry_run": false,
+  "iq_symbol_map": {},
   "use_otc_symbols": false
 }
