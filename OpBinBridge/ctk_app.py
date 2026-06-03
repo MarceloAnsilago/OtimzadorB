@@ -103,6 +103,7 @@ class IQPayoutScanner:
                 raise RuntimeError(f"Falha ao conectar na IQ Option. {reason}".strip())
 
             self._call_with_timeout(5.0, client.change_balance, self.config.balance_mode)
+            self._hydrate_binary_actives_map(client)
             self.client = client
 
     def _log_order_attempt(
@@ -179,7 +180,7 @@ class IQPayoutScanner:
         amount: float,
         direction: str,
         expiration_minutes: int,
-        preferred_kind: str = "",
+        expiration_timestamp: int,
     ) -> Any:
         self.connect()
         assert self.client is not None
@@ -200,15 +201,11 @@ class IQPayoutScanner:
             otc_hint = self._build_otc_preference_hint(symbol, turbo_open_map, binary_open_map)
             if otc_hint:
                 raise RuntimeError(otc_hint)
-        normalized_kind = preferred_kind.upper().strip()
-        if normalized_kind == "TURBO" and not turbo_open:
+        option_kind = self._get_option_kind_for_duration(int(expiration_minutes))
+        if option_kind == "turbo" and not turbo_open:
             raise RuntimeError(f"{order_symbol} nao esta aberto em TURBO neste momento.")
-        if normalized_kind == "BINARY" and not binary_open:
+        if option_kind == "binary" and not binary_open:
             raise RuntimeError(f"{order_symbol} nao esta aberto em BINARY neste momento.")
-        if int(expiration_minutes) <= 5 and not turbo_open:
-            raise RuntimeError(
-                f"{order_symbol} nao esta aberto em TURBO para expiracao curta ({expiration_minutes} min)."
-            )
 
         balance = self._call_with_timeout(5.0, self.client.get_balance)
         print("CONECTADO:", self.client.check_connect())
@@ -218,17 +215,18 @@ class IQPayoutScanner:
             float(amount),
             direction,
             int(expiration_minutes),
-            normalized_kind or "-",
+            option_kind.upper(),
             turbo_open,
             binary_open,
         )
         ok, order_id = self._call_with_timeout(
             8.0,
-            self.client.buy,
+            self.client.buy_by_raw_expirations,
             float(amount),
             order_symbol,
             direction.lower(),
-            int(expiration_minutes),
+            option_kind,
+            int(expiration_timestamp),
         )
         print("OK:", ok)
         print("ORDER ID:", order_id)
@@ -259,11 +257,29 @@ class IQPayoutScanner:
 
     def normalize_order_symbol(self, symbol: str) -> str:
         normalized = str(symbol).upper().strip()
-        if normalized.endswith("-OTC-OP"):
+        if normalized in OP_code.ACTIVES:
+            return normalized
+        if normalized.endswith("-OTC-OP") and normalized[:-3] in OP_code.ACTIVES:
             return normalized[:-3]
-        if normalized.endswith("-OP"):
+        if normalized.endswith("-OP") and normalized[:-3] in OP_code.ACTIVES:
             return normalized[:-3]
         return normalized
+
+    def _hydrate_binary_actives_map(self, client: IQ_Option) -> None:
+        init_v2 = dict(self._call_with_timeout(10.0, client.get_all_init_v2) or {})
+        for branch in ("binary", "turbo"):
+            actives = dict((init_v2.get(branch) or {}).get("actives") or {})
+            for active_id, item in actives.items():
+                raw_name = str((item or {}).get("name") or "").strip()
+                if "." in raw_name:
+                    raw_name = raw_name.split(".", 1)[1]
+                symbol_name = raw_name.upper()
+                if not symbol_name:
+                    continue
+                try:
+                    OP_code.ACTIVES[symbol_name] = int(active_id)
+                except Exception:
+                    continue
 
     def _get_binary_open_maps(self) -> tuple[dict[str, Any], dict[str, Any]]:
         assert self.client is not None
@@ -300,13 +316,19 @@ class IQPayoutScanner:
         raw = str(symbol).upper().strip()
         normalized = self.normalize_order_symbol(raw)
         candidates: list[str] = []
-        for candidate in (
-            raw,
-            normalized,
-            f"{normalized}-OP",
-            f"{normalized}-OTC",
-            f"{normalized}-OTC-OP",
-        ):
+        if raw.endswith("-OTC") or raw.endswith("-OTC-OP"):
+            source_candidates = (
+                raw,
+                normalized,
+                f"{normalized}-OP",
+            )
+        else:
+            source_candidates = (
+                raw,
+                normalized,
+                f"{normalized}-OP",
+            )
+        for candidate in source_candidates:
             if candidate and candidate not in candidates:
                 candidates.append(candidate)
         return candidates
@@ -318,13 +340,17 @@ class IQPayoutScanner:
         binary_open_map: dict[str, Any],
     ) -> str:
         raw = str(symbol).upper().strip()
-        if raw.endswith("-OTC") or raw.endswith("-OTC-OP"):
+        turbo_open = bool(self._get_open_info(symbol, turbo_open_map).get("open"))
+        binary_open = bool(self._get_open_info(symbol, binary_open_map).get("open"))
+        if turbo_open or binary_open:
             return "SIM"
+        if raw.endswith("-OTC") or raw.endswith("-OTC-OP"):
+            return "NAO"
         otc_hint = self._build_otc_preference_hint(symbol, turbo_open_map, binary_open_map)
         if otc_hint:
             otc_symbol = f"{self.normalize_order_symbol(symbol)}-OTC"
             return f"NAO - use {otc_symbol}"
-        return "ABERTO"
+        return "NAO"
 
     def _build_otc_preference_hint(
         self,
@@ -335,6 +361,10 @@ class IQPayoutScanner:
         normalized = self.normalize_order_symbol(symbol)
         raw = str(symbol).upper().strip()
         if raw.endswith("-OTC") or raw.endswith("-OTC-OP"):
+            return ""
+        regular_turbo_open = bool(self._get_open_info(normalized, turbo_open_map).get("open"))
+        regular_binary_open = bool(self._get_open_info(normalized, binary_open_map).get("open"))
+        if regular_turbo_open or regular_binary_open:
             return ""
         otc_symbol = f"{normalized}-OTC"
         if otc_symbol not in OP_code.ACTIVES:
@@ -404,6 +434,9 @@ class IQPayoutScanner:
             schedule.append((duration, expiration_timestamp, remaining_seconds))
         return schedule
 
+    def _get_option_kind_for_duration(self, duration: int) -> str:
+        return "turbo" if int(duration) <= 5 else "binary"
+
     def _to_percent(self, value: Any) -> float:
         if value is None:
             return 0.0
@@ -439,7 +472,7 @@ class App(tk.Tk):
         self.order_expiration_var = tk.StringVar(value="Selecione uma expiracao")
         self.expiration_status_var = tk.StringVar(value="Selecione um ativo para carregar as expiracoes da IQ.")
         self.expiration_values: list[str] = []
-        self.expiration_minutes_by_label: dict[str, int] = {}
+        self.expiration_options_by_label: dict[str, dict[str, int]] = {}
 
         self._configure_style()
         self._build_layout()
@@ -633,16 +666,17 @@ class App(tk.Tk):
         except ValueError:
             messagebox.showerror("IQ Payout Scanner", "Valor invalido.")
             return
-        expiration = self._get_selected_expiration_minutes()
+        expiration = self._get_selected_expiration()
         if expiration is None:
             messagebox.showerror("IQ Payout Scanner", "Selecione uma expiracao valida da IQ.")
             return
         direction = self.order_direction_var.get().upper().strip()
-        preferred_kind = self.selected_kind_var.get().upper().strip()
         if direction not in {"CALL", "PUT"}:
             messagebox.showerror("IQ Payout Scanner", "Direcao invalida.")
             return
-        if amount <= 0 or expiration <= 0:
+        expiration_minutes = int(expiration["duration_minutes"])
+        expiration_timestamp = int(expiration["expiration_timestamp"])
+        if amount <= 0 or expiration_minutes <= 0 or expiration_timestamp <= 0:
             messagebox.showerror("IQ Payout Scanner", "Valor e expiracao devem ser maiores que zero.")
             return
 
@@ -650,7 +684,13 @@ class App(tk.Tk):
 
         def worker() -> None:
             try:
-                order_id, order_symbol = self.scanner.place_order(symbol, amount, direction, expiration, preferred_kind)
+                order_id, order_symbol = self.scanner.place_order(
+                    symbol,
+                    amount,
+                    direction,
+                    expiration_minutes,
+                    expiration_timestamp,
+                )
             except Exception as exc:
                 self.after(0, lambda: messagebox.showerror("IQ Payout Scanner", str(exc)))
                 self.after(0, lambda: self.status_var.set(f"Falha ao enviar ordem: {exc}"))
@@ -682,9 +722,9 @@ class App(tk.Tk):
                 return
 
             def apply() -> None:
+                previous_selection = self.order_expiration_var.get().strip()
                 labels: list[str] = []
-                mapping: dict[str, int] = {}
-                first_duration: int | None = None
+                mapping: dict[str, dict[str, int]] = {}
                 if options:
                     timestamp = int(options[0]["expiration_timestamp"]) - int(options[0]["remaining_seconds"])
                     self.iq_clock_var.set(f"Hora IQ: {time.strftime('%Y-%m-%d %H:%M:%S', time.localtime(timestamp))}")
@@ -698,14 +738,19 @@ class App(tk.Tk):
                         f"restam {remaining_seconds // 60:02d}:{remaining_seconds % 60:02d}"
                     )
                     labels.append(label)
-                    mapping[label] = duration
-                    if first_duration is None:
-                        first_duration = duration
-                self.expiration_minutes_by_label = mapping
+                    mapping[label] = {
+                        "duration_minutes": duration,
+                        "expiration_timestamp": int(item["expiration_timestamp"]),
+                    }
+                self.expiration_options_by_label = mapping
                 self._apply_expiration_values(labels)
                 if labels:
-                    self.order_expiration_var.set(labels[0])
-                    self.expiration_status_var.set("Expiracoes sincronizadas com a IQ.")
+                    if previous_selection in mapping:
+                        self.order_expiration_var.set(previous_selection)
+                        self.expiration_status_var.set("Expiracoes sincronizadas com a IQ.")
+                    else:
+                        self.order_expiration_var.set("Selecione uma expiracao")
+                        self.expiration_status_var.set("Selecione a expiracao desejada antes de enviar a ordem.")
                 else:
                     self.expiration_status_var.set("A IQ nao retornou expiracoes no momento.")
 
@@ -718,19 +763,20 @@ class App(tk.Tk):
         self.expiration_combo["values"] = values
         if not values:
             self.order_expiration_var.set("Selecione uma expiracao")
-            self.expiration_minutes_by_label = {}
+            self.expiration_options_by_label = {}
 
-    def _get_selected_expiration_minutes(self) -> int | None:
+    def _get_selected_expiration(self) -> dict[str, int] | None:
         raw_value = self.order_expiration_var.get().strip()
         if not raw_value:
             return None
-        mapped_value = self.expiration_minutes_by_label.get(raw_value)
+        mapped_value = self.expiration_options_by_label.get(raw_value)
         if mapped_value is not None:
             return mapped_value
         try:
-            return int(raw_value)
+            duration = int(raw_value)
         except ValueError:
             return None
+        return {"duration_minutes": duration, "expiration_timestamp": 0}
 
     def _persist_config(self, show_message: bool = False) -> None:
         try:
