@@ -466,6 +466,8 @@ class App(tk.Tk):
         self.selected_order_symbol_var = tk.StringVar(value="-")
         self.selected_kind_var = tk.StringVar(value="-")
         self.selected_operability_var = tk.StringVar(value="-")
+        self.selected_execution_kind_var = tk.StringVar(value="-")
+        self.selected_expiration_detail_var = tk.StringVar(value="-")
         self.iq_clock_var = tk.StringVar(value="Hora IQ: -")
         self.order_amount_var = tk.StringVar(value="2")
         self.order_direction_var = tk.StringVar(value="CALL")
@@ -546,24 +548,33 @@ class App(tk.Tk):
         ttk.Label(help_card, textvariable=self.selected_kind_var, style="Body.TLabel").grid(row=3, column=1, sticky="w", pady=(10, 0))
         ttk.Label(help_card, text="Operavel agora", style="Body.TLabel").grid(row=4, column=0, sticky="w", pady=(10, 0))
         ttk.Label(help_card, textvariable=self.selected_operability_var, style="Body.TLabel").grid(row=4, column=1, sticky="w", pady=(10, 0))
-        ttk.Label(help_card, textvariable=self.iq_clock_var, style="MetricLabel.TLabel").grid(row=5, column=0, columnspan=2, sticky="w", pady=(10, 0))
-        ttk.Label(help_card, text="Valor", style="Body.TLabel").grid(row=6, column=0, sticky="w", pady=(14, 4))
-        ttk.Entry(help_card, textvariable=self.order_amount_var).grid(row=6, column=1, sticky="ew", pady=(14, 4))
-        ttk.Label(help_card, text="Direcao", style="Body.TLabel").grid(row=7, column=0, sticky="w", pady=(8, 4))
-        ttk.Combobox(help_card, textvariable=self.order_direction_var, state="readonly", values=("CALL", "PUT")).grid(
-            row=7, column=1, sticky="ew", pady=(8, 4)
+        ttk.Label(help_card, text="Tipo enviado", style="Body.TLabel").grid(row=5, column=0, sticky="w", pady=(10, 0))
+        ttk.Label(help_card, textvariable=self.selected_execution_kind_var, style="Body.TLabel").grid(
+            row=5, column=1, sticky="w", pady=(10, 0)
         )
-        ttk.Label(help_card, text="Expiracao IQ", style="Body.TLabel").grid(row=8, column=0, sticky="w", pady=(8, 4))
+        ttk.Label(help_card, text="Expiracao enviada", style="Body.TLabel").grid(row=6, column=0, sticky="w", pady=(10, 0))
+        ttk.Label(help_card, textvariable=self.selected_expiration_detail_var, style="Body.TLabel").grid(
+            row=6, column=1, sticky="w", pady=(10, 0)
+        )
+        ttk.Label(help_card, textvariable=self.iq_clock_var, style="MetricLabel.TLabel").grid(row=7, column=0, columnspan=2, sticky="w", pady=(10, 0))
+        ttk.Label(help_card, text="Valor", style="Body.TLabel").grid(row=8, column=0, sticky="w", pady=(14, 4))
+        ttk.Entry(help_card, textvariable=self.order_amount_var).grid(row=8, column=1, sticky="ew", pady=(14, 4))
+        ttk.Label(help_card, text="Direcao", style="Body.TLabel").grid(row=9, column=0, sticky="w", pady=(8, 4))
+        ttk.Combobox(help_card, textvariable=self.order_direction_var, state="readonly", values=("CALL", "PUT")).grid(
+            row=9, column=1, sticky="ew", pady=(8, 4)
+        )
+        ttk.Label(help_card, text="Expiracao IQ", style="Body.TLabel").grid(row=10, column=0, sticky="w", pady=(8, 4))
         self.expiration_combo = ttk.Combobox(help_card, textvariable=self.order_expiration_var, state="readonly", values=())
-        self.expiration_combo.grid(row=8, column=1, sticky="ew", pady=(8, 4))
+        self.expiration_combo.grid(row=10, column=1, sticky="ew", pady=(8, 4))
+        self.expiration_combo.bind("<<ComboboxSelected>>", self._on_expiration_selected)
         ttk.Button(help_card, text="Atualizar expiracoes", command=self._refresh_expirations_in_background).grid(
-            row=9, column=0, columnspan=2, sticky="ew", pady=(10, 0)
+            row=11, column=0, columnspan=2, sticky="ew", pady=(10, 0)
         )
         ttk.Label(help_card, textvariable=self.expiration_status_var, style="MetricLabel.TLabel").grid(
-            row=10, column=0, columnspan=2, sticky="w", pady=(8, 0)
+            row=12, column=0, columnspan=2, sticky="w", pady=(8, 0)
         )
         ttk.Button(help_card, text="Enviar ordem", command=self._place_order_in_background).grid(
-            row=11, column=0, columnspan=2, sticky="ew", pady=(16, 0)
+            row=13, column=0, columnspan=2, sticky="ew", pady=(16, 0)
         )
 
         table_frame = ttk.Frame(root, style="Card.TFrame", padding=14)
@@ -654,7 +665,12 @@ class App(tk.Tk):
         self.selected_order_symbol_var.set(self.scanner.normalize_order_symbol(str(values[0])))
         self.selected_kind_var.set(str(values[4]))
         self.selected_operability_var.set(str(values[6]) if len(values) > 6 else "-")
+        self.selected_execution_kind_var.set("-")
+        self.selected_expiration_detail_var.set("-")
         self._refresh_expirations_in_background()
+
+    def _on_expiration_selected(self, _event: Any) -> None:
+        self._refresh_order_preview()
 
     def _place_order_in_background(self) -> None:
         symbol = self.selected_symbol_var.get().strip()
@@ -753,6 +769,7 @@ class App(tk.Tk):
                         self.expiration_status_var.set("Selecione a expiracao desejada antes de enviar a ordem.")
                 else:
                     self.expiration_status_var.set("A IQ nao retornou expiracoes no momento.")
+                self._refresh_order_preview()
 
             self.after(0, apply)
 
@@ -764,6 +781,8 @@ class App(tk.Tk):
         if not values:
             self.order_expiration_var.set("Selecione uma expiracao")
             self.expiration_options_by_label = {}
+            self.selected_execution_kind_var.set("-")
+            self.selected_expiration_detail_var.set("-")
 
     def _get_selected_expiration(self) -> dict[str, int] | None:
         raw_value = self.order_expiration_var.get().strip()
@@ -777,6 +796,28 @@ class App(tk.Tk):
         except ValueError:
             return None
         return {"duration_minutes": duration, "expiration_timestamp": 0}
+
+    def _refresh_order_preview(self) -> None:
+        raw_symbol = self.selected_symbol_var.get().strip()
+        if not raw_symbol or raw_symbol == "Nenhum ativo selecionado":
+            self.selected_order_symbol_var.set("-")
+            self.selected_execution_kind_var.set("-")
+            self.selected_expiration_detail_var.set("-")
+            return
+        self.selected_order_symbol_var.set(self.scanner.normalize_order_symbol(raw_symbol))
+        expiration = self._get_selected_expiration()
+        if expiration is None:
+            self.selected_execution_kind_var.set("-")
+            self.selected_expiration_detail_var.set("-")
+            return
+        duration = int(expiration["duration_minutes"])
+        expiration_timestamp = int(expiration["expiration_timestamp"])
+        self.selected_execution_kind_var.set(self.scanner._get_option_kind_for_duration(duration).upper())
+        if expiration_timestamp > 0:
+            exp_text = time.strftime("%Y-%m-%d %H:%M:%S", time.localtime(expiration_timestamp))
+            self.selected_expiration_detail_var.set(f"{exp_text} | {duration} min")
+        else:
+            self.selected_expiration_detail_var.set(f"{duration} min")
 
     def _persist_config(self, show_message: bool = False) -> None:
         try:
