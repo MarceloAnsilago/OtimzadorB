@@ -5,6 +5,7 @@ import json
 import re
 import time
 import unicodedata
+from datetime import datetime, timedelta
 from pathlib import Path
 from typing import Iterable
 
@@ -662,8 +663,62 @@ def detect_purchase_timer(page: Page) -> tuple[str, int] | None:
     return (match.group(1).replace(" ", "") if match else timer_text), timer_seconds
 
 
+def order_submission_confirmed(page: Page) -> bool:
+    count_script = """
+    () => {
+      const bodyText = ((document.body && document.body.innerText) || '').replace(/\\s+/g, ' ').trim();
+      const match = bodyText.match(/Op(?:ç|c)ões\\s*\\((\\d+)\\)|Opcoes\\s*\\((\\d+)\\)/i);
+      if (!match) return null;
+      const raw = match[1] || match[2];
+      const value = Number(raw);
+      return Number.isFinite(value) ? value : null;
+    }
+    """
+    for frame in candidate_frames(page):
+        try:
+            options_count = frame.evaluate(count_script)
+        except Exception:
+            continue
+        if options_count is None:
+            continue
+        return int(options_count) > 0
+
+    try:
+        no_position = page.get_by_text("Você ainda não tem nenhuma posição aberta", exact=False)
+        if no_position.count() > 0 and no_position.first.is_visible():
+            return False
+    except Exception:
+        pass
+
+    screenshot_path = artifact_path("order_confirmation_check.png")
+    page.screenshot(path=str(screenshot_path))
+    image = cv2.imread(str(screenshot_path))
+    if image is None:
+        return False
+
+    height, _width = image.shape[:2]
+    bottom_panel = image[int(height * 0.72) :, :]
+    rows = run_ocr_with_boxes(bottom_panel)
+    texts = [str(row.get("text", "")).strip() for row in rows]
+    normalized_text = " ".join(normalize_ui_text(text) for text in texts if text)
+
+    count_match = re.search(r"opcoes(\d+)", normalized_text)
+    if count_match:
+        return int(count_match.group(1)) > 0
+
+    if "vocaeaindanaotemnenhumaposicaoaberta" in normalized_text:
+        return False
+
+    if "selecioneoativo" in normalized_text:
+        return False
+
+    return False
+
+
 def click_order_button_visual(page: Page, direction: str) -> bool:
-    image = capture_window_image(page)
+    screenshot_path = artifact_path("order_button_visual.png")
+    page.screenshot(path=str(screenshot_path))
+    image = cv2.imread(str(screenshot_path))
     if image is None:
         return False
     height, width = image.shape[:2]
@@ -682,16 +737,44 @@ def click_order_button_visual(page: Page, direction: str) -> bool:
     wants_up = normalized in {"CALL", "UP", "ACIMA"}
     target_box = up_box if wants_up else down_box
     label = "ACIMA" if wants_up else "ABAIXO"
+
+    # Prefer clicking the OCR text itself because the colored panel can merge
+    # with neighboring UI and produce an oversized bounding box.
+    right_rows = run_ocr_with_boxes(right_panel)
+    label_row = find_ocr_text_row(right_rows, label)
+    if label_row is not None:
+        lx, ly, lw, lh = label_row["box"]
+        candidate_points = (
+            (int(right_start + lx + (lw / 2)), int(ly + (lh / 2))),
+            (int(right_start + lx + (lw / 2)), int(ly + max(8, lh * 0.8))),
+            (int(right_start + lx + (lw / 2)), int(max(5, ly - max(10, lh * 0.6)))),
+        )
+        for click_x, click_y in candidate_points:
+            page.mouse.click(click_x, click_y)
+            log(f"Clique tentado no texto do botao {label} via OCR em ({click_x}, {click_y}).")
+            page.wait_for_timeout(900)
+            if order_submission_confirmed(page):
+                log(f"Ordem confirmada no botao {label} via OCR.")
+                return True
+
     if target_box is None:
         log(f"Botao {label} nao encontrado via deteccao visual.")
         return False
 
     x, y, w, h = target_box
-    click_x = int(right_start + x + (w / 2))
-    click_y = int(y + (h / 2))
-    page.mouse.click(click_x, click_y)
-    log(f"Ordem enviada no botao {label} via deteccao visual em ({click_x}, {click_y}).")
-    return True
+    candidate_points = (
+        (int(right_start + x + (w / 2)), int(y + (h / 2))),
+        (int(right_start + x + (w * 0.45)), int(y + (h / 2))),
+        (int(right_start + x + (w / 2)), int(y + (h * 0.45))),
+    )
+    for click_x, click_y in candidate_points:
+        page.mouse.click(click_x, click_y)
+        log(f"Clique tentado no botao {label} via deteccao visual em ({click_x}, {click_y}).")
+        page.wait_for_timeout(700)
+        if order_submission_confirmed(page):
+            log(f"Ordem confirmada no botao {label} via deteccao visual.")
+            return True
+    return False
 
 
 def click_order_button(page: Page, direction: str) -> bool:
@@ -709,16 +792,23 @@ def click_order_button(page: Page, direction: str) -> bool:
             continue
         try:
             button.click(timeout=2000)
-            log(f"Ordem enviada no botao {label}.")
-            return True
+            log(f"Clique enviado no botao {label} via DOM.")
+            page.wait_for_timeout(700)
+            if order_submission_confirmed(page):
+                log(f"Ordem confirmada no botao {label} via DOM.")
+                return True
+            log(f"Clique no botao {label} via DOM nao gerou confirmacao; tentando fallback.")
         except Exception as exc:
             log(f"Falha ao clicar no botao {label} via DOM: {exc}")
     log(f"Botao {label} nao encontrado via DOM; tentando deteccao visual.")
-    return click_order_button_visual(page, direction)
+    ok = click_order_button_visual(page, direction)
+    if not ok:
+        log(f"Falha ao confirmar a ordem no botao {label}.")
+    return ok
 
 
-def wait_for_candle_close_and_place_order(page: Page, direction: str) -> bool:
-    log("Aguardando fim da vela para enviar a ordem.")
+def wait_for_purchase_timer_second_and_place_order(page: Page, direction: str, trigger_second: int = 30) -> bool:
+    log(f"Aguardando o relogio HORA DE COMPRA chegar em {trigger_second:02d} segundos para enviar a ordem.")
     last_seconds: int | None = None
     deadline = time.time() + 180
     missing_counter = 0
@@ -734,22 +824,62 @@ def wait_for_candle_close_and_place_order(page: Page, direction: str) -> bool:
         timer_text, seconds_left = timer
         if last_seconds != seconds_left:
             log(f"Contador HORA DE COMPRA detectado: {timer_text}")
-        if seconds_left > 1:
+        current_second = seconds_left % 60
+        if current_second > trigger_second:
             last_seconds = seconds_left
             page.wait_for_timeout(200)
             continue
 
-        if seconds_left == 0:
+        if current_second == trigger_second:
             return click_order_button(page, direction)
 
-        if last_seconds is not None and seconds_left > last_seconds:
+        if last_seconds is not None and (last_seconds % 60) > trigger_second and current_second < trigger_second:
             return click_order_button(page, direction)
 
         last_seconds = seconds_left
         page.wait_for_timeout(40)
 
-    log("Tempo limite atingido aguardando o fim da vela.")
+    log(f"Tempo limite atingido aguardando o relogio chegar em {trigger_second:02d} segundos.")
     return False
+
+
+def wait_for_wall_clock_second_and_place_order(page: Page, direction: str, trigger_second: int = 0) -> bool:
+    now = datetime.now()
+    target = now.replace(second=trigger_second, microsecond=0)
+    if now >= target:
+        target = target + timedelta(minutes=1)
+
+    log(
+        f"Sincronizacao externa ativa. Hora local atual: {now.strftime('%H:%M:%S')}. "
+        f"Proximo disparo previsto para: {target.strftime('%H:%M:%S')}."
+    )
+
+    last_logged_second: int | None = None
+    deadline = time.time() + 180
+    while time.time() < deadline:
+        current = datetime.now()
+        seconds_left = int((target - current).total_seconds())
+        if seconds_left <= 0:
+            log(f"Horario alvo atingido pelo relogio externo: {current.strftime('%H:%M:%S')}.")
+            return click_order_button(page, direction)
+
+        if seconds_left != last_logged_second and seconds_left <= 10:
+            log(f"Contagem externa para disparo: {seconds_left}s restantes.")
+            last_logged_second = seconds_left
+
+        sleep_ms = 250 if seconds_left > 2 else 40
+        page.wait_for_timeout(sleep_ms)
+
+    log("Tempo limite atingido aguardando o disparo pelo relogio externo.")
+    return False
+
+
+def wait_for_entry_trigger() -> bool:
+    # Ponto unico de disparo da entrada.
+    # Hoje usa Enter manual; depois pode ser trocado por leitura de sinal do MT5.
+    input("Pressione Enter para disparar a entrada...")
+    log("Disparo manual recebido via Enter.")
+    return True
 
 
 def focus_asset_search_input(page: Page) -> bool:
@@ -1574,4 +1704,51 @@ def open_context() -> BrowserContext:
             no_viewport=True,
             args=[
                 "--start-maximized",
-                "--disable-session-crashed-bubbl
+                "--disable-session-crashed-bubble",
+                "--hide-crash-restore-bubble",
+                "--disable-features=PasswordManagerOnboarding,PasswordCheck",
+            ],
+        )
+    except Exception:
+        context = playwright.chromium.launch_persistent_context(
+            user_data_dir=str(PROFILE_DIR),
+            headless=False,
+            no_viewport=True,
+            args=[
+                "--start-maximized",
+                "--disable-session-crashed-bubble",
+                "--hide-crash-restore-bubble",
+                "--disable-features=PasswordManagerOnboarding,PasswordCheck",
+            ],
+        )
+    page = context.pages[0] if context.pages else context.new_page()
+    page.goto(LOGIN_URL, wait_until="domcontentloaded")
+    context.on("close", lambda: playwright.stop())
+    return context
+
+
+def main() -> None:
+    config = load_config()
+    context = open_context()
+    page = context.pages[0]
+    try:
+        target_symbol = input("Ativo para selecionar [GBPUSD]: ").strip().upper() or "GBPUSD"
+        invest_amount = "10"
+        order_direction = "PUT"
+        ensure_login_page(page)
+        try_login(page, config)
+        if wait_for_traderoom(page) and wait_for_operational_traderoom(page):
+            select_asset_via_ocr(page, target_symbol)
+            set_invest_amount(page, invest_amount)
+            verify_first_remaining_under_limit(page, max_seconds=119)
+            if wait_for_entry_trigger():
+                click_order_button(page, order_direction)
+        inspect_traderoom(page, float(config.get("min_payout_percent", 80.0)))
+        log(f"Fluxo de login finalizado. URL atual: {page.url}")
+        input("Pressione Enter para fechar o navegador...")
+    finally:
+        context.close()
+
+
+if __name__ == "__main__":
+    main()

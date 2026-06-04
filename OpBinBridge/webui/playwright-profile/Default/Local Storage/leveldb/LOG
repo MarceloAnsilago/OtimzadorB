@@ -1,3 +1,15 @@
-2026/06/04-13:02:29.784 2d00 Reusing MANIFEST C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\webui\playwright-profile\Default\Local Storage\leveldb/MANIFEST-000001
-2026/06/04-13:02:29.788 2d00 Recovering log #20
-2026/06/04-13:02:29.790 2d00 Reusing old log C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\webui\playwright-profile\Default\Local Storage\leveldb/000020.log 
+2026/06/04-13:58:05.722 2340 Reusing MANIFEST C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\webui\playwright-profile\Default\Local Storage\leveldb/MANIFEST-000001
+2026/06/04-13:58:05.725 2340 Recovering log #27
+2026/06/04-13:58:05.727 2340 Reusing old log C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\webui\playwright-profile\Default\Local Storage\leveldb/000027.log 
+2026/06/04-13:59:05.734 322c Level-0 table #30: started
+2026/06/04-13:59:05.738 322c Level-0 table #30: 16496 bytes OK
+2026/06/04-13:59:05.739 322c Delete type=0 #27
+2026/06/04-13:59:05.739 322c Compacting 4@0 + 1@1 files
+2026/06/04-13:59:05.742 322c Generated table #31@0: 39 keys, 5423 bytes
+2026/06/04-13:59:05.743 322c Compacted 4@0 + 1@1 files => 5423 bytes
+2026/06/04-13:59:05.743 322c compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/06/04-13:59:05.744 322c Delete type=2 #18
+2026/06/04-13:59:05.744 322c Delete type=2 #21
+2026/06/04-13:59:05.744 322c Delete type=2 #24
+2026/06/04-13:59:05.744 322c Delete type=2 #26
+2026/06/04-13:59:05.744 322c Delete type=2 #30

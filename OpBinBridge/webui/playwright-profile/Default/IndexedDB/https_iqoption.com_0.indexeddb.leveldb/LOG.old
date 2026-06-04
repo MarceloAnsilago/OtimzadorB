@@ -1,3 +1,6 @@
-2026/06/04-12:56:38.727 664c Reusing MANIFEST C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\webui\playwright-profile\Default\IndexedDB\https_iqoption.com_0.indexeddb.leveldb/MANIFEST-000001
-2026/06/04-12:56:38.733 664c Recovering log #20
-2026/06/04-12:56:38.740 664c Reusing old log C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\webui\playwright-profile\Default\IndexedDB\https_iqoption.com_0.indexeddb.leveldb/000020.log 
+2026/06/04-13:55:09.294 6628 Reusing MANIFEST C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\webui\playwright-profile\Default\IndexedDB\https_iqoption.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/06/04-13:55:09.294 6628 Recovering log #29
+2026/06/04-13:55:09.301 6628 Reusing old log C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\webui\playwright-profile\Default\IndexedDB\https_iqoption.com_0.indexeddb.leveldb/000029.log 
+2026/06/04-13:55:20.034 6628 Level-0 table #35: started
+2026/06/04-13:55:20.045 6628 Level-0 table #35: 1049453 bytes OK
+2026/06/04-13:55:20.046 6628 Delete type=0 #29

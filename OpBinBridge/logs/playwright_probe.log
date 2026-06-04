@@ -1357,3 +1357,754 @@
 2026-06-04 13:04:38 Payout detectado: 86.00%
 2026-06-04 13:04:38 Payout acima de 80%: SIM
 2026-06-04 13:04:38 Fluxo de login finalizado. URL atual: https://iqoption.com/traderoom
+2026-06-04 13:09:34 Pagina de login ja aberta: https://login.iqoption.com/pt/login?redirect_url=traderoom
+2026-06-04 13:09:34 Pagina de login detectada. Tentando autenticar automaticamente...
+2026-06-04 13:09:35 Inputs visiveis detectados: 0
+2026-06-04 13:09:35 Campos de login nao encontrados automaticamente.
+2026-06-04 13:09:35 Traderoom sem splash detectada (1/3).
+2026-06-04 13:09:37 Traderoom sem splash detectada (2/3).
+2026-06-04 13:09:39 Traderoom sem splash detectada (3/3).
+2026-06-04 13:09:43 Traderoom operacional detectada.
+2026-06-04 13:09:49 8 abas detectadas no topo. Fechando ate sobrar apenas a aba fixa da esquerda.
+2026-06-04 13:09:49 Tentativa 1.1: clique para fechar 'EUR/USD (O..' em (506, 28).
+2026-06-04 13:09:52 Quantidade de abas apos fechamento: 6
+2026-06-04 13:09:52 Tentativa 2.1: clique para fechar 'GBP/USD' em (678, 28).
+2026-06-04 13:09:54 Quantidade de abas apos fechamento: 4
+2026-06-04 13:09:54 Tentativa 3.1: clique para fechar 'Snap Inc. (O...' em (824, 27).
+2026-06-04 13:09:57 Quantidade de abas apos fechamento: 3
+2026-06-04 13:09:57 Tentativa 4.1: clique para fechar 'Sei (OTC)' em (825, 28).
+2026-06-04 13:09:59 Quantidade de abas apos fechamento: 1
+2026-06-04 13:10:01 Abas restantes apos limpeza: ['EUR/USD (O...']
+2026-06-04 13:10:01 Clique enviado no botao de adicionar ativo nas coordenadas (1008, 36).
+2026-06-04 13:10:05 Clique enviado em opcao Opções nas coordenadas (1066, 155).
+2026-06-04 13:10:06 Clique enviado na opcao 'Opções' via OCR.
+2026-06-04 13:10:09 Clique enviado em opcao Binárias nas coordenadas (1069, 261).
+2026-06-04 13:10:10 Clique enviado na opcao 'Binárias' via OCR.
+2026-06-04 13:10:12 Clique enviado em campo de busca de ativos nas coordenadas (1342, 96).
+2026-06-04 13:10:12 Campo de busca de ativos focado via OCR.
+2026-06-04 13:10:12 Campo de busca do seletor de ativos detectado apos abrir 'Binárias'.
+2026-06-04 13:10:15 Clique enviado em campo de busca de ativos nas coordenadas (1331, 97).
+2026-06-04 13:10:15 Campo de busca de ativos focado via OCR.
+2026-06-04 13:10:16 Busca de ativo digitada por teclado: GBPUSD
+2026-06-04 13:10:19 Clique enviado em ativo alvo GBP/USD nas coordenadas (1302, 175).
+2026-06-04 13:10:23 Selecao do ativo GBP/USD: OK
+2026-06-04 13:10:25 Aporte digitado via OCR/teclado: 10
+2026-06-04 13:10:27 Clique enviado em botao Expiração nas coordenadas (1840, 157).
+2026-06-04 13:10:28 Clique enviado em 'Expiração' via OCR.
+2026-06-04 13:10:30 Primeiro item da coluna 'Restante' confirmado abaixo de 2 minutos: 01:23
+2026-06-04 13:10:30 Clique enviado em primeiro tempo disponivel da coluna Restante nas coordenadas (1605, 265).
+2026-06-04 13:10:31 Tempo de expiracao selecionado: 01:23
+2026-06-04 13:10:31 Aguardando fim da vela para enviar a ordem.
+2026-06-04 13:10:33 Contador HORA DE COMPRA detectado: 00:50
+2026-06-04 13:10:34 Contador HORA DE COMPRA detectado: 00:48
+2026-06-04 13:10:36 Contador HORA DE COMPRA detectado: 00:47
+2026-06-04 13:10:38 Contador HORA DE COMPRA detectado: 00:45
+2026-06-04 13:10:39 Contador HORA DE COMPRA detectado: 00:43
+2026-06-04 13:10:41 Contador HORA DE COMPRA detectado: 00:42
+2026-06-04 13:10:43 Contador HORA DE COMPRA detectado: 00:40
+2026-06-04 13:10:45 Contador HORA DE COMPRA detectado: 00:38
+2026-06-04 13:10:46 Contador HORA DE COMPRA detectado: 00:37
+2026-06-04 13:10:48 Contador HORA DE COMPRA detectado: 00:35
+2026-06-04 13:10:50 Contador HORA DE COMPRA detectado: 00:33
+2026-06-04 13:10:52 Contador HORA DE COMPRA detectado: 00:31
+2026-06-04 13:10:54 Contador HORA DE COMPRA detectado: 00:29
+2026-06-04 13:10:56 Contador HORA DE COMPRA detectado: 00:27
+2026-06-04 13:10:57 Contador HORA DE COMPRA detectado: 00:26
+2026-06-04 13:10:59 Contador HORA DE COMPRA detectado: 00:24
+2026-06-04 13:11:01 Contador HORA DE COMPRA detectado: 00:22
+2026-06-04 13:11:02 Contador HORA DE COMPRA detectado: 00:21
+2026-06-04 13:11:04 Contador HORA DE COMPRA detectado: 00:19
+2026-06-04 13:11:06 Contador HORA DE COMPRA detectado: 00:17
+2026-06-04 13:11:07 Contador HORA DE COMPRA detectado: 00:16
+2026-06-04 13:11:09 Contador HORA DE COMPRA detectado: 00:14
+2026-06-04 13:11:11 Contador HORA DE COMPRA detectado: 00:12
+2026-06-04 13:11:13 Contador HORA DE COMPRA detectado: 00:10
+2026-06-04 13:11:14 Contador HORA DE COMPRA detectado: 00:09
+2026-06-04 13:11:16 Contador HORA DE COMPRA detectado: 00:07
+2026-06-04 13:11:18 Contador HORA DE COMPRA detectado: 00:05
+2026-06-04 13:11:19 Contador HORA DE COMPRA detectado: 00:03
+2026-06-04 13:11:23 Contador HORA DE COMPRA detectado: 00:00
+2026-06-04 13:11:23 Botao ABAIXO nao encontrado via DOM; tentando deteccao visual.
+2026-06-04 13:11:23 Janela do console minimizada para liberar a captura da tela.
+2026-06-04 13:11:26 Screenshot capturada pelo Playwright com conteudo visivel.
+2026-06-04 13:11:26 Ordem enviada no botao ABAIXO via deteccao visual em (1855, 495).
+2026-06-04 13:11:26 Traderoom sem splash detectada (1/3).
+2026-06-04 13:11:28 Traderoom sem splash detectada (2/3).
+2026-06-04 13:11:30 Traderoom sem splash detectada (3/3).
+2026-06-04 13:11:34 Traderoom operacional detectada.
+2026-06-04 13:11:34 Popup de salvar senha nao apareceu ou nao foi identificado.
+2026-06-04 13:11:37 Janela do console minimizada para liberar a captura da tela.
+2026-06-04 13:11:39 Screenshot capturada pelo Playwright com conteudo visivel.
+2026-06-04 13:11:41 Analise visual salva em C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\logs\playwright_probe
+2026-06-04 13:11:41 Deteccao visual direita: up=(341, 322, 110, 110) down=None payout=(88, 13, 337, 291)
+2026-06-04 13:11:41 OCR botoes/payout: up=['ACIMA'] down=[] payout=['86', '+', '+S8.60'] payout_num=86.0
+2026-06-04 13:11:41 Traderoom confirmada. Ativo atual: desconhecido
+2026-06-04 13:11:41 Mercado operavel agora: NAO
+2026-06-04 13:11:41 Payout detectado: 86.00%
+2026-06-04 13:11:41 Payout acima de 80%: SIM
+2026-06-04 13:11:41 Fluxo de login finalizado. URL atual: https://iqoption.com/traderoom
+2026-06-04 13:16:40 Pagina de login ja aberta: https://login.iqoption.com/pt/login?redirect_url=traderoom
+2026-06-04 13:16:40 Pagina de login detectada. Tentando autenticar automaticamente...
+2026-06-04 13:16:42 Inputs visiveis detectados: 0
+2026-06-04 13:16:42 Campos de login nao encontrados automaticamente.
+2026-06-04 13:16:42 Traderoom sem splash detectada (1/3).
+2026-06-04 13:16:44 Traderoom sem splash detectada (2/3).
+2026-06-04 13:16:46 Traderoom sem splash detectada (3/3).
+2026-06-04 13:16:50 Traderoom operacional detectada.
+2026-06-04 13:16:55 3 abas detectadas no topo. Fechando ate sobrar apenas a aba fixa da esquerda.
+2026-06-04 13:16:55 Tentativa 1.1: clique para fechar 'EUR/USD (O...' em (825, 28).
+2026-06-04 13:16:58 Quantidade de abas apos fechamento: 2
+2026-06-04 13:16:58 Tentativa 2.1: clique para fechar 'GBP/USD' em (825, 28).
+2026-06-04 13:17:00 Quantidade de abas apos fechamento: 1
+2026-06-04 13:17:03 Abas restantes apos limpeza: ['EUR/USD (O...']
+2026-06-04 13:17:03 Clique enviado no botao de adicionar ativo nas coordenadas (859, 36).
+2026-06-04 13:17:06 Clique enviado em opcao Opções nas coordenadas (920, 155).
+2026-06-04 13:17:07 Clique enviado na opcao 'Opções' via OCR.
+2026-06-04 13:17:09 Clique enviado em opcao Binárias nas coordenadas (923, 261).
+2026-06-04 13:17:10 Clique enviado na opcao 'Binárias' via OCR.
+2026-06-04 13:17:13 Clique enviado em campo de busca de ativos nas coordenadas (1185, 97).
+2026-06-04 13:17:13 Campo de busca de ativos focado via OCR.
+2026-06-04 13:17:13 Campo de busca do seletor de ativos detectado apos abrir 'Binárias'.
+2026-06-04 13:17:16 Clique enviado em campo de busca de ativos nas coordenadas (1185, 97).
+2026-06-04 13:17:16 Campo de busca de ativos focado via OCR.
+2026-06-04 13:17:17 Busca de ativo digitada por teclado: GBPUSD
+2026-06-04 13:17:20 Clique enviado em ativo alvo GBP/USD nas coordenadas (1158, 176).
+2026-06-04 13:17:24 Selecao do ativo GBP/USD: OK
+2026-06-04 13:17:26 Aporte digitado via OCR/teclado: 10
+2026-06-04 13:17:28 Clique enviado em botao Expiração nas coordenadas (1840, 157).
+2026-06-04 13:17:29 Clique enviado em 'Expiração' via OCR.
+2026-06-04 13:17:31 Primeiro item da coluna 'Restante' confirmado abaixo de 2 minutos: 01:22
+2026-06-04 13:17:31 Clique enviado em primeiro tempo disponivel da coluna Restante nas coordenadas (1605, 265).
+2026-06-04 13:17:32 Tempo de expiracao selecionado: 01:22
+2026-06-04 13:17:32 Aguardando o relogio HORA DE COMPRA chegar em 30 segundos para enviar a ordem.
+2026-06-04 13:17:33 Contador HORA DE COMPRA detectado: 00:50
+2026-06-04 13:17:35 Contador HORA DE COMPRA detectado: 00:48
+2026-06-04 13:17:36 Contador HORA DE COMPRA detectado: 00:46
+2026-06-04 13:17:38 Contador HORA DE COMPRA detectado: 00:45
+2026-06-04 13:17:40 Contador HORA DE COMPRA detectado: 00:43
+2026-06-04 13:17:42 Contador HORA DE COMPRA detectado: 00:41
+2026-06-04 13:17:43 Contador HORA DE COMPRA detectado: 00:39
+2026-06-04 13:17:45 Contador HORA DE COMPRA detectado: 00:38
+2026-06-04 13:17:47 Contador HORA DE COMPRA detectado: 00:36
+2026-06-04 13:17:49 Contador HORA DE COMPRA detectado: 00:34
+2026-06-04 13:17:51 Contador HORA DE COMPRA detectado: 00:32
+2026-06-04 13:17:52 Contador HORA DE COMPRA detectado: 00:30
+2026-06-04 13:17:53 Botao ABAIXO nao encontrado via DOM; tentando deteccao visual.
+2026-06-04 13:17:53 Janela do console minimizada para liberar a captura da tela.
+2026-06-04 13:17:55 Screenshot capturada pelo Playwright com conteudo visivel.
+2026-06-04 13:17:55 Ordem enviada no botao ABAIXO via deteccao visual em (1855, 495).
+2026-06-04 13:17:55 Traderoom sem splash detectada (1/3).
+2026-06-04 13:17:57 Traderoom sem splash detectada (2/3).
+2026-06-04 13:17:59 Traderoom sem splash detectada (3/3).
+2026-06-04 13:18:03 Traderoom operacional detectada.
+2026-06-04 13:18:03 Popup de salvar senha nao apareceu ou nao foi identificado.
+2026-06-04 13:18:06 Janela do console minimizada para liberar a captura da tela.
+2026-06-04 13:18:09 Screenshot capturada pelo Playwright com conteudo visivel.
+2026-06-04 13:18:10 Analise visual salva em C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\logs\playwright_probe
+2026-06-04 13:18:10 Deteccao visual direita: up=(341, 322, 110, 110) down=None payout=(88, 13, 337, 291)
+2026-06-04 13:18:10 OCR botoes/payout: up=['ACIMA'] down=[] payout=['86', '+', '+S8.60'] payout_num=86.0
+2026-06-04 13:18:10 Traderoom confirmada. Ativo atual: desconhecido
+2026-06-04 13:18:10 Mercado operavel agora: NAO
+2026-06-04 13:18:10 Payout detectado: 86.00%
+2026-06-04 13:18:10 Payout acima de 80%: SIM
+2026-06-04 13:18:10 Fluxo de login finalizado. URL atual: https://iqoption.com/traderoom
+2026-06-04 13:18:49 Pagina de login ja aberta: https://login.iqoption.com/pt/login?redirect_url=traderoom
+2026-06-04 13:18:49 Pagina de login detectada. Tentando autenticar automaticamente...
+2026-06-04 13:18:50 Inputs visiveis detectados: 0
+2026-06-04 13:18:50 Campos de login nao encontrados automaticamente.
+2026-06-04 13:18:50 Traderoom sem splash detectada (1/3).
+2026-06-04 13:18:52 Traderoom sem splash detectada (2/3).
+2026-06-04 13:18:54 Traderoom sem splash detectada (3/3).
+2026-06-04 13:18:58 Traderoom operacional detectada.
+2026-06-04 13:19:04 2 abas detectadas no topo. Fechando ate sobrar apenas a aba fixa da esquerda.
+2026-06-04 13:19:04 Tentativa 1.1: clique para fechar 'GBP/USD' em (825, 28).
+2026-06-04 13:19:06 Quantidade de abas apos fechamento: 1
+2026-06-04 13:19:09 Abas restantes apos limpeza: ['EUR/USD (O...']
+2026-06-04 13:19:09 Clique enviado no botao de adicionar ativo nas coordenadas (859, 36).
+2026-06-04 13:19:13 Clique enviado em opcao Opções nas coordenadas (920, 155).
+2026-06-04 13:19:14 Clique enviado na opcao 'Opções' via OCR.
+2026-06-04 13:19:16 Clique enviado em opcao Binárias nas coordenadas (922, 261).
+2026-06-04 13:19:17 Clique enviado na opcao 'Binárias' via OCR.
+2026-06-04 13:19:20 Clique enviado em campo de busca de ativos nas coordenadas (1197, 96).
+2026-06-04 13:19:20 Campo de busca de ativos focado via OCR.
+2026-06-04 13:19:20 Campo de busca do seletor de ativos detectado apos abrir 'Binárias'.
+2026-06-04 13:19:23 Clique enviado em campo de busca de ativos nas coordenadas (1185, 97).
+2026-06-04 13:19:23 Campo de busca de ativos focado via OCR.
+2026-06-04 13:19:24 Busca de ativo digitada por teclado: GBPUSD
+2026-06-04 13:19:27 Clique enviado em ativo alvo GBP/USD nas coordenadas (1158, 176).
+2026-06-04 13:19:32 Selecao do ativo GBP/USD: OK
+2026-06-04 13:19:34 Aporte digitado via OCR/teclado: 10
+2026-06-04 13:19:36 Clique enviado em botao Expiração nas coordenadas (1847, 157).
+2026-06-04 13:19:37 Clique enviado em 'Expiração' via OCR.
+2026-06-04 13:19:39 Primeiro item da coluna 'Restante' confirmado abaixo de 2 minutos: 01:15
+2026-06-04 13:19:39 Clique enviado em primeiro tempo disponivel da coluna Restante nas coordenadas (1605, 265).
+2026-06-04 13:19:40 Tempo de expiracao selecionado: 01:15
+2026-06-04 13:19:40 Aguardando o relogio HORA DE COMPRA chegar em 30 segundos para enviar a ordem.
+2026-06-04 13:19:41 Contador HORA DE COMPRA detectado: 00:42
+2026-06-04 13:19:43 Contador HORA DE COMPRA detectado: 00:40
+2026-06-04 13:19:45 Contador HORA DE COMPRA detectado: 00:38
+2026-06-04 13:19:47 Contador HORA DE COMPRA detectado: 00:36
+2026-06-04 13:19:49 Contador HORA DE COMPRA detectado: 00:34
+2026-06-04 13:19:50 Contador HORA DE COMPRA detectado: 00:32
+2026-06-04 13:19:52 Contador HORA DE COMPRA detectado: 00:31
+2026-06-04 13:19:54 Contador HORA DE COMPRA detectado: 00:29
+2026-06-04 13:19:54 Botao ABAIXO nao encontrado via DOM; tentando deteccao visual.
+2026-06-04 13:19:54 Janela do console minimizada para liberar a captura da tela.
+2026-06-04 13:19:57 Screenshot capturada pelo Playwright com conteudo visivel.
+2026-06-04 13:19:57 Ordem enviada no botao ABAIXO via deteccao visual em (1855, 495).
+2026-06-04 13:19:57 Traderoom sem splash detectada (1/3).
+2026-06-04 13:19:59 Traderoom sem splash detectada (2/3).
+2026-06-04 13:20:01 Traderoom sem splash detectada (3/3).
+2026-06-04 13:20:05 Traderoom operacional detectada.
+2026-06-04 13:20:05 Popup de salvar senha nao apareceu ou nao foi identificado.
+2026-06-04 13:20:08 Janela do console minimizada para liberar a captura da tela.
+2026-06-04 13:20:10 Screenshot capturada pelo Playwright com conteudo visivel.
+2026-06-04 13:20:12 Analise visual salva em C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\logs\playwright_probe
+2026-06-04 13:20:12 Deteccao visual direita: up=(341, 322, 110, 110) down=None payout=(88, 13, 337, 291)
+2026-06-04 13:20:12 OCR botoes/payout: up=['ACIMA'] down=[] payout=['86', '+', '+S8.60'] payout_num=86.0
+2026-06-04 13:20:12 Traderoom confirmada. Ativo atual: desconhecido
+2026-06-04 13:20:12 Mercado operavel agora: NAO
+2026-06-04 13:20:12 Payout detectado: 86.00%
+2026-06-04 13:20:12 Payout acima de 80%: SIM
+2026-06-04 13:20:12 Fluxo de login finalizado. URL atual: https://iqoption.com/traderoom
+2026-06-04 13:24:04 Pagina de login ja aberta: https://login.iqoption.com/pt/login?redirect_url=traderoom
+2026-06-04 13:24:04 Pagina de login detectada. Tentando autenticar automaticamente...
+2026-06-04 13:24:05 Inputs visiveis detectados: 0
+2026-06-04 13:24:06 Campos de login nao encontrados automaticamente.
+2026-06-04 13:24:06 Traderoom ainda em splash/conectando; aguardando...
+2026-06-04 13:24:08 Traderoom ainda em splash/conectando; aguardando...
+2026-06-04 13:24:10 Traderoom ainda em splash/conectando; aguardando...
+2026-06-04 13:24:12 Traderoom sem splash detectada (1/3).
+2026-06-04 13:24:14 Traderoom sem splash detectada (2/3).
+2026-06-04 13:24:16 Traderoom sem splash detectada (3/3).
+2026-06-04 13:24:20 Traderoom operacional detectada.
+2026-06-04 13:24:25 Apenas uma aba de ativo detectada; nada para fechar.
+2026-06-04 13:24:25 Clique enviado no botao de adicionar ativo nas coordenadas (423, 37).
+2026-06-04 13:24:29 Clique enviado em opcao Opções nas coordenadas (482, 155).
+2026-06-04 13:24:30 Clique enviado na opcao 'Opções' via OCR.
+2026-06-04 13:24:32 Clique enviado em opcao Binárias nas coordenadas (485, 261).
+2026-06-04 13:24:33 Clique enviado na opcao 'Binárias' via OCR.
+2026-06-04 13:24:35 Clique enviado em campo de busca de ativos nas coordenadas (746, 96).
+2026-06-04 13:24:36 Campo de busca de ativos focado via OCR.
+2026-06-04 13:24:36 Campo de busca do seletor de ativos detectado apos abrir 'Binárias'.
+2026-06-04 13:24:38 Clique enviado em campo de busca de ativos nas coordenadas (746, 96).
+2026-06-04 13:24:39 Campo de busca de ativos focado via OCR.
+2026-06-04 13:24:39 Busca de ativo digitada por teclado: GBPUSD
+2026-06-04 13:24:43 Clique enviado em ativo alvo GBP/USD nas coordenadas (719, 176).
+2026-06-04 13:24:47 Selecao do ativo GBP/USD: OK
+2026-06-04 13:24:49 Aporte digitado via OCR/teclado: 10
+2026-06-04 13:24:51 Clique enviado em botao Expiração nas coordenadas (1840, 157).
+2026-06-04 13:24:52 Clique enviado em 'Expiração' via OCR.
+2026-06-04 13:24:54 Primeiro item da coluna 'Restante' confirmado abaixo de 2 minutos: 00:59
+2026-06-04 13:24:54 Clique enviado em primeiro tempo disponivel da coluna Restante nas coordenadas (1605, 265).
+2026-06-04 13:24:55 Tempo de expiracao selecionado: 00:59
+2026-06-04 13:24:55 Sincronizacao externa ativa. Hora local atual: 13:24:55. Proximo disparo previsto para: 13:25:30.
+2026-06-04 13:25:19 Contagem externa para disparo: 10s restantes.
+2026-06-04 13:25:20 Contagem externa para disparo: 9s restantes.
+2026-06-04 13:25:21 Contagem externa para disparo: 8s restantes.
+2026-06-04 13:25:22 Contagem externa para disparo: 7s restantes.
+2026-06-04 13:25:23 Contagem externa para disparo: 6s restantes.
+2026-06-04 13:25:24 Contagem externa para disparo: 5s restantes.
+2026-06-04 13:25:25 Contagem externa para disparo: 4s restantes.
+2026-06-04 13:25:26 Contagem externa para disparo: 3s restantes.
+2026-06-04 13:25:27 Contagem externa para disparo: 2s restantes.
+2026-06-04 13:25:28 Contagem externa para disparo: 1s restantes.
+2026-06-04 13:25:29 Horario alvo atingido pelo relogio externo: 13:25:29.
+2026-06-04 13:25:29 Botao ABAIXO nao encontrado via DOM; tentando deteccao visual.
+2026-06-04 13:25:29 Janela do console minimizada para liberar a captura da tela.
+2026-06-04 13:25:31 Screenshot capturada pelo Playwright com conteudo visivel.
+2026-06-04 13:25:31 Ordem enviada no botao ABAIXO via deteccao visual em (1684, 493).
+2026-06-04 13:25:31 Traderoom sem splash detectada (1/3).
+2026-06-04 13:25:33 Traderoom sem splash detectada (2/3).
+2026-06-04 13:25:35 Traderoom sem splash detectada (3/3).
+2026-06-04 13:25:39 Traderoom operacional detectada.
+2026-06-04 13:25:39 Popup de salvar senha nao apareceu ou nao foi identificado.
+2026-06-04 13:25:42 Janela do console minimizada para liberar a captura da tela.
+2026-06-04 13:25:45 Screenshot capturada pelo Playwright com conteudo visivel.
+2026-06-04 13:25:48 Analise visual salva em C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\logs\playwright_probe
+2026-06-04 13:25:48 Deteccao visual direita: up=(341, 322, 110, 110) down=(0, 440, 451, 110) payout=(88, 13, 337, 291)
+2026-06-04 13:25:48 OCR botoes/payout: up=['ACIMA'] down=['1.343985', 'M', 'ABAIXO', 'MV', '.30'] payout=['+849', '+S8.40', '84', '+'] payout_num=84.0
+2026-06-04 13:25:48 Traderoom confirmada. Ativo atual: desconhecido
+2026-06-04 13:25:48 Mercado operavel agora: SIM
+2026-06-04 13:25:48 Payout detectado: 84.00%
+2026-06-04 13:25:48 Payout acima de 80%: SIM
+2026-06-04 13:25:48 Fluxo de login finalizado. URL atual: https://iqoption.com/traderoom
+2026-06-04 13:27:41 Pagina de login ja aberta: https://login.iqoption.com/pt/login?redirect_url=traderoom
+2026-06-04 13:27:41 Pagina de login detectada. Tentando autenticar automaticamente...
+2026-06-04 13:27:43 Inputs visiveis detectados: 0
+2026-06-04 13:27:43 Campos de login nao encontrados automaticamente.
+2026-06-04 13:27:43 Traderoom sem splash detectada (1/3).
+2026-06-04 13:27:45 Traderoom sem splash detectada (2/3).
+2026-06-04 13:27:47 Traderoom sem splash detectada (3/3).
+2026-06-04 13:27:51 Traderoom operacional detectada.
+2026-06-04 13:27:56 2 abas detectadas no topo. Fechando ate sobrar apenas a aba fixa da esquerda.
+2026-06-04 13:27:56 Tentativa 1.1: clique para fechar 'GBP/USD' em (387, 28).
+2026-06-04 13:27:59 Quantidade de abas apos fechamento: 1
+2026-06-04 13:28:01 Abas restantes apos limpeza: ['EUR/USD (O...']
+2026-06-04 13:28:01 Clique enviado no botao de adicionar ativo nas coordenadas (423, 37).
+2026-06-04 13:28:05 Clique enviado em opcao Opções nas coordenadas (482, 155).
+2026-06-04 13:28:06 Clique enviado na opcao 'Opções' via OCR.
+2026-06-04 13:28:08 Clique enviado em opcao Binárias nas coordenadas (485, 261).
+2026-06-04 13:28:09 Clique enviado na opcao 'Binárias' via OCR.
+2026-06-04 13:28:11 Clique enviado em campo de busca de ativos nas coordenadas (746, 96).
+2026-06-04 13:28:12 Campo de busca de ativos focado via OCR.
+2026-06-04 13:28:12 Campo de busca do seletor de ativos detectado apos abrir 'Binárias'.
+2026-06-04 13:28:14 Clique enviado em campo de busca de ativos nas coordenadas (747, 97).
+2026-06-04 13:28:15 Campo de busca de ativos focado via OCR.
+2026-06-04 13:28:15 Busca de ativo digitada por teclado: GBPUSD
+2026-06-04 13:28:19 Clique enviado em ativo alvo GBP/USD nas coordenadas (719, 176).
+2026-06-04 13:28:22 Selecao do ativo GBP/USD: OK
+2026-06-04 13:28:25 Aporte digitado via OCR/teclado: 10
+2026-06-04 13:28:26 Clique enviado em botao Expiração nas coordenadas (1840, 157).
+2026-06-04 13:28:27 Clique enviado em 'Expiração' via OCR.
+2026-06-04 13:28:29 Primeiro item da coluna 'Restante' confirmado abaixo de 2 minutos: 01:24
+2026-06-04 13:28:29 Clique enviado em primeiro tempo disponivel da coluna Restante nas coordenadas (1605, 265).
+2026-06-04 13:28:30 Tempo de expiracao selecionado: 01:24
+2026-06-04 13:28:30 Sincronizacao externa ativa. Hora local atual: 13:28:30. Proximo disparo previsto para: 13:29:00.
+2026-06-04 13:28:49 Contagem externa para disparo: 10s restantes.
+2026-06-04 13:28:50 Contagem externa para disparo: 9s restantes.
+2026-06-04 13:28:51 Contagem externa para disparo: 8s restantes.
+2026-06-04 13:28:52 Contagem externa para disparo: 7s restantes.
+2026-06-04 13:28:53 Contagem externa para disparo: 6s restantes.
+2026-06-04 13:28:54 Contagem externa para disparo: 5s restantes.
+2026-06-04 13:28:55 Contagem externa para disparo: 4s restantes.
+2026-06-04 13:28:56 Contagem externa para disparo: 3s restantes.
+2026-06-04 13:28:57 Contagem externa para disparo: 2s restantes.
+2026-06-04 13:28:58 Contagem externa para disparo: 1s restantes.
+2026-06-04 13:28:59 Horario alvo atingido pelo relogio externo: 13:28:59.
+2026-06-04 13:28:59 Botao ABAIXO nao encontrado via DOM; tentando deteccao visual.
+2026-06-04 13:28:59 Janela do console minimizada para liberar a captura da tela.
+2026-06-04 13:29:01 Screenshot capturada pelo Playwright com conteudo visivel.
+2026-06-04 13:29:01 Ordem enviada no botao ABAIXO via deteccao visual em (1855, 495).
+2026-06-04 13:29:01 Traderoom sem splash detectada (1/3).
+2026-06-04 13:29:03 Traderoom sem splash detectada (2/3).
+2026-06-04 13:29:05 Traderoom sem splash detectada (3/3).
+2026-06-04 13:29:09 Traderoom operacional detectada.
+2026-06-04 13:29:09 Popup de salvar senha nao apareceu ou nao foi identificado.
+2026-06-04 13:29:12 Janela do console minimizada para liberar a captura da tela.
+2026-06-04 13:29:15 Screenshot capturada pelo Playwright com conteudo visivel.
+2026-06-04 13:29:17 Analise visual salva em C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\logs\playwright_probe
+2026-06-04 13:29:17 Deteccao visual direita: up=(341, 322, 110, 110) down=(341, 440, 110, 110) payout=(88, 13, 337, 291)
+2026-06-04 13:29:17 OCR botoes/payout: up=['ACIMA'] down=['ABAIXO'] payout=['+849', '+S8.40', '84', '+'] payout_num=84.0
+2026-06-04 13:29:17 Traderoom confirmada. Ativo atual: desconhecido
+2026-06-04 13:29:17 Mercado operavel agora: SIM
+2026-06-04 13:29:17 Payout detectado: 84.00%
+2026-06-04 13:29:17 Payout acima de 80%: SIM
+2026-06-04 13:29:17 Fluxo de login finalizado. URL atual: https://iqoption.com/traderoom
+2026-06-04 13:30:19 Pagina de login ja aberta: https://login.iqoption.com/pt/login?redirect_url=traderoom
+2026-06-04 13:30:19 Pagina de login detectada. Tentando autenticar automaticamente...
+2026-06-04 13:30:20 Inputs visiveis detectados: 0
+2026-06-04 13:30:20 Campos de login nao encontrados automaticamente.
+2026-06-04 13:30:20 Traderoom ainda em splash/conectando; aguardando...
+2026-06-04 13:30:22 Traderoom ainda em splash/conectando; aguardando...
+2026-06-04 13:30:24 Traderoom sem splash detectada (1/3).
+2026-06-04 13:30:26 Traderoom sem splash detectada (2/3).
+2026-06-04 13:30:28 Traderoom sem splash detectada (3/3).
+2026-06-04 13:30:33 Traderoom operacional detectada.
+2026-06-04 13:30:37 2 abas detectadas no topo. Fechando ate sobrar apenas a aba fixa da esquerda.
+2026-06-04 13:30:37 Tentativa 1.1: clique para fechar 'GBP/USD' em (387, 28).
+2026-06-04 13:30:40 Quantidade de abas apos fechamento: 1
+2026-06-04 13:30:42 Abas restantes apos limpeza: ['EUR/USD (O...']
+2026-06-04 13:30:42 Clique enviado no botao de adicionar ativo nas coordenadas (423, 37).
+2026-06-04 13:30:46 Clique enviado em opcao Opções nas coordenadas (482, 155).
+2026-06-04 13:30:47 Clique enviado na opcao 'Opções' via OCR.
+2026-06-04 13:30:49 Clique enviado em opcao Binárias nas coordenadas (485, 261).
+2026-06-04 13:30:50 Clique enviado na opcao 'Binárias' via OCR.
+2026-06-04 13:30:53 Clique enviado em campo de busca de ativos nas coordenadas (760, 96).
+2026-06-04 13:30:53 Campo de busca de ativos focado via OCR.
+2026-06-04 13:30:53 Campo de busca do seletor de ativos detectado apos abrir 'Binárias'.
+2026-06-04 13:30:56 Clique enviado em campo de busca de ativos nas coordenadas (746, 96).
+2026-06-04 13:30:56 Campo de busca de ativos focado via OCR.
+2026-06-04 13:30:57 Busca de ativo digitada por teclado: GBPUSD
+2026-06-04 13:31:00 Clique enviado em ativo alvo GBP/USD nas coordenadas (719, 176).
+2026-06-04 13:31:04 Selecao do ativo GBP/USD: OK
+2026-06-04 13:31:06 Aporte digitado via OCR/teclado: 10
+2026-06-04 13:31:08 Clique enviado em botao Expiração nas coordenadas (1840, 157).
+2026-06-04 13:31:09 Clique enviado em 'Expiração' via OCR.
+2026-06-04 13:31:10 Primeiro item da coluna 'Restante' confirmado abaixo de 2 minutos: 00:43
+2026-06-04 13:31:10 Clique enviado em primeiro tempo disponivel da coluna Restante nas coordenadas (1605, 265).
+2026-06-04 13:31:11 Tempo de expiracao selecionado: 00:43
+2026-06-04 13:31:11 Sincronizacao externa ativa. Hora local atual: 13:31:11. Proximo disparo previsto para: 13:32:00.
+2026-06-04 13:31:49 Contagem externa para disparo: 10s restantes.
+2026-06-04 13:31:50 Contagem externa para disparo: 9s restantes.
+2026-06-04 13:31:51 Contagem externa para disparo: 8s restantes.
+2026-06-04 13:31:52 Contagem externa para disparo: 7s restantes.
+2026-06-04 13:31:53 Contagem externa para disparo: 6s restantes.
+2026-06-04 13:31:54 Contagem externa para disparo: 5s restantes.
+2026-06-04 13:31:55 Contagem externa para disparo: 4s restantes.
+2026-06-04 13:31:56 Contagem externa para disparo: 3s restantes.
+2026-06-04 13:31:57 Contagem externa para disparo: 2s restantes.
+2026-06-04 13:31:58 Contagem externa para disparo: 1s restantes.
+2026-06-04 13:31:59 Horario alvo atingido pelo relogio externo: 13:31:59.
+2026-06-04 13:31:59 Botao ABAIXO nao encontrado via DOM; tentando deteccao visual.
+2026-06-04 13:31:59 Janela do console minimizada para liberar a captura da tela.
+2026-06-04 13:32:01 Screenshot capturada pelo Playwright com conteudo visivel.
+2026-06-04 13:32:01 Ordem enviada no botao ABAIXO via deteccao visual em (1855, 495).
+2026-06-04 13:32:01 Traderoom sem splash detectada (1/3).
+2026-06-04 13:32:03 Traderoom sem splash detectada (2/3).
+2026-06-04 13:32:05 Traderoom sem splash detectada (3/3).
+2026-06-04 13:32:09 Traderoom operacional detectada.
+2026-06-04 13:32:09 Popup de salvar senha nao apareceu ou nao foi identificado.
+2026-06-04 13:32:12 Janela do console minimizada para liberar a captura da tela.
+2026-06-04 13:32:15 Screenshot capturada pelo Playwright com conteudo visivel.
+2026-06-04 13:32:17 Analise visual salva em C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\logs\playwright_probe
+2026-06-04 13:32:17 Deteccao visual direita: up=(341, 322, 110, 110) down=(341, 440, 110, 110) payout=(88, 13, 337, 291)
+2026-06-04 13:32:17 OCR botoes/payout: up=['ACIMA'] down=['ABAIXO'] payout=['+849', '+S8.40', '84', '+'] payout_num=84.0
+2026-06-04 13:32:17 Traderoom confirmada. Ativo atual: desconhecido
+2026-06-04 13:32:17 Mercado operavel agora: SIM
+2026-06-04 13:32:17 Payout detectado: 84.00%
+2026-06-04 13:32:17 Payout acima de 80%: SIM
+2026-06-04 13:32:17 Fluxo de login finalizado. URL atual: https://iqoption.com/traderoom
+2026-06-04 13:34:45 Pagina de login ja aberta: https://login.iqoption.com/pt/login?redirect_url=traderoom
+2026-06-04 13:34:45 Pagina de login detectada. Tentando autenticar automaticamente...
+2026-06-04 13:34:47 Inputs visiveis detectados: 0
+2026-06-04 13:34:47 Campos de login nao encontrados automaticamente.
+2026-06-04 13:34:47 Traderoom sem splash detectada (1/3).
+2026-06-04 13:34:49 Traderoom sem splash detectada (2/3).
+2026-06-04 13:34:51 Traderoom sem splash detectada (3/3).
+2026-06-04 13:34:55 Traderoom operacional detectada.
+2026-06-04 13:34:59 2 abas detectadas no topo. Fechando ate sobrar apenas a aba fixa da esquerda.
+2026-06-04 13:35:00 Tentativa 1.1: clique para fechar 'GBP/USD' em (387, 26).
+2026-06-04 13:35:02 Quantidade de abas apos fechamento: 1
+2026-06-04 13:35:04 Abas restantes apos limpeza: ['EUR/USD (O...']
+2026-06-04 13:35:04 Clique enviado no botao de adicionar ativo nas coordenadas (422, 36).
+2026-06-04 13:35:07 Clique enviado em opcao Opções nas coordenadas (482, 108).
+2026-06-04 13:35:08 Clique enviado na opcao 'Opções' via OCR.
+2026-06-04 13:35:10 Clique enviado em opcao Binárias nas coordenadas (485, 214).
+2026-06-04 13:35:11 Clique enviado na opcao 'Binárias' via OCR.
+2026-06-04 13:35:13 Clique enviado em campo de busca de ativos nas coordenadas (746, 49).
+2026-06-04 13:35:14 Campo de busca de ativos focado via OCR.
+2026-06-04 13:35:14 Campo de busca do seletor de ativos detectado apos abrir 'Binárias'.
+2026-06-04 13:35:16 Clique enviado em campo de busca de ativos nas coordenadas (746, 50).
+2026-06-04 13:35:16 Campo de busca de ativos focado via OCR.
+2026-06-04 13:35:17 Busca de ativo digitada por teclado: GBPUSD
+2026-06-04 13:35:20 Clique enviado em ativo alvo GBP/USD nas coordenadas (719, 129).
+2026-06-04 13:35:24 Selecao do ativo GBP/USD: OK
+2026-06-04 13:35:25 Aporte digitado via OCR/teclado: 10
+2026-06-04 13:35:27 Clique enviado em botao Expiração nas coordenadas (1520, 158).
+2026-06-04 13:35:28 Clique enviado em 'Expiração' via OCR.
+2026-06-04 13:35:30 Primeiro item da coluna 'Restante' confirmado abaixo de 2 minutos: 01:23
+2026-06-04 13:35:30 Clique enviado em primeiro tempo disponivel da coluna Restante nas coordenadas (1285, 261).
+2026-06-04 13:35:31 Tempo de expiracao selecionado: 01:23
+2026-06-04 13:35:31 Sincronizacao externa ativa. Hora local atual: 13:35:31. Proximo disparo previsto para: 13:36:00.
+2026-06-04 13:35:49 Contagem externa para disparo: 10s restantes.
+2026-06-04 13:35:50 Contagem externa para disparo: 9s restantes.
+2026-06-04 13:35:51 Contagem externa para disparo: 8s restantes.
+2026-06-04 13:35:52 Contagem externa para disparo: 7s restantes.
+2026-06-04 13:35:53 Contagem externa para disparo: 6s restantes.
+2026-06-04 13:35:54 Contagem externa para disparo: 5s restantes.
+2026-06-04 13:35:55 Contagem externa para disparo: 4s restantes.
+2026-06-04 13:35:56 Contagem externa para disparo: 3s restantes.
+2026-06-04 13:35:57 Contagem externa para disparo: 2s restantes.
+2026-06-04 13:35:58 Contagem externa para disparo: 1s restantes.
+2026-06-04 13:35:59 Horario alvo atingido pelo relogio externo: 13:35:59.
+2026-06-04 13:35:59 Botao ABAIXO nao encontrado via DOM; tentando deteccao visual.
+2026-06-04 13:35:59 Janela do console minimizada para liberar a captura da tela.
+2026-06-04 13:36:01 Screenshot capturada pelo Playwright com conteudo visivel.
+2026-06-04 13:36:01 Botao ABAIXO nao encontrado via deteccao visual.
+2026-06-04 13:36:01 Traderoom sem splash detectada (1/3).
+2026-06-04 13:36:03 Traderoom sem splash detectada (2/3).
+2026-06-04 13:36:05 Traderoom sem splash detectada (3/3).
+2026-06-04 13:36:09 Traderoom operacional detectada.
+2026-06-04 13:36:09 Popup de salvar senha nao apareceu ou nao foi identificado.
+2026-06-04 13:36:12 Janela do console minimizada para liberar a captura da tela.
+2026-06-04 13:39:16 Pagina de login ja aberta: https://login.iqoption.com/pt/login?redirect_url=traderoom
+2026-06-04 13:39:16 Pagina de login detectada. Tentando autenticar automaticamente...
+2026-06-04 13:39:18 Inputs visiveis detectados: 0
+2026-06-04 13:39:18 Campos de login nao encontrados automaticamente.
+2026-06-04 13:39:18 Traderoom ainda em splash/conectando; aguardando...
+2026-06-04 13:39:20 Traderoom ainda em splash/conectando; aguardando...
+2026-06-04 13:39:22 Traderoom sem splash detectada (1/3).
+2026-06-04 13:39:24 Traderoom sem splash detectada (2/3).
+2026-06-04 13:39:26 Traderoom sem splash detectada (3/3).
+2026-06-04 13:39:30 Traderoom operacional detectada.
+2026-06-04 13:39:35 2 abas detectadas no topo. Fechando ate sobrar apenas a aba fixa da esquerda.
+2026-06-04 13:39:35 Tentativa 1.1: clique para fechar 'GBP/USD' em (387, 28).
+2026-06-04 13:39:37 Quantidade de abas apos fechamento: 1
+2026-06-04 13:39:40 Abas restantes apos limpeza: ['EUR/USD (O...']
+2026-06-04 13:39:40 Clique enviado no botao de adicionar ativo nas coordenadas (423, 37).
+2026-06-04 13:39:43 Clique enviado em opcao Opções nas coordenadas (482, 155).
+2026-06-04 13:39:44 Clique enviado na opcao 'Opções' via OCR.
+2026-06-04 13:39:46 Clique enviado em opcao Binárias nas coordenadas (485, 261).
+2026-06-04 13:39:47 Clique enviado na opcao 'Binárias' via OCR.
+2026-06-04 13:39:50 Clique enviado em campo de busca de ativos nas coordenadas (760, 96).
+2026-06-04 13:39:50 Campo de busca de ativos focado via OCR.
+2026-06-04 13:39:50 Campo de busca do seletor de ativos detectado apos abrir 'Binárias'.
+2026-06-04 13:39:53 Clique enviado em campo de busca de ativos nas coordenadas (746, 96).
+2026-06-04 13:39:53 Campo de busca de ativos focado via OCR.
+2026-06-04 13:39:54 Busca de ativo digitada por teclado: GBPUSD
+2026-06-04 13:39:57 Clique enviado em ativo alvo GBP/USD nas coordenadas (719, 176).
+2026-06-04 13:40:01 Selecao do ativo GBP/USD: OK
+2026-06-04 13:40:04 Aporte digitado via OCR/teclado: 10
+2026-06-04 13:40:06 Clique enviado em botao Expiração nas coordenadas (1840, 157).
+2026-06-04 13:40:07 Clique enviado em 'Expiração' via OCR.
+2026-06-04 13:40:08 Primeiro item da coluna 'Restante' confirmado abaixo de 2 minutos: 00:45
+2026-06-04 13:40:08 Clique enviado em primeiro tempo disponivel da coluna Restante nas coordenadas (1605, 265).
+2026-06-04 13:40:09 Tempo de expiracao selecionado: 00:45
+2026-06-04 13:40:51 Disparo manual recebido via Enter.
+2026-06-04 13:40:51 Botao ABAIXO nao encontrado via DOM; tentando deteccao visual.
+2026-06-04 13:40:51 Janela do console minimizada para liberar a captura da tela.
+2026-06-04 13:40:53 Screenshot capturada pelo Playwright com conteudo visivel.
+2026-06-04 13:40:53 Ordem enviada no botao ABAIXO via deteccao visual em (1684, 501).
+2026-06-04 13:40:53 Traderoom sem splash detectada (1/3).
+2026-06-04 13:40:55 Traderoom sem splash detectada (2/3).
+2026-06-04 13:40:57 Traderoom sem splash detectada (3/3).
+2026-06-04 13:41:01 Traderoom operacional detectada.
+2026-06-04 13:41:01 Popup de salvar senha nao apareceu ou nao foi identificado.
+2026-06-04 13:41:05 Janela do console minimizada para liberar a captura da tela.
+2026-06-04 13:41:07 Screenshot capturada pelo Playwright com conteudo visivel.
+2026-06-04 13:41:09 Analise visual salva em C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\logs\playwright_probe
+2026-06-04 13:41:09 Deteccao visual direita: up=(341, 322, 110, 110) down=(341, 440, 110, 110) payout=(88, 13, 337, 291)
+2026-06-04 13:41:09 OCR botoes/payout: up=['ACIMA'] down=['ABAIXO'] payout=['+849', '+S8.40', '84', '+'] payout_num=84.0
+2026-06-04 13:41:09 Traderoom confirmada. Ativo atual: desconhecido
+2026-06-04 13:41:09 Mercado operavel agora: SIM
+2026-06-04 13:41:09 Payout detectado: 84.00%
+2026-06-04 13:41:09 Payout acima de 80%: SIM
+2026-06-04 13:41:09 Fluxo de login finalizado. URL atual: https://iqoption.com/traderoom
+2026-06-04 13:44:23 Pagina de login ja aberta: https://login.iqoption.com/pt/login?redirect_url=traderoom
+2026-06-04 13:44:23 Pagina de login detectada. Tentando autenticar automaticamente...
+2026-06-04 13:44:25 Inputs visiveis detectados: 0
+2026-06-04 13:44:25 Campos de login nao encontrados automaticamente.
+2026-06-04 13:44:25 Traderoom sem splash detectada (1/3).
+2026-06-04 13:44:27 Traderoom sem splash detectada (2/3).
+2026-06-04 13:44:29 Traderoom sem splash detectada (3/3).
+2026-06-04 13:44:33 Traderoom operacional detectada.
+2026-06-04 13:44:38 2 abas detectadas no topo. Fechando ate sobrar apenas a aba fixa da esquerda.
+2026-06-04 13:44:38 Tentativa 1.1: clique para fechar 'GBP/USD' em (387, 28).
+2026-06-04 13:44:40 Quantidade de abas apos fechamento: 1
+2026-06-04 13:44:43 Abas restantes apos limpeza: ['EUR/USD (O...']
+2026-06-04 13:44:43 Clique enviado no botao de adicionar ativo nas coordenadas (423, 37).
+2026-06-04 13:44:46 Clique enviado em opcao Opções nas coordenadas (482, 155).
+2026-06-04 13:44:47 Clique enviado na opcao 'Opções' via OCR.
+2026-06-04 13:44:50 Clique enviado em opcao Binárias nas coordenadas (485, 261).
+2026-06-04 13:44:51 Clique enviado na opcao 'Binárias' via OCR.
+2026-06-04 13:44:53 Clique enviado em campo de busca de ativos nas coordenadas (760, 96).
+2026-06-04 13:44:54 Campo de busca de ativos focado via OCR.
+2026-06-04 13:44:54 Campo de busca do seletor de ativos detectado apos abrir 'Binárias'.
+2026-06-04 13:44:56 Clique enviado em campo de busca de ativos nas coordenadas (746, 96).
+2026-06-04 13:44:57 Campo de busca de ativos focado via OCR.
+2026-06-04 13:44:57 Busca de ativo digitada por teclado: GBPUSD
+2026-06-04 13:45:00 Clique enviado em ativo alvo GBP/USD nas coordenadas (719, 176).
+2026-06-04 13:45:04 Selecao do ativo GBP/USD: OK
+2026-06-04 13:45:06 Aporte digitado via OCR/teclado: 10
+2026-06-04 13:45:09 Clique enviado em botao Expiração nas coordenadas (1840, 157).
+2026-06-04 13:45:10 Clique enviado em 'Expiração' via OCR.
+2026-06-04 13:45:12 Primeiro item da coluna 'Restante' confirmado abaixo de 2 minutos: 00:42
+2026-06-04 13:45:12 Clique enviado em primeiro tempo disponivel da coluna Restante nas coordenadas (1605, 265).
+2026-06-04 13:45:12 Tempo de expiracao selecionado: 00:42
+2026-06-04 13:45:51 Disparo manual recebido via Enter.
+2026-06-04 13:45:51 Botao ABAIXO nao encontrado via DOM; tentando deteccao visual.
+2026-06-04 13:45:51 Clique tentado no botao ABAIXO via deteccao visual em (1684, 495).
+2026-06-04 13:45:52 Ordem confirmada no botao ABAIXO via deteccao visual.
+2026-06-04 13:45:52 Traderoom sem splash detectada (1/3).
+2026-06-04 13:45:54 Traderoom sem splash detectada (2/3).
+2026-06-04 13:45:56 Traderoom sem splash detectada (3/3).
+2026-06-04 13:46:00 Traderoom operacional detectada.
+2026-06-04 13:46:00 Popup de salvar senha nao apareceu ou nao foi identificado.
+2026-06-04 13:46:03 Janela do console minimizada para liberar a captura da tela.
+2026-06-04 13:46:05 Screenshot capturada pelo Playwright com conteudo visivel.
+2026-06-04 13:46:09 Analise visual salva em C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\logs\playwright_probe
+2026-06-04 13:46:09 Deteccao visual direita: up=(341, 322, 110, 110) down=(0, 416, 451, 134) payout=(88, 13, 337, 291)
+2026-06-04 13:46:09 OCR botoes/payout: up=['ACIMA'] down=['1.343535', '1.3435', 'ABAIXO'] payout=['+849', '+S8.40', '84', '+'] payout_num=84.0
+2026-06-04 13:46:09 Traderoom confirmada. Ativo atual: desconhecido
+2026-06-04 13:46:09 Mercado operavel agora: SIM
+2026-06-04 13:46:09 Payout detectado: 84.00%
+2026-06-04 13:46:09 Payout acima de 80%: SIM
+2026-06-04 13:46:09 Fluxo de login finalizado. URL atual: https://iqoption.com/traderoom
+2026-06-04 13:49:55 Pagina de login ja aberta: https://login.iqoption.com/pt/login?redirect_url=traderoom
+2026-06-04 13:49:55 Pagina de login detectada. Tentando autenticar automaticamente...
+2026-06-04 13:49:56 Inputs visiveis detectados: 0
+2026-06-04 13:49:56 Campos de login nao encontrados automaticamente.
+2026-06-04 13:49:56 Traderoom sem splash detectada (1/3).
+2026-06-04 13:49:58 Traderoom sem splash detectada (2/3).
+2026-06-04 13:50:00 Traderoom sem splash detectada (3/3).
+2026-06-04 13:50:04 Traderoom operacional detectada.
+2026-06-04 13:50:09 2 abas detectadas no topo. Fechando ate sobrar apenas a aba fixa da esquerda.
+2026-06-04 13:50:09 Tentativa 1.1: clique para fechar 'GBP/USD' em (387, 28).
+2026-06-04 13:50:12 Quantidade de abas apos fechamento: 1
+2026-06-04 13:50:14 Abas restantes apos limpeza: ['EUR/USD (O...']
+2026-06-04 13:50:14 Clique enviado no botao de adicionar ativo nas coordenadas (423, 37).
+2026-06-04 13:50:18 Clique enviado em opcao Opções nas coordenadas (482, 155).
+2026-06-04 13:50:19 Clique enviado na opcao 'Opções' via OCR.
+2026-06-04 13:50:21 Clique enviado em opcao Binárias nas coordenadas (485, 261).
+2026-06-04 13:50:22 Clique enviado na opcao 'Binárias' via OCR.
+2026-06-04 13:50:25 Clique enviado em campo de busca de ativos nas coordenadas (760, 96).
+2026-06-04 13:50:25 Campo de busca de ativos focado via OCR.
+2026-06-04 13:50:25 Campo de busca do seletor de ativos detectado apos abrir 'Binárias'.
+2026-06-04 13:50:28 Clique enviado em campo de busca de ativos nas coordenadas (746, 96).
+2026-06-04 13:50:28 Campo de busca de ativos focado via OCR.
+2026-06-04 13:50:29 Busca de ativo digitada por teclado: GBPUSD
+2026-06-04 13:50:32 Clique enviado em ativo alvo GBP/USD nas coordenadas (719, 176).
+2026-06-04 13:50:35 Selecao do ativo GBP/USD: OK
+2026-06-04 13:50:37 Aporte digitado via OCR/teclado: 10
+2026-06-04 13:50:39 Clique enviado em botao Expiração nas coordenadas (1840, 157).
+2026-06-04 13:50:40 Clique enviado em 'Expiração' via OCR.
+2026-06-04 13:50:42 Primeiro item da coluna 'Restante' confirmado abaixo de 2 minutos: 01:11
+2026-06-04 13:50:42 Clique enviado em primeiro tempo disponivel da coluna Restante nas coordenadas (1605, 265).
+2026-06-04 13:50:43 Tempo de expiracao selecionado: 01:11
+2026-06-04 13:50:44 Disparo manual recebido via Enter.
+2026-06-04 13:50:44 Botao ABAIXO nao encontrado via DOM; tentando deteccao visual.
+2026-06-04 13:50:44 Clique tentado no botao ABAIXO via deteccao visual em (1684, 495).
+2026-06-04 13:50:48 Clique tentado no botao ABAIXO via deteccao visual em (1661, 495).
+2026-06-04 13:50:50 Clique tentado no botao ABAIXO via deteccao visual em (1684, 489).
+2026-06-04 13:50:53 Traderoom sem splash detectada (1/3).
+2026-06-04 13:50:55 Traderoom sem splash detectada (2/3).
+2026-06-04 13:50:57 Traderoom sem splash detectada (3/3).
+2026-06-04 13:51:01 Traderoom operacional detectada.
+2026-06-04 13:51:01 Popup de salvar senha nao apareceu ou nao foi identificado.
+2026-06-04 13:51:04 Janela do console minimizada para liberar a captura da tela.
+2026-06-04 13:51:06 Screenshot capturada pelo Playwright com conteudo visivel.
+2026-06-04 13:51:10 Analise visual salva em C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\logs\playwright_probe
+2026-06-04 13:51:10 Deteccao visual direita: up=(341, 322, 110, 110) down=(0, 440, 451, 110) payout=(88, 13, 337, 291)
+2026-06-04 13:51:10 OCR botoes/payout: up=['ACIMA'] down=['1.343650', 'M', '1.3436', 'ABAIXO', '1'] payout=['+849', '+S8.40', '84', '+'] payout_num=84.0
+2026-06-04 13:51:10 Traderoom confirmada. Ativo atual: desconhecido
+2026-06-04 13:51:10 Mercado operavel agora: SIM
+2026-06-04 13:51:10 Payout detectado: 84.00%
+2026-06-04 13:51:10 Payout acima de 80%: SIM
+2026-06-04 13:51:10 Fluxo de login finalizado. URL atual: https://iqoption.com/traderoom
+2026-06-04 13:53:17 Pagina de login ja aberta: https://login.iqoption.com/pt/login?redirect_url=traderoom
+2026-06-04 13:53:17 Pagina de login detectada. Tentando autenticar automaticamente...
+2026-06-04 13:53:19 Inputs visiveis detectados: 0
+2026-06-04 13:53:19 Campos de login nao encontrados automaticamente.
+2026-06-04 13:53:19 Traderoom ainda em splash/conectando; aguardando...
+2026-06-04 13:53:21 Traderoom ainda em splash/conectando; aguardando...
+2026-06-04 13:53:23 Traderoom ainda em splash/conectando; aguardando...
+2026-06-04 13:53:25 Traderoom sem splash detectada (1/3).
+2026-06-04 13:53:27 Traderoom sem splash detectada (2/3).
+2026-06-04 13:53:29 Traderoom sem splash detectada (3/3).
+2026-06-04 13:53:33 Traderoom operacional detectada.
+2026-06-04 13:53:38 2 abas detectadas no topo. Fechando ate sobrar apenas a aba fixa da esquerda.
+2026-06-04 13:53:38 Tentativa 1.1: clique para fechar 'GBP/USD' em (387, 28).
+2026-06-04 13:53:40 Quantidade de abas apos fechamento: 1
+2026-06-04 13:53:42 Abas restantes apos limpeza: ['EUR/USD (O...']
+2026-06-04 13:53:42 Clique enviado no botao de adicionar ativo nas coordenadas (423, 37).
+2026-06-04 13:53:46 Clique enviado em opcao Opções nas coordenadas (482, 155).
+2026-06-04 13:53:47 Clique enviado na opcao 'Opções' via OCR.
+2026-06-04 13:53:49 Clique enviado em opcao Binárias nas coordenadas (485, 261).
+2026-06-04 13:53:50 Clique enviado na opcao 'Binárias' via OCR.
+2026-06-04 13:53:52 Clique enviado em campo de busca de ativos nas coordenadas (760, 96).
+2026-06-04 13:53:53 Campo de busca de ativos focado via OCR.
+2026-06-04 13:53:53 Campo de busca do seletor de ativos detectado apos abrir 'Binárias'.
+2026-06-04 13:53:55 Clique enviado em campo de busca de ativos nas coordenadas (746, 96).
+2026-06-04 13:53:56 Campo de busca de ativos focado via OCR.
+2026-06-04 13:53:56 Busca de ativo digitada por teclado: GBPUSD
+2026-06-04 13:53:59 Clique enviado em ativo alvo GBP/USD nas coordenadas (719, 176).
+2026-06-04 13:54:04 Selecao do ativo GBP/USD: OK
+2026-06-04 13:54:06 Aporte digitado via OCR/teclado: 10
+2026-06-04 13:54:08 Clique enviado em botao Expiração nas coordenadas (1840, 157).
+2026-06-04 13:54:09 Clique enviado em 'Expiração' via OCR.
+2026-06-04 13:54:11 Primeiro item da coluna 'Restante' confirmado abaixo de 2 minutos: 00:43
+2026-06-04 13:54:11 Clique enviado em primeiro tempo disponivel da coluna Restante nas coordenadas (1605, 265).
+2026-06-04 13:54:11 Tempo de expiracao selecionado: 00:43
+2026-06-04 13:54:14 Disparo manual recebido via Enter.
+2026-06-04 13:54:14 Botao ABAIXO nao encontrado via DOM; tentando deteccao visual.
+2026-06-04 13:54:15 Clique tentado no texto do botao ABAIXO via OCR em (1855, 515).
+2026-06-04 13:54:19 Clique tentado no texto do botao ABAIXO via OCR em (1855, 519).
+2026-06-04 13:54:22 Clique tentado no texto do botao ABAIXO via OCR em (1855, 497).
+2026-06-04 13:54:24 Clique tentado no botao ABAIXO via deteccao visual em (1855, 495).
+2026-06-04 13:54:26 Clique tentado no botao ABAIXO via deteccao visual em (1849, 495).
+2026-06-04 13:54:29 Clique tentado no botao ABAIXO via deteccao visual em (1855, 489).
+2026-06-04 13:54:31 Falha ao confirmar a ordem no botao ABAIXO.
+2026-06-04 13:54:31 Traderoom sem splash detectada (1/3).
+2026-06-04 13:54:33 Traderoom sem splash detectada (2/3).
+2026-06-04 13:54:35 Traderoom sem splash detectada (3/3).
+2026-06-04 13:54:39 Traderoom operacional detectada.
+2026-06-04 13:54:39 Popup de salvar senha nao apareceu ou nao foi identificado.
+2026-06-04 13:54:42 Janela do console minimizada para liberar a captura da tela.
+2026-06-04 13:54:45 Screenshot capturada pelo Playwright com conteudo visivel.
+2026-06-04 13:54:48 Analise visual salva em C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\logs\playwright_probe
+2026-06-04 13:54:48 Deteccao visual direita: up=None down=(0, 327, 451, 111) payout=(88, 13, 337, 291)
+2026-06-04 13:54:48 OCR botoes/payout: up=[] down=['1.343605', 'NOVA', '1.34354', 'OPCAO', '1.34353', '+', '13496056'] payout=['+849', '+S8.40', '84', '+'] payout_num=84.0
+2026-06-04 13:54:48 Traderoom confirmada. Ativo atual: desconhecido
+2026-06-04 13:54:48 Mercado operavel agora: NAO
+2026-06-04 13:54:48 Payout detectado: 84.00%
+2026-06-04 13:54:48 Payout acima de 80%: SIM
+2026-06-04 13:54:48 Fluxo de login finalizado. URL atual: https://iqoption.com/traderoom
+2026-06-04 13:55:09 Pagina de login ja aberta: https://login.iqoption.com/pt/login?redirect_url=traderoom
+2026-06-04 13:55:09 Pagina de login detectada. Tentando autenticar automaticamente...
+2026-06-04 13:55:10 Inputs visiveis detectados: 0
+2026-06-04 13:55:10 Campos de login nao encontrados automaticamente.
+2026-06-04 13:55:10 Traderoom ainda em splash/conectando; aguardando...
+2026-06-04 13:55:12 Traderoom ainda em splash/conectando; aguardando...
+2026-06-04 13:55:14 Traderoom sem splash detectada (1/3).
+2026-06-04 13:55:16 Traderoom sem splash detectada (2/3).
+2026-06-04 13:55:19 Traderoom sem splash detectada (3/3).
+2026-06-04 13:55:23 Traderoom operacional detectada.
+2026-06-04 13:55:28 2 abas detectadas no topo. Fechando ate sobrar apenas a aba fixa da esquerda.
+2026-06-04 13:55:28 Tentativa 1.1: clique para fechar 'GBP/USD' em (387, 28).
+2026-06-04 13:55:30 Quantidade de abas apos fechamento: 1
+2026-06-04 13:55:32 Abas restantes apos limpeza: ['EUR/USD (O...']
+2026-06-04 13:55:32 Clique enviado no botao de adicionar ativo nas coordenadas (423, 37).
+2026-06-04 13:55:36 Clique enviado em opcao Opções nas coordenadas (482, 155).
+2026-06-04 13:55:37 Clique enviado na opcao 'Opções' via OCR.
+2026-06-04 13:55:39 Clique enviado em opcao Binárias nas coordenadas (484, 261).
+2026-06-04 13:55:40 Clique enviado na opcao 'Binárias' via OCR.
+2026-06-04 13:55:43 Clique enviado em campo de busca de ativos nas coordenadas (760, 96).
+2026-06-04 13:55:43 Campo de busca de ativos focado via OCR.
+2026-06-04 13:55:43 Campo de busca do seletor de ativos detectado apos abrir 'Binárias'.
+2026-06-04 13:55:46 Clique enviado em campo de busca de ativos nas coordenadas (746, 96).
+2026-06-04 13:55:46 Campo de busca de ativos focado via OCR.
+2026-06-04 13:55:47 Busca de ativo digitada por teclado: GBPUSD
+2026-06-04 13:55:50 Clique enviado em ativo alvo GBP/USD nas coordenadas (719, 176).
+2026-06-04 13:55:54 Selecao do ativo GBP/USD: OK
+2026-06-04 13:55:56 Aporte digitado via OCR/teclado: 10
+2026-06-04 13:55:58 Clique enviado em botao Expiração nas coordenadas (1840, 157).
+2026-06-04 13:55:59 Clique enviado em 'Expiração' via OCR.
+2026-06-04 13:56:01 Primeiro item da coluna 'Restante' confirmado abaixo de 2 minutos: 00:53
+2026-06-04 13:56:01 Clique enviado em primeiro tempo disponivel da coluna Restante nas coordenadas (1605, 265).
+2026-06-04 13:56:01 Tempo de expiracao selecionado: 00:53
+2026-06-04 13:56:51 Disparo manual recebido via Enter.
+2026-06-04 13:56:51 Botao ABAIXO nao encontrado via DOM; tentando deteccao visual.
+2026-06-04 13:56:52 Clique tentado no texto do botao ABAIXO via OCR em (1855, 514).
+2026-06-04 13:56:56 Ordem confirmada no botao ABAIXO via OCR.
+2026-06-04 13:56:56 Traderoom sem splash detectada (1/3).
+2026-06-04 13:56:58 Traderoom sem splash detectada (2/3).
+2026-06-04 13:57:00 Traderoom sem splash detectada (3/3).
+2026-06-04 13:57:04 Traderoom operacional detectada.
+2026-06-04 13:57:04 Popup de salvar senha nao apareceu ou nao foi identificado.
+2026-06-04 13:57:07 Janela do console minimizada para liberar a captura da tela.
+2026-06-04 13:57:09 Screenshot capturada pelo Playwright com conteudo visivel.
+2026-06-04 13:57:13 Analise visual salva em C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\logs\playwright_probe
+2026-06-04 13:57:13 Deteccao visual direita: up=(341, 322, 110, 110) down=(0, 413, 451, 137) payout=(88, 13, 337, 291)
+2026-06-04 13:57:13 OCR botoes/payout: up=['ACIMA'] down=['1.343625', '1.3436', 'ABAIXO', '1.848625'] payout=['+849', '+S8.40', '84', '+'] payout_num=84.0
+2026-06-04 13:57:13 Traderoom confirmada. Ativo atual: desconhecido
+2026-06-04 13:57:13 Mercado operavel agora: SIM
+2026-06-04 13:57:13 Payout detectado: 84.00%
+2026-06-04 13:57:13 Payout acima de 80%: SIM
+2026-06-04 13:57:13 Fluxo de login finalizado. URL atual: https://iqoption.com/traderoom
+2026-06-04 13:58:21 Pagina de login ja aberta: https://login.iqoption.com/pt/login?redirect_url=traderoom
+2026-06-04 13:58:21 Pagina de login detectada. Tentando autenticar automaticamente...
+2026-06-04 13:58:23 Inputs visiveis detectados: 0
+2026-06-04 13:58:23 Campos de login nao encontrados automaticamente.
+2026-06-04 13:58:23 Traderoom sem splash detectada (1/3).
+2026-06-04 13:58:25 Traderoom sem splash detectada (2/3).
+2026-06-04 13:58:27 Traderoom sem splash detectada (3/3).
+2026-06-04 13:58:31 Traderoom operacional detectada.
+2026-06-04 13:58:36 2 abas detectadas no topo. Fechando ate sobrar apenas a aba fixa da esquerda.
+2026-06-04 13:58:36 Tentativa 1.1: clique para fechar 'GBP/USD' em (387, 28).
+2026-06-04 13:58:39 Quantidade de abas apos fechamento: 1
+2026-06-04 13:58:41 Abas restantes apos limpeza: ['EUR/USD (O...']
+2026-06-04 13:58:41 Clique enviado no botao de adicionar ativo nas coordenadas (423, 37).
+2026-06-04 13:58:44 Clique enviado em opcao Opções nas coordenadas (482, 155).
+2026-06-04 13:58:45 Clique enviado na opcao 'Opções' via OCR.
+2026-06-04 13:58:48 Clique enviado em opcao Binárias nas coordenadas (485, 261).
+2026-06-04 13:58:49 Clique enviado na opcao 'Binárias' via OCR.
+2026-06-04 13:58:51 Clique enviado em campo de busca de ativos nas coordenadas (760, 96).
+2026-06-04 13:58:51 Campo de busca de ativos focado via OCR.
+2026-06-04 13:58:51 Campo de busca do seletor de ativos detectado apos abrir 'Binárias'.
+2026-06-04 13:58:54 Clique enviado em campo de busca de ativos nas coordenadas (746, 96).
+2026-06-04 13:58:54 Campo de busca de ativos focado via OCR.
+2026-06-04 13:58:55 Busca de ativo digitada por teclado: GBPUSD
+2026-06-04 13:58:58 Clique enviado em ativo alvo GBP/USD nas coordenadas (719, 176).
+2026-06-04 13:59:02 Selecao do ativo GBP/USD: OK
+2026-06-04 13:59:05 Aporte digitado via OCR/teclado: 10
+2026-06-04 13:59:07 Clique enviado em botao Expiração nas coordenadas (1840, 157).
+2026-06-04 13:59:08 Clique enviado em 'Expiração' via OCR.
+2026-06-04 13:59:09 Primeiro item da coluna 'Restante' confirmado abaixo de 2 minutos: 00:44
+2026-06-04 13:59:09 Clique enviado em primeiro tempo disponivel da coluna Restante nas coordenadas (1606, 265).
+2026-06-04 13:59:10 Tempo de expiracao selecionado: 00:44
+2026-06-04 13:59:27 Disparo manual recebido via Enter.
+2026-06-04 13:59:27 Botao ABAIXO nao encontrado via DOM; tentando deteccao visual.
+2026-06-04 13:59:28 Clique tentado no texto do botao ABAIXO via OCR em (1855, 514).
+2026-06-04 13:59:32 Clique tentado no texto do botao ABAIXO via OCR em (1855, 519).
+2026-06-04 13:59:35 Clique tentado no texto do botao ABAIXO via OCR em (1855, 495).

@@ -1,12 +1,9 @@
-2026/06/04-13:02:34.775 3550 Reusing MANIFEST C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\webui\playwright-profile\Default\IndexedDB\https_iqoption.com_0.indexeddb.leveldb/MANIFEST-000001
-2026/06/04-13:02:34.775 3550 Recovering log #20
-2026/06/04-13:02:34.781 3550 Reusing old log C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\webui\playwright-profile\Default\IndexedDB\https_iqoption.com_0.indexeddb.leveldb/000020.log 
-2026/06/04-13:03:22.630 3550 Level-0 table #26: started
-2026/06/04-13:03:22.638 3550 Level-0 table #26: 1012179 bytes OK
-2026/06/04-13:03:22.639 3550 Delete type=0 #20
-2026/06/04-13:05:59.191 3550 Compacting 1@1 + 1@2 files
-2026/06/04-13:05:59.196 3550 Generated table #27@1: 1746 keys, 51149 bytes
-2026/06/04-13:05:59.196 3550 Compacted 1@1 + 1@2 files => 51149 bytes
-2026/06/04-13:05:59.197 3550 compacted to: files[ 0 0 1 0 0 0 0 ]
-2026/06/04-13:05:59.197 3550 Delete type=2 #23
-2026/06/04-13:05:59.197 3550 Delete type=2 #26
+2026/06/04-13:58:10.513 3f60 Reusing MANIFEST C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\webui\playwright-profile\Default\IndexedDB\https_iqoption.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/06/04-13:58:10.513 3f60 Recovering log #34
+2026/06/04-13:58:10.514 3f60 Reusing old log C:\Users\User\AppData\Roaming\MetaQuotes\Terminal\9DE44EFC77A6A3ABBD348AFCCFB49D70\MQL5\Experts\OpBinBridge\webui\playwright-profile\Default\IndexedDB\https_iqoption.com_0.indexeddb.leveldb/000034.log 
+2026/06/04-13:58:14.554 4a70 Compacting 1@1 + 1@2 files
+2026/06/04-13:58:14.558 4a70 Generated table #37@1: 2275 keys, 73336 bytes
+2026/06/04-13:58:14.558 4a70 Compacted 1@1 + 1@2 files => 73336 bytes
+2026/06/04-13:58:14.559 4a70 compacted to: files[ 0 0 1 0 0 0 0 ]
+2026/06/04-13:58:14.559 4a70 Delete type=2 #32
+2026/06/04-13:58:14.559 4a70 Delete type=2 #35
