@@ -1,1 +1,7 @@
 git+https://github.com/Lu-Yi-Hsun/iqoptionapi.git
+opencv-python
+pyautogui
+mss
+numpy
+playwright
+rapidocr-onnxruntime

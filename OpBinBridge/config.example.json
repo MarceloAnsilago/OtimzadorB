@@ -16,5 +16,6 @@
   "allowed_symbols": [],
   "dry_run": false,
   "iq_symbol_map": {},
+  "market_mode": "ABERTO",
   "use_otc_symbols": false
 }

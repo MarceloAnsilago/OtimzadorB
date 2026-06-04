@@ -167,6 +167,7 @@ input string InpBridgeStatusFolder          = "status";
 input int    InpBridgeExpirationMinutes     = 1;
 input bool   InpBridgeExportarMesmoSemSinal = false;
 input int    InpBridgeStatusIntervalSeconds = 2;
+input int    InpBridgeOperabilityFreshnessSeconds = 15;
 
 //+------------------------------------------------------------------+
 //| ESTRUTURAS                                                       |
@@ -326,6 +327,31 @@ string ReadCommonTextFile(string file_name)
    return content;
 }
 
+bool TryExtractJsonStringValue(const string content, const string marker, string &value)
+{
+   value = "";
+   int marker_pos = StringFind(content, marker);
+   if(marker_pos < 0)
+      return false;
+
+   int value_start = marker_pos + StringLen(marker);
+   int value_end = StringFind(content, "\"", value_start);
+   if(value_end <= value_start)
+      return false;
+
+   value = StringSubstr(content, value_start, value_end - value_start);
+   return true;
+}
+
+datetime ParseBridgeTimestamp(string value)
+{
+   if(StringLen(value) == 0)
+      return 0;
+
+   StringReplace(value, "-", ".");
+   return StringToTime(value);
+}
+
 bool TryReadBridgeOperability(
    const int expiration_minutes,
    bool &has_snapshot,
@@ -342,6 +368,20 @@ bool TryReadBridgeOperability(
    string content = ReadCommonTextFile(GetBridgeOperabilityFilePath());
    if(StringLen(content) == 0)
       return false;
+
+   if(InpBridgeOperabilityFreshnessSeconds > 0)
+   {
+      string generated_at_text = "";
+      if(TryExtractJsonStringValue(content, "\"generated_at\": \"", generated_at_text))
+      {
+         datetime generated_at = ParseBridgeTimestamp(generated_at_text);
+         datetime now = TimeCurrent();
+         if(now <= 0)
+            now = TimeLocal();
+         if(generated_at > 0 && now > generated_at && (now - generated_at) > InpBridgeOperabilityFreshnessSeconds)
+            return false;
+      }
+   }
 
    has_snapshot = true;
    string marker = StringFormat("\"expiration_minutes\": %d", expiration_minutes);

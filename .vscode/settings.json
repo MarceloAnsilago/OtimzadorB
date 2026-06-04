@@ -3,5 +3,6 @@
     "git.confirmSync": false,
     "git.enableSmartCommit": true,
     "git.postCommitCommand": "sync",
-    "scm.alwaysShowRepositories": true
+    "scm.alwaysShowRepositories": true,
+    "python.defaultInterpreterPath": "${workspaceFolder}/OpBinBridge/.venv/Scripts/python.exe"
 }

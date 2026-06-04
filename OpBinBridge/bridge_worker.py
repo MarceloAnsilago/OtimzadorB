@@ -38,7 +38,7 @@ class BridgeRuntimeConfig:
     poll_interval_seconds: float
     default_amount: float
     min_payout_percent: float
-    use_otc_symbols: bool
+    market_mode: str
     dry_run: bool
     allowed_symbols: list[str]
     iq_symbol_map: dict[str, str]
@@ -52,6 +52,9 @@ class BridgeRuntimeConfig:
             for key, value in dict(raw.get("iq_symbol_map", {})).items()
             if str(key).strip() and str(value).strip()
         }
+        market_mode_raw = str(raw.get("market_mode", "")).upper().strip()
+        if not market_mode_raw:
+            market_mode_raw = "OTC" if bool(raw.get("use_otc_symbols", False)) else "ABERTO"
         return cls(
             mt5_common_files_dir=Path(str(raw.get("mt5_common_files_dir", "")).strip()),
             bridge_root_folder=str(raw.get("bridge_root_folder", "OpBinBridge")).strip() or "OpBinBridge",
@@ -64,7 +67,7 @@ class BridgeRuntimeConfig:
             poll_interval_seconds=float(raw.get("poll_interval_seconds", 1.0)),
             default_amount=float(raw.get("default_amount", 2.0)),
             min_payout_percent=float(raw.get("min_payout_percent", 0.0)),
-            use_otc_symbols=bool(raw.get("use_otc_symbols", False)),
+            market_mode=market_mode_raw if market_mode_raw in {"ABERTO", "OTC", "AUTO"} else "ABERTO",
             dry_run=bool(raw.get("dry_run", False)),
             allowed_symbols=allowed_symbols,
             iq_symbol_map=iq_symbol_map,
@@ -187,7 +190,7 @@ class BridgeWorker:
             return
 
         expiration_timestamp = self._resolve_expiration_timestamp(expiration_minutes)
-        order_id, final_order_symbol = self.scanner.place_order(
+        order_id, final_order_symbol, used_expiration_minutes, used_expiration_timestamp = self.scanner.place_order(
             order_symbol,
             amount,
             direction,
@@ -199,13 +202,13 @@ class BridgeWorker:
             signal_file,
             final_order_symbol,
             option_kind,
-            expiration_minutes,
+            used_expiration_minutes,
             amount,
             payout_percent,
             order_id=str(order_id),
             status="sent",
             message="Ordem enviada com sucesso.",
-            expiration_timestamp=expiration_timestamp,
+            expiration_timestamp=used_expiration_timestamp,
         )
         self._write_receipt(signal_file, receipt_payload)
         self._move_signal_file(signal_file, self.runtime_config.processed_path)
@@ -235,31 +238,42 @@ class BridgeWorker:
         option_kind = self.scanner._get_option_kind_for_duration(expiration_minutes)
         assert self.scanner.client is not None
         all_profit = dict(self.scanner.client.get_all_profit() or {})
+        turbo_profit_map, binary_profit_map = self.scanner._get_binary_profit_maps()
         turbo_open_map, binary_open_map = self.scanner._get_binary_open_maps()
+        alternate_kind = "binary" if option_kind == "turbo" else "turbo"
         open_map = turbo_open_map if option_kind == "turbo" else binary_open_map
+        profit_map = turbo_profit_map if option_kind == "turbo" else binary_profit_map
+        alternate_open_map = turbo_open_map if alternate_kind == "turbo" else binary_open_map
+        alternate_profit_map = turbo_profit_map if alternate_kind == "turbo" else binary_profit_map
 
         mapped_symbol = self.runtime_config.iq_symbol_map.get(requested_symbol, requested_symbol).upper().strip()
         candidates = self._build_symbol_candidates(mapped_symbol)
-        preferred_order: list[str] = []
-        if self.runtime_config.use_otc_symbols:
-            preferred_order.extend(candidates["otc"])
-            preferred_order.extend(candidates["regular"])
-        else:
-            preferred_order.extend(candidates["regular"])
-            preferred_order.extend(candidates["otc"])
+        preferred_order = self._build_preferred_order(candidates)
 
         best_any_open: tuple[str, float] | None = None
         for candidate in preferred_order:
             normalized_candidate = candidate.upper().strip()
             if normalized_candidate not in OP_code.ACTIVES:
                 continue
-            payout_percent = self.scanner._to_percent((all_profit.get(normalized_candidate) or {}).get(option_kind))
+            payout_percent = self.scanner._lookup_payout_percent(normalized_candidate, option_kind, all_profit, profit_map)
             info = self.scanner._get_open_info(normalized_candidate, open_map)
             is_open = bool(info.get("open"))
             if is_open and payout_percent >= self.runtime_config.min_payout_percent:
                 return normalized_candidate, option_kind, payout_percent
+            alternate_payout_percent = self.scanner._lookup_payout_percent(
+                normalized_candidate,
+                alternate_kind,
+                all_profit,
+                alternate_profit_map,
+            )
+            alternate_info = self.scanner._get_open_info(normalized_candidate, alternate_open_map)
+            alternate_is_open = bool(alternate_info.get("open"))
+            if alternate_is_open and alternate_payout_percent >= self.runtime_config.min_payout_percent:
+                return normalized_candidate, alternate_kind, alternate_payout_percent
             if is_open and best_any_open is None:
                 best_any_open = (normalized_candidate, payout_percent)
+            if alternate_is_open and best_any_open is None:
+                best_any_open = (normalized_candidate, alternate_payout_percent)
 
         if best_any_open is not None:
             symbol_name, payout_percent = best_any_open
@@ -277,6 +291,7 @@ class BridgeWorker:
         self.scanner.connect()
         assert self.scanner.client is not None
         all_profit = dict(self.scanner.client.get_all_profit() or {})
+        turbo_profit_map, binary_profit_map = self.scanner._get_binary_profit_maps()
         turbo_open_map, binary_open_map = self.scanner._get_binary_open_maps()
         symbols_to_export = requested_symbols or self._discover_symbols_for_operability()
         expirations_to_export = expirations or [1, 5, 15]
@@ -290,14 +305,9 @@ class BridgeWorker:
             for expiration_minutes in expirations_to_export:
                 option_kind = self.scanner._get_option_kind_for_duration(int(expiration_minutes))
                 open_map = turbo_open_map if option_kind == "turbo" else binary_open_map
+                profit_map = turbo_profit_map if option_kind == "turbo" else binary_profit_map
                 candidates = self._build_symbol_candidates(self.runtime_config.iq_symbol_map.get(symbol_name, symbol_name))
-                preferred_order: list[str] = []
-                if self.runtime_config.use_otc_symbols:
-                    preferred_order.extend(candidates["otc"])
-                    preferred_order.extend(candidates["regular"])
-                else:
-                    preferred_order.extend(candidates["regular"])
-                    preferred_order.extend(candidates["otc"])
+                preferred_order = self._build_preferred_order(candidates)
 
                 selected_symbol = ""
                 selected_payout = 0.0
@@ -307,7 +317,7 @@ class BridgeWorker:
                     normalized_candidate = candidate.upper().strip()
                     if normalized_candidate not in OP_code.ACTIVES:
                         continue
-                    payout_percent = self.scanner._to_percent((all_profit.get(normalized_candidate) or {}).get(option_kind))
+                    payout_percent = self.scanner._lookup_payout_percent(normalized_candidate, option_kind, all_profit, profit_map)
                     is_open = bool(self.scanner._get_open_info(normalized_candidate, open_map).get("open"))
                     if not selected_symbol:
                         selected_symbol = normalized_candidate
@@ -339,7 +349,7 @@ class BridgeWorker:
                 "symbol": symbol_name,
                 "generated_at": generated_at,
                 "min_payout_percent": self.runtime_config.min_payout_percent,
-                "use_otc_symbols": self.runtime_config.use_otc_symbols,
+                "market_mode": self.runtime_config.market_mode,
                 "rows": rows,
             }
             self._write_json_atomic(self.runtime_config.status_path / f"operability_{symbol_name}.json", payload)
@@ -359,6 +369,18 @@ class BridgeWorker:
         if is_otc:
             return {"regular": [], "otc": otc}
         return {"regular": regular, "otc": otc}
+
+    def _build_preferred_order(self, candidates: dict[str, list[str]]) -> list[str]:
+        market_mode = self.runtime_config.market_mode.upper().strip()
+        preferred_order: list[str] = []
+        if market_mode == "OTC":
+            preferred_order.extend(candidates["otc"])
+        elif market_mode == "AUTO":
+            preferred_order.extend(candidates["regular"])
+            preferred_order.extend(candidates["otc"])
+        else:
+            preferred_order.extend(candidates["regular"])
+        return preferred_order
 
     def _resolve_expiration_timestamp(self, expiration_minutes: int) -> int:
         options = self.scanner.get_expiration_options()

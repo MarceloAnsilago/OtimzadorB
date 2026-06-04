@@ -18,6 +18,7 @@
   "status_freshness_seconds": 10,
   "iq_candle_interval_seconds": 60,
   "iq_symbol_map": {},
+  "market_mode": "AUTO",
   "browser_url": "https://iqoption.com/traderoom",
   "mt5_terminal_path": "C:\\Program Files\\Infinox MetaTrader 5 Terminal\\terminal64.exe",
   "use_otc_symbols": false
